@@ -16,19 +16,24 @@
 // Historial de revisiones
 //         08/10/2021 - Creacion (primera version) del codigo
 
-#ifndef alphabetic_class.h
-#define alphabetic_class.h
+#ifndef Alphabet_class_body
+#define Alphabet_class_body
 
 #include <iostream>
 #include <string>
 
 template <class T>
-class Alphabet{
+class Alphabet {
   public:
+    Alphabet(std::string set) {};
+    inline int Get_Set_Size(void);
   
   private:
-  int set_size{0};
-  T* set{NULL};
+    int _set_size{0};
+    T* _set{NULL};
 };
+
+
+
 
 #endif
