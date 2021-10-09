@@ -16,16 +16,19 @@
 // Historial de revisiones
 //         08/10/2021 - Creacion (primera version) del codigo
 
-#ifndef Alphabet_class_body
-#define Alphabet_class_body
+#ifndef alphabet_class_body
+#define alphabet_class_body
 
 #include <iostream>
 #include <string>
+#include <cstring>
 
 template <class T>
 class Alphabet {
   public:
-    Alphabet(std::string set) {};
+    Alphabet(std::string) {
+      
+    }
     inline int Get_Set_Size(void);
   
   private:
