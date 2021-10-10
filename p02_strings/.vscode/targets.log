@@ -1,3 +1,6 @@
+make all --print-data-base --no-builtin-variables --no-builtin-rules --question
+make: *** No rule to make target 'all'.  Stop.
+ 
 # GNU Make 4.2.1
 # Built for x86_64-pc-linux-gnu
 # Copyright (C) 1988-2016 Free Software Foundation, Inc.
@@ -5,7 +8,7 @@
 # This is free software: you are free to change and redistribute it.
 # There is NO WARRANTY, to the extent permitted by law.
 
-# Make data base, printed on Sat Oct  9 10:24:06 2021
+# Make data base, printed on Sat Oct  9 23:21:09 2021
 
 # Variables
 
@@ -38,7 +41,7 @@ CURDIR := /home/usuario/2nd_year_CyA/p02_strings
 # makefile
 SHELL = /bin/sh
 # environment
-VSCODE_NLS_CONFIG = {"locale":"es","availableLanguages":{}}
+VSCODE_NLS_CONFIG = {"locale":"en","availableLanguages":{}}
 # environment
 _ = /home/usuario/.vscode-server/bin/ee8c7def80afc00dd6e593ef12f37756d8f504ea/node
 # makefile (from 'makefile', line 22)
@@ -48,6 +51,8 @@ MAKEFILE_LIST :=  makefile
 # 'override' directive
 GNUMAKEFLAGS := 
 # environment
+MAKELEVEL := 0
+# environment
 XDG_DATA_DIRS = /usr/local/share:/usr/share:/var/lib/snapd/desktop
 # environment
 DBUS_SESSION_BUS_ADDRESS = unix:path=/run/user/1000/bus
@@ -56,9 +61,11 @@ VSCODE_VERBOSE_LOGGING = true
 # environment
 LESSOPEN = | /usr/bin/lesspipe %s
 # environment
+LC_NAME = C.UTF-8
+# environment
 VSCODE_CWD = /home/usuario
 # environment
-SSH_CONNECTION = 10.20.51.194 46400 10.6.129.155 22
+SSH_CONNECTION = 10.20.52.55 50422 10.6.129.155 22
 # environment
 PATH = /home/usuario/.vscode-server/bin/ee8c7def80afc00dd6e593ef12f37756d8f504ea/bin:/home/usuario/.vscode-server/bin/ee8c7def80afc00dd6e593ef12f37756d8f504ea/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/snap/bin
 # environment
@@ -66,7 +73,9 @@ XDG_RUNTIME_DIR = /run/user/1000
 # environment
 VSCODE_LOG_STACK = false
 # environment
-VSCODE_IPC_HOOK_CLI = /run/user/1000/vscode-ipc-b179a77b-09f0-4d21-bcf8-1e9aa357f540.sock
+LC_NUMERIC = C.UTF-8
+# environment
+VSCODE_IPC_HOOK_CLI = /run/user/1000/vscode-ipc-392e54f1-d21d-4f0a-ad83-a595b89be072.sock
 # default
 .FEATURES := target-specific order-only second-expansion else-if shortest-stem undefine oneshell archives jobserver output-sync check-symlink load
 # environment
@@ -98,7 +107,7 @@ VSCODE_HANDLES_UNCAUGHT_ERRORS = true
 # automatic
 ^D = $(patsubst %/,%,$(dir $^))
 # environment
-MAKELEVEL := 0
+LC_TIME = C.UTF-8
 # default
 MAKE = $(MAKE_COMMAND)
 # default
@@ -108,13 +117,17 @@ SHLVL = 1
 # makefile (from 'makefile', line 21)
 CC = g++
 # environment
-XDG_SESSION_ID = 31
+XDG_SESSION_ID = 6
 # environment
 USER = usuario
+# environment
+LC_MONETARY = C.UTF-8
 # makefile
 .DEFAULT_GOAL := main_strings
 # automatic
 %D = $(patsubst %/,%,$(dir $%))
+# environment
+LC_TELEPHONE = C.UTF-8
 # default
 MAKE_COMMAND := make
 # default
@@ -126,19 +139,25 @@ MAKEFLAGS = pqrR
 # environment
 MFLAGS = -pqrR
 # environment
-SSH_CLIENT = 10.20.51.194 46400 22
+SSH_CLIENT = 10.20.52.55 50422 22
 # automatic
 +D = $(patsubst %/,%,$(dir $+))
 # environment
 BROWSER = /home/usuario/.vscode-server/bin/ee8c7def80afc00dd6e593ef12f37756d8f504ea/bin/helpers/browser.sh
+# environment
+LC_IDENTIFICATION = C.UTF-8
 # default
 MAKEFILES := 
 # automatic
 <F = $(notdir $<)
-# environment
-LC_ALL = C
 # automatic
 ^F = $(notdir $^)
+# environment
+LC_MEASUREMENT = C.UTF-8
+# environment
+LC_ALL = C
+# environment
+LC_PAPER = C.UTF-8
 # makefile (from 'makefile', line 23)
 DEPS = alphabet_class.h word_class.h
 # default
@@ -149,6 +168,8 @@ SUFFIXES :=
 VSCODE_INJECT_NODE_MODULE_LOOKUP_PATH = /home/usuario/.vscode-server/bin/ee8c7def80afc00dd6e593ef12f37756d8f504ea/remote/node_modules
 # default
 .RECIPEPREFIX := 
+# environment
+LC_ADDRESS = C.UTF-8
 # default
 MAKE_HOST := x86_64-pc-linux-gnu
 # environment
@@ -158,7 +179,7 @@ VSCODE_EXTHOST_WILL_SEND_SOCKET = true
 # environment
 MOTD_SHOWN = pam
 # variable set hash-table stats:
-# Load=74/1024=7%, Rehash=0, Collisions=11/101=11%
+# Load=83/1024=8%, Rehash=0, Collisions=16/110=15%
 
 # Pattern-specific Variable Values
 
@@ -240,14 +261,12 @@ word_class.o:
 
 # No general ('VPATH' variable) search path.
 
-# strcache buffers: 1 (0) / strings = 20 / storage = 220 B / avg = 11 B
-# current buf: size = 8162 B / used = 220 B / count = 20 / avg = 11 B
+# strcache buffers: 1 (0) / strings = 21 / storage = 228 B / avg = 10 B
+# current buf: size = 8162 B / used = 228 B / count = 21 / avg = 10 B
 
-# strcache performance: lookups = 29 / hit rate = 31%
+# strcache performance: lookups = 29 / hit rate = 27%
 # hash-table stats:
-# Load=20/8192=0%, Rehash=0, Collisions=1/29=3%
-# Finished Make data base on Sat Oct  9 10:24:06 2021
+# Load=21/8192=0%, Rehash=0, Collisions=1/29=3%
+# Finished Make data base on Sat Oct  9 23:21:09 2021
 
- 
-make: *** No rule to make target 'all'.  Stop.
  

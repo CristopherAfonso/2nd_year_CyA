@@ -16,11 +16,10 @@
 // Historial de revisiones
 //         08/10/2021 - Creacion (primera version) del codigo
 
-#ifndef alphabet_class_head
-#define alphabet_class_head
-
-
 #include "alphabet_class.h"
 
 
-#endif
+Alphabet::Alphabet(std::string h) {
+  
+}
+

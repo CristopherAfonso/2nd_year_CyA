@@ -20,7 +20,76 @@
 
 #include <iostream>
 #include <fstream>
+#include <cstring>
+#include <string>
 
-int main() {
+void ErrorMessage(char& function_name) { //Mensaje de error si no se cumple con el numero de argumentos
+  std::cout << "\nWarning! , Faltan/Sobran argumentos para este programa";
+  std::cout << "\nPara más información sobre como funciona pruebe:";
+  std::cout << "\n'" << function_name << "' --help\n\n";
+}
+
+void ErrorOpcode() { 
+  std::cout << "\nOpCode invalido, intentelo de nuevo\n\n";
+}
+
+void InfoMessage(char& function_name) { //Explica al usuario como usar el programa
+  std::cout << "\nDescripcion:";
+  std::cout << "\n" << function_name << " es un programa el cual recibe un";
+  std::cout << "\nfichero de texto y devuelve como salida otro. La forma de";
+  std::cout << "\nusar el programa es esta:\n\n";
+  std::cout << "'" << function_name << " [input_file] [output_file] [opcode]'";
+  std::cout << "\n\ninput_file: archivo de texto que le pasamos al programa";
+  std::cout << "\noutput_file: nombre del archivo que se creara\n";
+  std::cout << "\nopcode es el número que identifica a la operacion a hacer\n";
+
+  std::cout << "\nEspecificaciones del archivo input_file:";
+  std::cout << "\nEl archivo input_file puede ser tan extenso como se desee,";
+  std::cout << "\nlas lineas pueden ser tan largas como se desee, y cada";
+  std::cout << "\nlinea debe contener minimo dos cadenas, la ultima cadena";
+  std::cout << "\bde la fila se procesaria como parte de la clase 'word' y";
+  std::cout << "\nla primera como parte de la clase 'alphabet', si en una";
+  std::cout << "\nlinea hay mas de dos cadenas, la ultima seria parte de";
+  std::cout << "\nla clase 'word' y el resto serian simbolos de la clase";
+  std::cout << "\n'alphabet'\n";
+
+  std::cout << "\nDetalles de las operaciones:";
+  std::cout << "\nOpCode '1' Longitud: Se escribe en output_file la longitud";
+  std::cout << "\nde cada cadena de entrada (se cuentan sus simbolos)";
+  std::cout << "\nOpCode '2' Inversa: Se escribe en el output_file la inversa";
+  std::cout << "\nde cada cadena de entrada (se invierten sus simbolos)";
+  std::cout << "\nOpCode '3' Prefijos: Se escribe en output_file el conjunto";
+  std::cout << "\nde cadenas que son prefijos de la cadena de entrada";
+  std::cout << "\nOpCode '4' Sufijos: Se escribe en output_file el conjunto";
+  std::cout << "\nde cadenas que son sufijos de cada cadena de entrada\n";
+  std::cout << "OpCode '5' Subcadenas: Se escribe en output_file el conjunto";
+  std::cout << "\nde subcadenas para cada cadena de entrada\n\n";
+}
+
+int main(int argc, char* argv) {
+
+  if((strcmp(argv[1], "--help") == 0)) { //Se solicita conocer el modo de uso del programa
+    InfoMessage(argv[0]);
+    exit(EXIT_SUCCESS);
+  }
+
+  if(argc < 3 || argc > 5) { //Error al pasar parametros
+    ErrorMessage(argv[0]);
+    exit(EXIT_FAILURE);
+  }
+
+  if(int(argv[3]) < 49 || int(argv[3]) > 53) { //OpCode mal puesto
+    ErrorOpcode();
+    exit(EXIT_FAILURE);
+    
+  }
+
+  std::ifstream input_file;
+  std::ofstream output_file;
+
+
+  
+
+
   return 0;
 }

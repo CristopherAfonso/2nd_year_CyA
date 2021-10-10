@@ -23,7 +23,8 @@
 #include <string>
 #include <cstring>
 
-template <class T>
+
+
 class Alphabet {
   public:
     Alphabet(std::string) {
@@ -33,9 +34,8 @@ class Alphabet {
   
   private:
     int _set_size{0};
-    T* _set{NULL};
+    std::string* _set{NULL};
 };
-
 
 
 

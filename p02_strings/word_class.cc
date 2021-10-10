@@ -16,11 +16,6 @@
 // Historial de revisiones
 //         08/10/2021 - Creacion (primera version) del codigo
 
-#ifndef word_class.cc
-#define word_class.cc
-
 #include <iostream>
 
 #include "word_class.h"
-
-#endif
