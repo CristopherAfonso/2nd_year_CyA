@@ -28,4 +28,6 @@ OBJ = main_strings.o alphabet_class.o word_class.o
 
 main_strings: $(OBJ)
 	$(CC) -o $@ $^ $(CFLAGS)
+
+clean:
 	rm -rf *.o

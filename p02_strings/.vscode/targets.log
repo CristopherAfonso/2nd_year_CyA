@@ -8,7 +8,7 @@ make: *** No rule to make target 'all'.  Stop.
 # This is free software: you are free to change and redistribute it.
 # There is NO WARRANTY, to the extent permitted by law.
 
-# Make data base, printed on Sun Oct 10 15:25:23 2021
+# Make data base, printed on Sun Oct 10 18:26:47 2021
 
 # Variables
 
@@ -187,9 +187,9 @@ MOTD_SHOWN = pam
 
 # Directories
 
-# . (device 64768, inode 525289): 10 files, no impossibilities.
+# . (device 64768, inode 525289): 11 files, no impossibilities.
 
-# 10 files, no impossibilities in 1 directories.
+# 11 files, no impossibilities in 1 directories.
 
 # Implicit Rules
 
@@ -217,7 +217,7 @@ all:
 # Not a target:
 makefile:
 #  Implicit rule search has been done.
-#  Last modified 2021-10-10 15:25:21.91784689
+#  Last modified 2021-10-10 18:26:22.201136464
 #  File has been updated.
 #  Successfully updated.
 
@@ -233,13 +233,19 @@ main_strings: main_strings.o alphabet_class.o word_class.o
 #  File has not been updated.
 #  recipe to execute (from 'makefile', line 30):
 	$(CC) -o $@ $^ $(CFLAGS)
-	rm -rf *.o
 
 # Not a target:
 .DEFAULT:
 #  Implicit rule search has not been done.
 #  Modification time never checked.
 #  File has not been updated.
+
+clean:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+#  recipe to execute (from 'makefile', line 33):
+	rm -rf *.o
 
 # Not a target:
 word_class.o:
@@ -248,19 +254,19 @@ word_class.o:
 #  File has not been updated.
 
 # files hash-table stats:
-# Load=8/1024=1%, Rehash=0, Collisions=0/21=0%
+# Load=9/1024=1%, Rehash=0, Collisions=0/22=0%
 # VPATH Search Paths
 
 # No 'vpath' search paths.
 
 # No general ('VPATH' variable) search path.
 
-# strcache buffers: 1 (0) / strings = 20 / storage = 222 B / avg = 11 B
-# current buf: size = 8162 B / used = 222 B / count = 20 / avg = 11 B
+# strcache buffers: 1 (0) / strings = 22 / storage = 238 B / avg = 10 B
+# current buf: size = 8162 B / used = 238 B / count = 22 / avg = 10 B
 
-# strcache performance: lookups = 28 / hit rate = 28%
+# strcache performance: lookups = 31 / hit rate = 29%
 # hash-table stats:
-# Load=20/8192=0%, Rehash=0, Collisions=1/28=4%
-# Finished Make data base on Sun Oct 10 15:25:23 2021
+# Load=22/8192=0%, Rehash=0, Collisions=1/31=3%
+# Finished Make data base on Sun Oct 10 18:26:47 2021
 
  

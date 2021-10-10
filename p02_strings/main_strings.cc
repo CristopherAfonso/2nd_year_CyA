@@ -24,10 +24,10 @@
 #include "word_class.h"
 
 //Mensaje de error si no se cumple con el numero de argumentos
-void ErrorMessage(char& function_name) { 
-  std::cout << "\nWarning! , Faltan/Sobran argumentos para este programa";
+void ErrorMessage(const std::string& function_name) { 
+  std::cout << "\nWarning!, Faltan/Sobran argumentos para este programa";
   std::cout << "\nPara más información sobre como funciona pruebe:";
-  std::cout << "\n'" << function_name << "' --help\n\n";
+  std::cout << "\n'" << function_name << " --help'\n\n";
 }
 
 void ErrorOpcode() { 
@@ -35,21 +35,21 @@ void ErrorOpcode() {
 }
 
 //Explica al usuario como usar el programa
-void InfoMessage(char& function_name) { 
+void InfoMessage(const std::string& function_name) { 
   std::cout << "\nDescripcion:";
   std::cout << "\n" << function_name << " es un programa el cual recibe un";
   std::cout << "\nfichero de texto y devuelve como salida otro. La forma de";
   std::cout << "\nusar el programa es esta:\n\n";
   std::cout << "'" << function_name << " [input_file] [output_file] [opcode]'";
   std::cout << "\n\ninput_file: archivo de texto que le pasamos al programa";
-  std::cout << "\noutput_file: nombre del archivo que se creara\n";
-  std::cout << "\nopcode es el número que identifica a la operacion a hacer\n";
+  std::cout << "\noutput_file: nombre del archivo que se creara";
+  std::cout << "\nopcode: número que identifica a la operacion a hacer\n";
 
   std::cout << "\nEspecificaciones del archivo input_file:";
   std::cout << "\nEl archivo input_file puede ser tan extenso como se desee,";
   std::cout << "\nlas lineas pueden ser tan largas como se desee, y cada";
   std::cout << "\nlinea debe contener minimo dos cadenas, la ultima cadena";
-  std::cout << "\bde la fila se procesaria como parte de la clase 'word' y";
+  std::cout << "\nde la fila se procesaria como parte de la clase 'word' y";
   std::cout << "\nla primera como parte de la clase 'alphabet', si en una";
   std::cout << "\nlinea hay mas de dos cadenas, la ultima seria parte de";
   std::cout << "\nla clase 'word' y el resto serian simbolos de la clase";
@@ -68,84 +68,99 @@ void InfoMessage(char& function_name) {
   std::cout << "\nde subcadenas para cada cadena de entrada\n\n";
 }
 
-int main(int argc, char* argv) {
-  
-  const std::string kHelp{"--help"};
+int main(int argc, char* argv[]) {
+
+  const std::string kNameProgram{argv[0]};
+  const std::string kNameInput{argv[1]};
+  const std::string kNameOutput{argv[2]};
+  const std::string kOpCode{argv[3]};
   
   //Se solicita conocer el modo de uso del programa
-  if((kHelp == "--help")) { 
-    InfoMessage(argv[0]);
+  if(("--help" == kNameInput)) {
+    InfoMessage(kNameProgram);
     exit(EXIT_SUCCESS);
   }
   
   //Error al pasar parametros
   if(argc < 3 || argc > 5) { 
-    ErrorMessage(argv[0]);
+    ErrorMessage(kNameProgram);
     exit(EXIT_FAILURE);
   }
 
   //OpCode mal puesto
-  if(int(argv[3]) < 49 || int(argv[3]) > 53) { 
+  if(std::stoi(kOpCode) < 1 || std::stoi(kOpCode) > 5) { 
     ErrorOpcode();
     exit(EXIT_FAILURE);
     
   }
 
-  const std::string kNameInput{argv[1]};
-  const std::string kNameOutput{argv[2]};
-  const std::string kOpCode{argv[3]};
   std::string line = "";
-  std::ifstream input_file(kNameInput);
-  std::ofstream output_file(kNameOutput);
+  std::ifstream input_file;
+  std::ofstream output_file;
+  std::istream actual_line();
 
-  //Mientras hayan lineas sin leer del archivo, se lee la siguiente
-  while(getline(input_file, line)) {
-    std::vector<std::string> set_in_line;
-    std::string chain = "";
-    std::size_t counter_line_position{0};
-    
-    //Leo toda la linea actual del archico 
-    for(char* place{&line.front()}; *(place) != line.back(); ++place, 
-    ++counter_line_position) {
-      if(*(place) == ' ') {
-        continue;
-      }
+  input_file.open(kNameInput, std::fstream::in);
+  output_file.open(kNameOutput, std::fstream::out);
 
-      if(chain == "") {
-        chain = chain.substr(counter_line_position);
-      }
-      else {
-        set_in_line.emplace_back(chain);
-        chain = chain.substr(counter_line_position);
-      }
-
-    }
-
-    Alphabet alphabet(set_in_line);
-    Word word(chain);
-
-    switch(std::stoi(kOpCode)) {
-      case '1':
-      break;
-
-      case '2':
-      break;
-
-      case '3':
-      break;
-
-      case '4':
-      break;
-
-      case '5':
-      break;
-
-      default:
-        exit(EXIT_FAILURE);
-    }
+  if(input_file.fail()) {
+    std::cout << "\nError al leer el archivo " << kNameInput << ",";
+    std::cout << "\nIntentelo de nuevo\n\n";
+    exit(EXIT_FAILURE);
   }
 
-  input_file.close(); //Cerramos el archivo que leemos, y liberamos memoria
+  if(output_file.fail()) {
+    std::cout << "\nError al abrir el archivo " << kNameOutput << ",";
+    std::cout << "\nIntentelo de nuevo\n\n";
+    exit(EXIT_FAILURE);
+  }
+
+  std::vector<std::string> set_of_lines;
+
+  //Mientras no sea el final del archivo, itera
+  while(!input_file.eof()) {
+    std::string chain{""};
+    
+    //Leo toda la linea actual del archico 
+    getline(input_file, chain);
+    set_of_lines.emplace_back(chain);
+  }
+
+  for(size_t i{0}; i <= set_of_lines.size(); ++i) {
+    
+  }
+
+  for(auto line: set_of_lines) {
+    output_file << "\n" << line << "\n";
+  }
+
+  input_file.close();
+    
+  std::cout << "\n\nEnorabuena no ha petado :)\n\n";
+  exit(EXIT_SUCCESS);
+
+  switch(std::stoi(kOpCode)) {
+    case '1':
+    break;
+
+    case '2':
+    break;
+
+    case '3':
+    break;
+
+    case '4':
+    break;
+
+    case '5':
+    break;
+
+    default:
+      exit(EXIT_FAILURE);
+  }
+  
+
+  output_file.close(); //Cerramos el archivo que leemos, y liberamos memoria
+  
   
   return 0;
 }

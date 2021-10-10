@@ -4,6 +4,5 @@ g++ -c -o main_strings.o main_strings.cc -I -Weffc++ -Wall -g
 g++ -c -o alphabet_class.o alphabet_class.cc -I -Weffc++ -Wall -g
 g++ -c -o word_class.o word_class.cc -I -Weffc++ -Wall -g
 g++ -o main_strings main_strings.o alphabet_class.o word_class.o -I -Weffc++ -Wall -g
-rm -rf *.o
 make: Leaving directory '/home/usuario/2nd_year_CyA/p02_strings'
  
