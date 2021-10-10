@@ -8,7 +8,7 @@ make: *** No rule to make target 'all'.  Stop.
 # This is free software: you are free to change and redistribute it.
 # There is NO WARRANTY, to the extent permitted by law.
 
-# Make data base, printed on Sat Oct  9 23:21:09 2021
+# Make data base, printed on Sun Oct 10 15:25:23 2021
 
 # Variables
 
@@ -19,7 +19,7 @@ make: *** No rule to make target 'all'.  Stop.
 # default
 .SHELLFLAGS := -c
 # makefile (from 'makefile', line 24)
-OBJ = main_strings.o alphabet_class.o word_class.o
+OBJ = main_strings.o alphabet_class.o word_class.o 
 # environment
 XDG_SESSION_CLASS = user
 # environment
@@ -65,7 +65,7 @@ LC_NAME = C.UTF-8
 # environment
 VSCODE_CWD = /home/usuario
 # environment
-SSH_CONNECTION = 10.20.52.55 50422 10.6.129.155 22
+SSH_CONNECTION = 10.20.52.91 43014 10.6.129.155 22
 # environment
 PATH = /home/usuario/.vscode-server/bin/ee8c7def80afc00dd6e593ef12f37756d8f504ea/bin:/home/usuario/.vscode-server/bin/ee8c7def80afc00dd6e593ef12f37756d8f504ea/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/snap/bin
 # environment
@@ -75,7 +75,7 @@ VSCODE_LOG_STACK = false
 # environment
 LC_NUMERIC = C.UTF-8
 # environment
-VSCODE_IPC_HOOK_CLI = /run/user/1000/vscode-ipc-392e54f1-d21d-4f0a-ad83-a595b89be072.sock
+VSCODE_IPC_HOOK_CLI = /run/user/1000/vscode-ipc-5a24ec85-e2df-4c31-928f-46e83a38ba95.sock
 # default
 .FEATURES := target-specific order-only second-expansion else-if shortest-stem undefine oneshell archives jobserver output-sync check-symlink load
 # environment
@@ -117,7 +117,7 @@ SHLVL = 1
 # makefile (from 'makefile', line 21)
 CC = g++
 # environment
-XDG_SESSION_ID = 6
+XDG_SESSION_ID = 28
 # environment
 USER = usuario
 # environment
@@ -139,7 +139,7 @@ MAKEFLAGS = pqrR
 # environment
 MFLAGS = -pqrR
 # environment
-SSH_CLIENT = 10.20.52.55 50422 22
+SSH_CLIENT = 10.20.52.91 43014 22
 # automatic
 +D = $(patsubst %/,%,$(dir $+))
 # environment
@@ -187,9 +187,9 @@ MOTD_SHOWN = pam
 
 # Directories
 
-# . (device 64768, inode 525289): 9 files, no impossibilities.
+# . (device 64768, inode 525289): 10 files, no impossibilities.
 
-# 9 files, no impossibilities in 1 directories.
+# 10 files, no impossibilities in 1 directories.
 
 # Implicit Rules
 
@@ -217,7 +217,7 @@ all:
 # Not a target:
 makefile:
 #  Implicit rule search has been done.
-#  Last modified 2021-10-08 17:36:25.134454326
+#  Last modified 2021-10-10 15:25:21.91784689
 #  File has been updated.
 #  Successfully updated.
 
@@ -233,19 +233,13 @@ main_strings: main_strings.o alphabet_class.o word_class.o
 #  File has not been updated.
 #  recipe to execute (from 'makefile', line 30):
 	$(CC) -o $@ $^ $(CFLAGS)
+	rm -rf *.o
 
 # Not a target:
 .DEFAULT:
 #  Implicit rule search has not been done.
 #  Modification time never checked.
 #  File has not been updated.
-
-clean:
-#  Implicit rule search has not been done.
-#  Modification time never checked.
-#  File has not been updated.
-#  recipe to execute (from 'makefile', line 33):
-	rm -rf *.o 
 
 # Not a target:
 word_class.o:
@@ -254,19 +248,19 @@ word_class.o:
 #  File has not been updated.
 
 # files hash-table stats:
-# Load=9/1024=1%, Rehash=0, Collisions=0/22=0%
+# Load=8/1024=1%, Rehash=0, Collisions=0/21=0%
 # VPATH Search Paths
 
 # No 'vpath' search paths.
 
 # No general ('VPATH' variable) search path.
 
-# strcache buffers: 1 (0) / strings = 21 / storage = 228 B / avg = 10 B
-# current buf: size = 8162 B / used = 228 B / count = 21 / avg = 10 B
+# strcache buffers: 1 (0) / strings = 20 / storage = 222 B / avg = 11 B
+# current buf: size = 8162 B / used = 222 B / count = 20 / avg = 11 B
 
-# strcache performance: lookups = 29 / hit rate = 27%
+# strcache performance: lookups = 28 / hit rate = 28%
 # hash-table stats:
-# Load=21/8192=0%, Rehash=0, Collisions=1/29=3%
-# Finished Make data base on Sat Oct  9 23:21:09 2021
+# Load=20/8192=0%, Rehash=0, Collisions=1/28=4%
+# Finished Make data base on Sun Oct 10 15:25:23 2021
 
  

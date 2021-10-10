@@ -16,27 +16,21 @@
 // Historial de revisiones
 //         08/10/2021 - Creacion (primera version) del codigo
 
-#ifndef alphabet_class_body
-#define alphabet_class_body
+#ifndef _ALPHABET_CLASS_
+#define _ALPHABET_CLASS_
 
 #include <iostream>
 #include <string>
-#include <cstring>
-
+#include <vector>
 
 
 class Alphabet {
-  public:
-    Alphabet(std::string) {
-      
-    }
-    inline int Get_Set_Size(void);
-  
-  private:
-    int _set_size{0};
-    std::string* _set{NULL};
+ public:
+  Alphabet(std::vector<std::string>& set_in_line); //Constructor
+    
+ private:
+  std::vector<std::string> alphabet_;
 };
-
 
 
 #endif

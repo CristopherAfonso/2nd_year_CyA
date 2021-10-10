@@ -16,9 +16,18 @@
 // Historial de revisiones
 //         08/10/2021 - Creacion (primera version) del codigo
 
-#ifndef word_class.h
-#define word_class.h
+#ifndef _WORD_CLASS_
+#define _WORD_CLASS_
 
 #include <iostream>
+#include <string>
+
+class Word {
+ public:
+  Word(std::string word);
+
+ private:
+  std::string word_ = "";
+};
 
 #endif

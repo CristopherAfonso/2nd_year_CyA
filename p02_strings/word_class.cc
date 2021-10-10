@@ -17,5 +17,8 @@
 //         08/10/2021 - Creacion (primera version) del codigo
 
 #include <iostream>
-
 #include "word_class.h"
+
+Word::Word(std::string word) {
+  word_ = word;
+}

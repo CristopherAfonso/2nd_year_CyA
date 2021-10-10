@@ -21,13 +21,11 @@
 CC = g++
 CFLAGS = -I -Weffc++ -Wall -g
 DEPS = alphabet_class.h word_class.h
-OBJ = main_strings.o alphabet_class.o word_class.o
+OBJ = main_strings.o alphabet_class.o word_class.o 
 
 %.o: %.cc $(DEPS)
 	$(CC) -c -o $@ $< $(CFLAGS)
 
 main_strings: $(OBJ)
 	$(CC) -o $@ $^ $(CFLAGS)
-
-clean:
-	rm -rf *.o 
+	rm -rf *.o

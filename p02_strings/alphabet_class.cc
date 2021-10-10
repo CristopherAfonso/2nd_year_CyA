@@ -19,7 +19,6 @@
 #include "alphabet_class.h"
 
 
-Alphabet::Alphabet(std::string h) {
-  
+Alphabet::Alphabet(std::vector<std::string>& set_in_line) {
+  alphabet_ = set_in_line;
 }
-

@@ -18,12 +18,13 @@
 // Historial de revisiones
 //         08/10/2021 - Creacion (primera version) del codigo
 
-#include <iostream>
 #include <fstream>
-#include <cstring>
-#include <string>
 
-void ErrorMessage(char& function_name) { //Mensaje de error si no se cumple con el numero de argumentos
+#include "alphabet_class.h"
+#include "word_class.h"
+
+//Mensaje de error si no se cumple con el numero de argumentos
+void ErrorMessage(char& function_name) { 
   std::cout << "\nWarning! , Faltan/Sobran argumentos para este programa";
   std::cout << "\nPara más información sobre como funciona pruebe:";
   std::cout << "\n'" << function_name << "' --help\n\n";
@@ -33,7 +34,8 @@ void ErrorOpcode() {
   std::cout << "\nOpCode invalido, intentelo de nuevo\n\n";
 }
 
-void InfoMessage(char& function_name) { //Explica al usuario como usar el programa
+//Explica al usuario como usar el programa
+void InfoMessage(char& function_name) { 
   std::cout << "\nDescripcion:";
   std::cout << "\n" << function_name << " es un programa el cual recibe un";
   std::cout << "\nfichero de texto y devuelve como salida otro. La forma de";
@@ -67,29 +69,83 @@ void InfoMessage(char& function_name) { //Explica al usuario como usar el progra
 }
 
 int main(int argc, char* argv) {
-
-  if((strcmp(argv[1], "--help") == 0)) { //Se solicita conocer el modo de uso del programa
+  
+  const std::string kHelp{"--help"};
+  
+  //Se solicita conocer el modo de uso del programa
+  if((kHelp == "--help")) { 
     InfoMessage(argv[0]);
     exit(EXIT_SUCCESS);
   }
-
-  if(argc < 3 || argc > 5) { //Error al pasar parametros
+  
+  //Error al pasar parametros
+  if(argc < 3 || argc > 5) { 
     ErrorMessage(argv[0]);
     exit(EXIT_FAILURE);
   }
 
-  if(int(argv[3]) < 49 || int(argv[3]) > 53) { //OpCode mal puesto
+  //OpCode mal puesto
+  if(int(argv[3]) < 49 || int(argv[3]) > 53) { 
     ErrorOpcode();
     exit(EXIT_FAILURE);
     
   }
 
-  std::ifstream input_file;
-  std::ofstream output_file;
+  const std::string kNameInput{argv[1]};
+  const std::string kNameOutput{argv[2]};
+  const std::string kOpCode{argv[3]};
+  std::string line = "";
+  std::ifstream input_file(kNameInput);
+  std::ofstream output_file(kNameOutput);
 
+  //Mientras hayan lineas sin leer del archivo, se lee la siguiente
+  while(getline(input_file, line)) {
+    std::vector<std::string> set_in_line;
+    std::string chain = "";
+    std::size_t counter_line_position{0};
+    
+    //Leo toda la linea actual del archico 
+    for(char* place{&line.front()}; *(place) != line.back(); ++place, 
+    ++counter_line_position) {
+      if(*(place) == ' ') {
+        continue;
+      }
 
+      if(chain == "") {
+        chain = chain.substr(counter_line_position);
+      }
+      else {
+        set_in_line.emplace_back(chain);
+        chain = chain.substr(counter_line_position);
+      }
+
+    }
+
+    Alphabet alphabet(set_in_line);
+    Word word(chain);
+
+    switch(std::stoi(kOpCode)) {
+      case '1':
+      break;
+
+      case '2':
+      break;
+
+      case '3':
+      break;
+
+      case '4':
+      break;
+
+      case '5':
+      break;
+
+      default:
+        exit(EXIT_FAILURE);
+    }
+  }
+
+  input_file.close(); //Cerramos el archivo que leemos, y liberamos memoria
   
-
-
   return 0;
 }
