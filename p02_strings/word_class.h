@@ -21,14 +21,30 @@
 
 #include <iostream>
 #include <string>
+#include <vector>
+
+#include "alphabet_class.h"
 
 class Word {
  public:
-  Word(); // Constructor por Defecto
-  Word(std::string word);
+  //Constructores
+  Word();
+  Word(const std::string& word);
+
+  // OpCode 1
+  size_t WordSize();
+  int WordSize(Alphabet& set);
+
+  // OpCode 2
+  std::string WordInverse();
+  std::string WordInverse(Alphabet& set);
+
+  // OpCode 3
+
 
  private:
   std::string word_ = "";
+  std::vector<char> characters_of_the_word_;
 };
 
 #endif

@@ -26,9 +26,14 @@
 
 class Alphabet {
  public:
-  Alphabet(); //Constructor por defecto
+  //Constructores
+  Alphabet();
   Alphabet(std::vector<std::string>& set_in_line);
-    
+
+  std::string VecPlace(size_t ubication); //Getter
+  bool AreThereComplexSymbols(); //Testea si hay simbolos de varios caracteres
+  size_t SizeAlphabet();
+
  private:
   std::vector<std::string> alphabet_;
 };

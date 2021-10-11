@@ -19,6 +19,58 @@
 #include <iostream>
 #include "word_class.h"
 
-Word::Word(std::string word) {
+Word::Word(const std::string& word) {
   word_ = word;
+  for(size_t i{0}; i < word.size(); ++i) {
+    characters_of_the_word_.emplace_back(word.at(i));
+  }
+}
+
+size_t Word::WordSize() {
+  return word_.size();
+}
+
+int Word::WordSize(Alphabet& set) {
+
+  size_t size{0};
+  size_t position{0};
+  size_t lenght{1};
+  std::string aux_string{""};
+  bool symbol_found{false};
+  
+  while(position < word_.size()) {
+    while((position + lenght) <= word_.size()) {
+      aux_string = word_.substr(position, lenght);
+      for(size_t i{0}; i < set.SizeAlphabet(); ++i) {
+        if(aux_string == set.VecPlace(i)) {
+          ++size;
+          symbol_found = true;
+          break;
+        }
+      }
+
+      if(symbol_found) {
+        symbol_found = false;
+        break;
+      }
+
+      ++lenght;
+    }
+
+    position += lenght;
+    lenght = 1;
+  }
+  
+  return size;
+}
+
+std::string Word::WordInverse() {
+  std::string result{""};
+  for(size_t i{word_.size() - 1}; i >= 0; --i) {
+    result.push_back(i);
+  }
+}
+
+std::string Word::WordInverse(Alphabet& set) {
+  
 }

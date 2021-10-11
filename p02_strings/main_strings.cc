@@ -156,20 +156,31 @@ int main(int argc, char* argv[]) {
     Word word(aux_word);
 
     switch(std::stoi(kOpCode)) {
-      case '1':
-      //output_file << word;
+      case 1:
+        if(!alphabet.AreThereComplexSymbols()) {
+          output_file << word.WordSize() << '\n';
+        }
+        else {
+          output_file << word.WordSize(alphabet) << '\n';
+        }
+        break;
+
+      case 2:
+        if(!alphabet.AreThereComplexSymbols()) {
+          output_file << word.WordInverse() << '\n';
+        }
+        else {
+          output_file << word.WordInverse(alphabet) << '\n';
+        }
       break;
 
-      case '2':
+      case 3:
       break;
 
-      case '3':
+      case 4:
       break;
 
-      case '4':
-      break;
-
-      case '5':
+      case 5:
       break;
 
       default:
@@ -178,7 +189,7 @@ int main(int argc, char* argv[]) {
     
   }
 
-  output_file.close(); //Cerramos el archivo que creamos o sobreescribimos, 
+  //output_file.close(); //Cerramos el archivo que creamos o sobreescribimos, 
   // y así todos los cambios que le aplicamos se ejecutan y guardan
  
   return 0;
