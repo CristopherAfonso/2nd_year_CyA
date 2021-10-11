@@ -19,6 +19,7 @@
 //         08/10/2021 - Creacion (primera version) del codigo
 
 #include <fstream>
+#include <sstream>
 
 #include "alphabet_class.h"
 #include "word_class.h"
@@ -49,7 +50,7 @@ void InfoMessage(const std::string& function_name) {
   std::cout << "\nEl archivo input_file puede ser tan extenso como se desee,";
   std::cout << "\nlas lineas pueden ser tan largas como se desee, y cada";
   std::cout << "\nlinea debe contener minimo dos cadenas, la ultima cadena";
-  std::cout << "\nde la fila se procesaria como parte de la clase 'word' y";
+  std::cout << "\nde la fila se procesaria como parte de la clase 'aux_word' y";
   std::cout << "\nla primera como parte de la clase 'alphabet', si en una";
   std::cout << "\nlinea hay mas de dos cadenas, la ultima seria parte de";
   std::cout << "\nla clase 'word' y el resto serian simbolos de la clase";
@@ -97,7 +98,6 @@ int main(int argc, char* argv[]) {
   std::string line = "";
   std::ifstream input_file;
   std::ofstream output_file;
-  std::istream actual_line();
 
   input_file.open(kNameInput, std::fstream::in);
   output_file.open(kNameOutput, std::fstream::out);
@@ -125,42 +125,61 @@ int main(int argc, char* argv[]) {
     set_of_lines.emplace_back(chain);
   }
 
-  for(size_t i{0}; i <= set_of_lines.size(); ++i) {
+  input_file.close(); //Cerramos el archivo para liberar memoria
+
+  for(size_t i{0}; i < set_of_lines.size(); ++i) {
+    std::istringstream actual_line(set_of_lines[i]);
+    std::string chain{""}; //String entera que guarda una linea
+    std::string aux_word = {""};
+    int alphabet_size{-1};
+    std::vector<std::string> aux_vec;
+
+    while(getline(actual_line, chain, ' ')) {
+      ++alphabet_size;
+      if(alphabet_size > 0) {
+        aux_vec.emplace_back(aux_word);
+      }
+      aux_word = chain;
+    }
+
+    if(alphabet_size <= 0) {
+      aux_vec.clear(); //Vaciamos el vector por si acaso
+      for(size_t i{0}; i < aux_word.size(); ++i) {
+        if(aux_word.at(i) != ' ') {
+          std::string character{aux_word[i]};
+          aux_vec.emplace_back(character);
+        }
+      }
+    }
+
+    Alphabet alphabet(aux_vec);
+    Word word(aux_word);
+
+    switch(std::stoi(kOpCode)) {
+      case '1':
+      //output_file << word;
+      break;
+
+      case '2':
+      break;
+
+      case '3':
+      break;
+
+      case '4':
+      break;
+
+      case '5':
+      break;
+
+      default:
+        exit(EXIT_FAILURE);
+    }
     
   }
 
-  for(auto line: set_of_lines) {
-    output_file << "\n" << line << "\n";
-  }
-
-  input_file.close();
-    
-  std::cout << "\n\nEnorabuena no ha petado :)\n\n";
-  exit(EXIT_SUCCESS);
-
-  switch(std::stoi(kOpCode)) {
-    case '1':
-    break;
-
-    case '2':
-    break;
-
-    case '3':
-    break;
-
-    case '4':
-    break;
-
-    case '5':
-    break;
-
-    default:
-      exit(EXIT_FAILURE);
-  }
-  
-
-  output_file.close(); //Cerramos el archivo que leemos, y liberamos memoria
-  
-  
+  output_file.close(); //Cerramos el archivo que creamos o sobreescribimos, 
+  // y así todos los cambios que le aplicamos se ejecutan y guardan
+ 
   return 0;
 }

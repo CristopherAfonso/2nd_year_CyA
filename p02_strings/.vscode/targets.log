@@ -8,7 +8,7 @@ make: *** No rule to make target 'all'.  Stop.
 # This is free software: you are free to change and redistribute it.
 # There is NO WARRANTY, to the extent permitted by law.
 
-# Make data base, printed on Sun Oct 10 18:26:47 2021
+# Make data base, printed on Mon Oct 11 13:05:08 2021
 
 # Variables
 
@@ -65,7 +65,7 @@ LC_NAME = C.UTF-8
 # environment
 VSCODE_CWD = /home/usuario
 # environment
-SSH_CONNECTION = 10.20.52.91 43014 10.6.129.155 22
+SSH_CONNECTION = 10.150.90.117 41044 10.6.129.155 22
 # environment
 PATH = /home/usuario/.vscode-server/bin/ee8c7def80afc00dd6e593ef12f37756d8f504ea/bin:/home/usuario/.vscode-server/bin/ee8c7def80afc00dd6e593ef12f37756d8f504ea/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/snap/bin
 # environment
@@ -75,7 +75,7 @@ VSCODE_LOG_STACK = false
 # environment
 LC_NUMERIC = C.UTF-8
 # environment
-VSCODE_IPC_HOOK_CLI = /run/user/1000/vscode-ipc-5a24ec85-e2df-4c31-928f-46e83a38ba95.sock
+VSCODE_IPC_HOOK_CLI = /run/user/1000/vscode-ipc-7ae2a4b4-2888-42d2-9c48-624f81c636f7.sock
 # default
 .FEATURES := target-specific order-only second-expansion else-if shortest-stem undefine oneshell archives jobserver output-sync check-symlink load
 # environment
@@ -117,7 +117,7 @@ SHLVL = 1
 # makefile (from 'makefile', line 21)
 CC = g++
 # environment
-XDG_SESSION_ID = 28
+XDG_SESSION_ID = 60
 # environment
 USER = usuario
 # environment
@@ -139,7 +139,7 @@ MAKEFLAGS = pqrR
 # environment
 MFLAGS = -pqrR
 # environment
-SSH_CLIENT = 10.20.52.91 43014 22
+SSH_CLIENT = 10.150.90.117 41044 22
 # automatic
 +D = $(patsubst %/,%,$(dir $+))
 # environment
@@ -187,9 +187,9 @@ MOTD_SHOWN = pam
 
 # Directories
 
-# . (device 64768, inode 525289): 11 files, no impossibilities.
+# . (device 64768, inode 525289): 12 files, no impossibilities.
 
-# 11 files, no impossibilities in 1 directories.
+# 12 files, no impossibilities in 1 directories.
 
 # Implicit Rules
 
@@ -261,12 +261,12 @@ word_class.o:
 
 # No general ('VPATH' variable) search path.
 
-# strcache buffers: 1 (0) / strings = 22 / storage = 238 B / avg = 10 B
-# current buf: size = 8162 B / used = 238 B / count = 22 / avg = 10 B
+# strcache buffers: 1 (0) / strings = 23 / storage = 254 B / avg = 11 B
+# current buf: size = 8162 B / used = 254 B / count = 23 / avg = 11 B
 
-# strcache performance: lookups = 31 / hit rate = 29%
+# strcache performance: lookups = 32 / hit rate = 28%
 # hash-table stats:
-# Load=22/8192=0%, Rehash=0, Collisions=1/31=3%
-# Finished Make data base on Sun Oct 10 18:26:47 2021
+# Load=23/8192=0%, Rehash=0, Collisions=1/32=3%
+# Finished Make data base on Mon Oct 11 13:05:08 2021
 
  

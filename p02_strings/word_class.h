@@ -24,6 +24,7 @@
 
 class Word {
  public:
+  Word(); // Constructor por Defecto
   Word(std::string word);
 
  private:

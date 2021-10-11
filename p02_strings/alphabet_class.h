@@ -26,7 +26,8 @@
 
 class Alphabet {
  public:
-  Alphabet(std::vector<std::string>& set_in_line); //Constructor
+  Alphabet(); //Constructor por defecto
+  Alphabet(std::vector<std::string>& set_in_line);
     
  private:
   std::vector<std::string> alphabet_;
