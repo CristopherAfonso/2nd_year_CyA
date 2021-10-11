@@ -158,30 +158,48 @@ int main(int argc, char* argv[]) {
     switch(std::stoi(kOpCode)) {
       case 1:
         if(!alphabet.AreThereComplexSymbols()) {
-          output_file << word.WordSize() << '\n';
+          output_file << word.Size() << '\n';
         }
         else {
-          output_file << word.WordSize(alphabet) << '\n';
+          output_file << word.Size(alphabet) << '\n';
         }
         break;
 
       case 2:
         if(!alphabet.AreThereComplexSymbols()) {
-          output_file << word.WordInverse() << '\n';
+          output_file << word.Inverse() << '\n';
         }
         else {
-          output_file << word.WordInverse(alphabet) << '\n';
+          output_file << word.Inverse(alphabet) << '\n';
         }
-      break;
+        break;
 
       case 3:
-      break;
+        if(!alphabet.AreThereComplexSymbols()) {
+          output_file << word.Prefixes() << '\n';
+        }
+        else {
+          output_file << word.Prefixes(alphabet) << '\n';
+        }
+        break;
 
       case 4:
-      break;
+        if(!alphabet.AreThereComplexSymbols()) {
+          output_file << word.Suffixes() << '\n';
+        }
+        else {
+          output_file << word.Suffixes(alphabet) << '\n';
+        }
+        break;
 
       case 5:
-      break;
+        if(!alphabet.AreThereComplexSymbols()) {
+          output_file << word.Substrings() << '\n';
+        }
+        else {
+          output_file << word.Substrings(alphabet) << '\n';
+        }
+        break;
 
       default:
         exit(EXIT_FAILURE);
@@ -189,7 +207,7 @@ int main(int argc, char* argv[]) {
     
   }
 
-  //output_file.close(); //Cerramos el archivo que creamos o sobreescribimos, 
+  output_file.close(); //Cerramos el archivo que creamos o sobreescribimos, 
   // y así todos los cambios que le aplicamos se ejecutan y guardan
  
   return 0;

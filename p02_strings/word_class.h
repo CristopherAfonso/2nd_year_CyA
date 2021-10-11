@@ -32,15 +32,24 @@ class Word {
   Word(const std::string& word);
 
   // OpCode 1
-  size_t WordSize();
-  int WordSize(Alphabet& set);
+  int Size();
+  int Size(Alphabet& set);
 
   // OpCode 2
-  std::string WordInverse();
-  std::string WordInverse(Alphabet& set);
+  std::string Inverse();
+  std::string Inverse(Alphabet& set);
 
   // OpCode 3
+  std::string Prefixes();
+  std::string Prefixes(Alphabet& set);
 
+  // OpCode 4
+  std::string Suffixes();
+  std::string Suffixes(Alphabet& set);
+
+  // OpCode 5
+  std::string Substrings();
+  std::string Substrings(Alphabet& set);
 
  private:
   std::string word_ = "";

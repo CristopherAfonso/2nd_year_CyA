@@ -26,11 +26,11 @@ Word::Word(const std::string& word) {
   }
 }
 
-size_t Word::WordSize() {
+int Word::Size() {
   return word_.size();
 }
 
-int Word::WordSize(Alphabet& set) {
+int Word::Size(Alphabet& set) {
 
   size_t size{0};
   size_t position{0};
@@ -64,13 +64,75 @@ int Word::WordSize(Alphabet& set) {
   return size;
 }
 
-std::string Word::WordInverse() {
+std::string Word::Inverse() {
   std::string result{""};
-  for(size_t i{word_.size() - 1}; i >= 0; --i) {
-    result.push_back(i);
+  for(int i{int(word_.size() - 1)}; i >= 0; --i) {
+    result = result + word_.at(i);
   }
+
+  return result;
 }
 
-std::string Word::WordInverse(Alphabet& set) {
+std::string Word::Inverse(Alphabet& set) {
+  std::string result{""};
   
+  
+  
+  return result;
+}
+
+std::string Word::Prefixes() {
+  std::string result{"& "};
+  std::string aux{""};
+
+  for(size_t i{0}; i < characters_of_the_word_.size(); ++i) {
+    aux = aux + characters_of_the_word_.at(i);
+    result = result + aux + ' ';
+  }
+
+  return result;
+}
+
+std::string Word::Prefixes(Alphabet& set) {
+  std::string result{"& "};
+  
+  
+  
+  return result;
+}
+
+std::string Word::Suffixes() {
+  std::string result{"& "};
+  std::string aux{""};
+  
+  for(int i{int(characters_of_the_word_.size() - 1)}; i >= 0; --i) {
+    aux = characters_of_the_word_.at(i) + aux;
+    result = result + aux + ' ';
+  }
+
+  return result;
+}
+
+std::string Word::Suffixes(Alphabet& set) {
+  std::string result{"& "};
+  
+  
+  
+  return result;
+}
+
+std::string Word::Substrings() {
+  std::string result{"& "};
+  
+  
+  
+  return result;
+}
+
+std::string Word::Substrings(Alphabet& set) {
+  std::string result{"& "};
+  
+  
+  
+  return result;
 }
