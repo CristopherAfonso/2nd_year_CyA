@@ -123,9 +123,15 @@ std::string Word::Suffixes(Alphabet& set) {
 
 std::string Word::Substrings() {
   std::string result{"& "};
-  
-  
-  
+  size_t lenght{1};
+
+  while(lenght <= word_.size()) {
+    for(size_t i{0}; i < (word_.size() - lenght + 1); ++i) {
+      result = result + word_.substr(i, lenght) + ' ';
+    }
+    ++lenght;
+  }
+    
   return result;
 }
 
