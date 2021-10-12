@@ -8,7 +8,7 @@ make: *** No rule to make target 'all'.  Stop.
 # This is free software: you are free to change and redistribute it.
 # There is NO WARRANTY, to the extent permitted by law.
 
-# Make data base, printed on Tue Oct 12 09:58:51 2021
+# Make data base, printed on Tue Oct 12 14:30:30 2021
 
 # Variables
 
@@ -75,7 +75,7 @@ VSCODE_LOG_STACK = false
 # environment
 LC_NUMERIC = C.UTF-8
 # environment
-VSCODE_IPC_HOOK_CLI = /run/user/1000/vscode-ipc-bd649e25-ee99-4b90-8bce-000cea1d4d20.sock
+VSCODE_IPC_HOOK_CLI = /run/user/1000/vscode-ipc-f585ea82-daae-41c8-b003-e5ba00d692f2.sock
 # default
 .FEATURES := target-specific order-only second-expansion else-if shortest-stem undefine oneshell archives jobserver output-sync check-symlink load
 # environment
@@ -267,6 +267,6 @@ word_class.o:
 # strcache performance: lookups = 35 / hit rate = 34%
 # hash-table stats:
 # Load=23/8192=0%, Rehash=0, Collisions=1/35=3%
-# Finished Make data base on Tue Oct 12 09:58:51 2021
+# Finished Make data base on Tue Oct 12 14:30:30 2021
 
  

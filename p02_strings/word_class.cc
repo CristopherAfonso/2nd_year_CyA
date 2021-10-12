@@ -73,10 +73,28 @@ std::string Word::Inverse() {
   return result;
 }
 
-std::string Word::Inverse(Alphabet& set) {
+std::string Word::Inverse(Alphabet& set, int& size_complex_alphabet) {
   std::string result{""};
+  int distance_to_the_end{1};
+  int position_in_word_stored{int(word_.size())};
+  std::string aux_chain{word_};
   
-  
+  for(int i{size_complex_alphabet - 1}; i >= 0; --i) {
+    for(int j{position_in_word_stored}; j >= 0; --j) {
+      for(int k{0}; k < (int(set.SizeAlphabet())); ++k) {
+        if(aux_chain.substr(j, distance_to_the_end) == set.VecPlace(k)) {
+          result = result + aux_chain.substr(j, distance_to_the_end);
+          aux_chain.erase(j, distance_to_the_end);
+          --j;
+          position_in_word_stored = j;
+          distance_to_the_end = 1;
+          break;
+        }
+      }
+      
+      ++distance_to_the_end;
+    }    
+  }
   
   return result;
 }

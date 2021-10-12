@@ -37,7 +37,7 @@ class Word {
 
   // OpCode 2
   std::string Inverse();
-  std::string Inverse(Alphabet& set);
+  std::string Inverse(Alphabet& set, int& size_complex_alphabet);
 
   // OpCode 3
   std::string Prefixes();

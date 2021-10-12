@@ -170,7 +170,8 @@ int main(int argc, char* argv[]) {
           output_file << word.Inverse() << '\n';
         }
         else {
-          output_file << word.Inverse(alphabet) << '\n';
+          int size_complex_alphabet{word.Size(alphabet)};
+          output_file << word.Inverse(alphabet, size_complex_alphabet) << '\n';
         }
         break;
 
