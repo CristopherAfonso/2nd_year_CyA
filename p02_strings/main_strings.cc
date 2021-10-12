@@ -180,7 +180,8 @@ int main(int argc, char* argv[]) {
           output_file << word.Prefixes() << '\n';
         }
         else {
-          output_file << word.Prefixes(alphabet) << '\n';
+          int size_alphabet{word.Size(alphabet)};
+          output_file << word.Prefixes(alphabet, size_alphabet) << '\n';
         }
         break;
 
@@ -189,7 +190,8 @@ int main(int argc, char* argv[]) {
           output_file << word.Suffixes() << '\n';
         }
         else {
-          output_file << word.Suffixes(alphabet) << '\n';
+          int size_alphabet{word.Size(alphabet)};
+          output_file << word.Suffixes(alphabet, size_alphabet) << '\n';
         }
         break;
 

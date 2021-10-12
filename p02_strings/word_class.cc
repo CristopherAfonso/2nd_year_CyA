@@ -111,11 +111,27 @@ std::string Word::Prefixes() {
   return result;
 }
 
-std::string Word::Prefixes(Alphabet& set) {
+std::string Word::Prefixes(Alphabet& set, int& size_complex_alphabet) {
   std::string result{"& "};
-  
-  
-  
+  std::string aux_chain{""};
+  size_t actual_position{0};
+  size_t lenght{1};
+
+  for(size_t i{0}; i < size_t(size_complex_alphabet); ++i) {
+    for(size_t j{actual_position}; j < characters_of_the_word_.size(); ++j) {
+      aux_chain = aux_chain + characters_of_the_word_.at(j);
+      ++lenght;
+      for(size_t k{0}; k < set.SizeAlphabet(); ++k) {
+        if(set.VecPlace(k) == aux_chain.substr(actual_position, lenght)) {
+          result = result + aux_chain + ' ';
+          lenght = 1;
+          actual_position = j + 1;
+          break;
+        }
+      }
+    }
+  }
+
   return result;
 }
 
@@ -131,10 +147,30 @@ std::string Word::Suffixes() {
   return result;
 }
 
-std::string Word::Suffixes(Alphabet& set) {
+std::string Word::Suffixes(Alphabet& set, int& size_complex_alphabet) {
   std::string result{"& "};
-  
-  
+  std::string aux_chain{""};
+  const int kZero{0};
+  int actual_position{0};
+  int position_in_word_stored{int(characters_of_the_word_.size() - 1)};
+  size_t lenght{0};
+
+  for(int i{0}; i < size_complex_alphabet; ++i) {
+    for(int j{actual_position}, k{position_in_word_stored}; 
+    j < int(characters_of_the_word_.size()); ++j, --k) {
+      aux_chain = characters_of_the_word_.at(k) + aux_chain;
+      ++lenght;
+      for(int l{0}; l < int(set.SizeAlphabet()); ++l) {
+        if(set.VecPlace(l) == aux_chain.substr(kZero, lenght)) {
+          result = result + aux_chain + ' ';
+          lenght = 0;
+          actual_position = j + 1;
+          position_in_word_stored = k - 1;
+          break;
+        }
+      }
+    }
+  }
   
   return result;
 }

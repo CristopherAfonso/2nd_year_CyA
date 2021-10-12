@@ -41,11 +41,11 @@ class Word {
 
   // OpCode 3
   std::string Prefixes();
-  std::string Prefixes(Alphabet& set);
+  std::string Prefixes(Alphabet& set, int& size_complex_alphabet);
 
   // OpCode 4
   std::string Suffixes();
-  std::string Suffixes(Alphabet& set);
+  std::string Suffixes(Alphabet& set, int& size_complex_alphabet);
 
   // OpCode 5
   std::string Substrings();
