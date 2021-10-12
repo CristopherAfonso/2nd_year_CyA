@@ -200,7 +200,8 @@ int main(int argc, char* argv[]) {
           output_file << word.Substrings() << '\n';
         }
         else {
-          output_file << word.Substrings(alphabet) << '\n';
+          int size_alphabet{word.Size(alphabet)};
+          output_file << word.Substrings(alphabet, size_alphabet) << '\n';
         }
         break;
 

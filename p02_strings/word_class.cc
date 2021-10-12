@@ -189,10 +189,40 @@ std::string Word::Substrings() {
   return result;
 }
 
-std::string Word::Substrings(Alphabet& set) {
+std::string Word::Substrings(Alphabet& set, int& size_complex_alphabet) {
   std::string result{"& "};
-  
-  
-  
+  const size_t kZero{0};
+  size_t lenght{1};
+  size_t base_position{kZero};
+  std::vector<std::string> aux_symbols_in_word;
+
+  for(size_t i{0}; i < word_.size(); ++i) {
+    for(size_t j{0}; j < set.SizeAlphabet(); ++j) {
+      if(set.VecPlace(j) == word_.substr(base_position, lenght)) {
+        result = result + set.VecPlace(j) + ' ';
+        aux_symbols_in_word.emplace_back(word_.substr(base_position, lenght));
+        lenght = kZero;
+        base_position = i + 1;
+      }
+    }
+    ++lenght;
+  }
+
+  lenght = 2;
+  base_position = kZero;
+
+  while(lenght <= size_t(size_complex_alphabet)) {
+    for(size_t i{0}; i < (size_complex_alphabet - lenght + 1); ++i) {
+
+      for(size_t j{base_position + i}; j < (lenght + i); ++j) {
+        result = result + aux_symbols_in_word.at(j);
+      }
+
+      result = result + ' ';
+    }
+
+    ++lenght;
+  }
+
   return result;
 }

@@ -49,7 +49,7 @@ class Word {
 
   // OpCode 5
   std::string Substrings();
-  std::string Substrings(Alphabet& set);
+  std::string Substrings(Alphabet& set, int& size_complex_alphabet);
 
  private:
   std::string word_ = "";
