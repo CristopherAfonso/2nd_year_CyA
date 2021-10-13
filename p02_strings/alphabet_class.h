@@ -35,5 +35,4 @@ class Alphabet {
   std::vector<std::string> alphabet_;
 };
 
-
 #endif
