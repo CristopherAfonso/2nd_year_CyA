@@ -12,9 +12,6 @@
 //
 // Referencias:
 //         Enlaces de interes
-//
-// Historial de revisiones
-//         08/10/2021 - Creacion (primera version) del codigo
 
 #ifndef _WORD_CLASS_
 #define _WORD_CLASS_
@@ -31,6 +28,11 @@ class Word {
   Word();
   Word(const std::string& word);
 
+  // Para cada OpCode hay un métodoo con alfabetos simples y complejos
+  // Así en algunos casos hacemos que el tiempo de respuesta del Programa
+  // Sea más rápido y haga lo que se le pide en menos tiempo.
+  // En este programa hice que la clase Word realizara las operaciones
+  // Solicitadas y la clase Alphabet complementa y apoya esas operaciones
   // OpCode 1
   int Size();
   int Size(Alphabet& set);
@@ -52,7 +54,10 @@ class Word {
   std::string Substrings(Alphabet& set, int& size_complex_alphabet);
 
  private:
-  std::string word_ = "";
+ // Donde guardamos la cadena a evaluar
+  std::string word_ = ""; 
+  // Este vector es útil al usarlo en algunos métodos de la clase
+  // porque ahorra mucho trabajo
   std::vector<char> characters_of_the_word_;
 };
 

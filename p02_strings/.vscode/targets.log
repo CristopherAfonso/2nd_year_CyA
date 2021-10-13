@@ -6,7 +6,7 @@ make all --print-data-base --no-builtin-variables --no-builtin-rules --question
 # This is free software: you are free to change and redistribute it.
 # There is NO WARRANTY, to the extent permitted by law.
 
-# Make data base, printed on Tue Oct 12 19:52:20 2021
+# Make data base, printed on Tue Oct 12 23:50:52 2021
 
 # Variables
 
@@ -73,7 +73,7 @@ VSCODE_LOG_STACK = false
 # environment
 LC_NUMERIC = C.UTF-8
 # environment
-VSCODE_IPC_HOOK_CLI = /run/user/1000/vscode-ipc-88625cee-abad-48c5-9625-54ab84ad942a.sock
+VSCODE_IPC_HOOK_CLI = /run/user/1000/vscode-ipc-33b37605-1d1c-42da-bf78-5eb03b22f30e.sock
 # default
 .FEATURES := target-specific order-only second-expansion else-if shortest-stem undefine oneshell archives jobserver output-sync check-symlink load
 # environment
@@ -185,9 +185,9 @@ MOTD_SHOWN = pam
 
 # Directories
 
-# . (device 64768, inode 525289): 15 files, no impossibilities.
+# . (device 64768, inode 525289): 12 files, no impossibilities.
 
-# 15 files, no impossibilities in 1 directories.
+# 12 files, no impossibilities in 1 directories.
 
 # Implicit Rules
 
@@ -262,10 +262,10 @@ word_class.o:
 # strcache buffers: 1 (0) / strings = 23 / storage = 254 B / avg = 11 B
 # current buf: size = 8162 B / used = 254 B / count = 23 / avg = 11 B
 
-# strcache performance: lookups = 35 / hit rate = 34%
+# strcache performance: lookups = 32 / hit rate = 28%
 # hash-table stats:
-# Load=23/8192=0%, Rehash=0, Collisions=1/35=3%
-# Finished Make data base on Tue Oct 12 19:52:20 2021
+# Load=23/8192=0%, Rehash=0, Collisions=1/32=3%
+# Finished Make data base on Tue Oct 12 23:50:52 2021
 
  
 make: *** No rule to make target 'all'.  Stop.

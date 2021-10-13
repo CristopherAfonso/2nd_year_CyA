@@ -12,9 +12,6 @@
 //
 // Referencias:
 //         Enlaces de interes
-//
-// Historial de revisiones
-//         08/10/2021 - Creacion (primera version) del codigo
 
 #include "alphabet_class.h"
 

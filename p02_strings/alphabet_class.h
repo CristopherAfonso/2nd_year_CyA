@@ -12,9 +12,6 @@
 //
 // Referencias:
 //         Enlaces de interes
-//
-// Historial de revisiones
-//         08/10/2021 - Creacion (primera version) del codigo
 
 #ifndef _ALPHABET_CLASS_
 #define _ALPHABET_CLASS_

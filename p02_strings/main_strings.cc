@@ -17,6 +17,19 @@
 //
 // Historial de revisiones
 //         08/10/2021 - Creacion (primera version) del codigo
+//         09/10/2021 - Desarrollo de las clases Alphabet, Word y creación de
+//                      los mensajes de uso del programa y de reportes de error
+//                      (segunda versión)
+//         10/10/2021 - Archivo Cliente (main_strings.cc) casi terminado, y 
+//                      inicio del desarrollo de los métodos que realizan las
+//                      operaciones solicitadas por los usuario (OpCodes)
+//                      (tercera versión)
+//         11/10/2021 - Archivo Cliente terminado, métodos orientados a 
+//                      alfabetos simples terminados (cuarta version)
+//         12/10/2021 - Métodos orientados a alfabetos complejos terminados,
+//                      finalización de redactación de comentarios en las 
+//                      partes del projecto que más cuesta entender
+//                      (Version final)
 
 #include <fstream>
 #include <sstream>
@@ -24,7 +37,7 @@
 #include "alphabet_class.h"
 #include "word_class.h"
 
-//Mensaje de error si no se cumple con el numero de argumentos
+//Mensaje de error si no se cumple con el numero de argumentos, que es 4
 void ErrorMessage(const std::string& function_name) { 
   std::cout << "\nWarning!, Faltan/Sobran argumentos para este programa";
   std::cout << "\nPara más información sobre como funciona pruebe:";
@@ -71,6 +84,8 @@ void InfoMessage(const std::string& function_name) {
 
 int main(int argc, char* argv[]) {
 
+  // Paso los argumenos a tipo string porque es más facil que trabajar con los
+  // char* argv[]
   const std::string kNameProgram{argv[0]};
   const std::string kNameInput{argv[1]};
   const std::string kNameOutput{argv[2]};
@@ -95,7 +110,7 @@ int main(int argc, char* argv[]) {
     
   }
 
-  std::string line = "";
+  std::string line = ""; //Variable donde guardamos las lineas del archivo
   std::ifstream input_file;
   std::ofstream output_file;
 
@@ -114,26 +129,36 @@ int main(int argc, char* argv[]) {
     exit(EXIT_FAILURE);
   }
 
+  //Aquí guardamos todo el archivo, dividido en lineas para trabajar mejor
   std::vector<std::string> set_of_lines;
 
   //Mientras no sea el final del archivo, itera
   while(!input_file.eof()) {
     std::string chain{""};
     
-    //Leo toda la linea actual del archico 
+    //Leo toda la linea actual del archico y la guardo 
     getline(input_file, chain);
     set_of_lines.emplace_back(chain);
   }
 
   input_file.close(); //Cerramos el archivo para liberar memoria
 
+  //En este for, por cada linea guardada, se crean un objeto Alphabet y Word, 
+  //Se les aplica su opcode, se guarda el resultado en el archivo de salida
+  //Y se repite el proceso hasta que no hay mas lineas
   for(size_t i{0}; i < set_of_lines.size(); ++i) {
+    //Flujo de entrada de datos que me ayuda a dividirlos para clasificarlos
     std::istringstream actual_line(set_of_lines[i]);
     std::string chain{""}; //String entera que guarda una linea
+    //String que se le pasara al constructor de la clase Word
     std::string aux_word = {""};
     int alphabet_size{-1};
+    //Vector que se le pasara al constructor de la clase Alphabet
     std::vector<std::string> aux_vec;
 
+    //Leemos la linea, si solo tiene una cadena, el alfabeto esta vacio y hay
+    //que generarlo a partir de la cadena que hay, si hay mas de una cadena
+    //en la linea, se van metiendo menos la ultima leida
     while(getline(actual_line, chain, ' ')) {
       ++alphabet_size;
       if(alphabet_size > 0) {
@@ -142,6 +167,7 @@ int main(int argc, char* argv[]) {
       aux_word = chain;
     }
 
+    //Caso particular para cuando creamos el alfabeto a partir de la cadena
     if(alphabet_size <= 0) {
       aux_vec.clear(); //Vaciamos el vector por si acaso
       for(size_t i{0}; i < aux_word.size(); ++i) {
@@ -204,8 +230,10 @@ int main(int argc, char* argv[]) {
           output_file << word.Substrings(alphabet, size_alphabet) << '\n';
         }
         break;
-
-      default:
+      
+      //Definido un default por si en el futuro se le hiciera un cambio al
+      //programa, estar prevenido
+      default: 
         exit(EXIT_FAILURE);
     }
     

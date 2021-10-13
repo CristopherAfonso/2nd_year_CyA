@@ -12,9 +12,6 @@
 //
 // Referencias:
 //         Enlaces de interes
-//
-// Historial de revisiones
-//         08/10/2021 - Creacion (primera version) del codigo
 
 #include <iostream>
 #include "word_class.h"
@@ -32,11 +29,11 @@ int Word::Size() {
 
 int Word::Size(Alphabet& set) {
 
-  size_t size{0};
+  size_t size{0}; //Cantidad de simbolos de la cadena
   size_t position{0};
   size_t lenght{1};
-  std::string aux_string{""};
-  bool symbol_found{false};
+  std::string aux_string{""}; //Guarda el valor que se examina
+  bool symbol_found{false}; //Variable declarada para que active el brake 2 
   
   while(position < word_.size()) {
     while((position + lenght) <= word_.size()) {
@@ -45,18 +42,22 @@ int Word::Size(Alphabet& set) {
         if(aux_string == set.VecPlace(i)) {
           ++size;
           symbol_found = true;
-          break;
+          break;//Salimos del bucle para ahorrar iteraciones
         }
       }
 
       if(symbol_found) {
         symbol_found = false;
-        break;
+        break;//Este brake evita iteraciones innecesarias
       }
 
+      //Si no se halla un simbolo, se aumenta la longitud y se vuelve a buscar
+      //En todo el alfabeto
       ++lenght;
     }
 
+    //Cuando se halla un simbolo, la position base se actualiza y lenght vuelve
+    //a ser 1 y se repite el proceso
     position += lenght;
     lenght = 1;
   }
@@ -79,19 +80,31 @@ std::string Word::Inverse(Alphabet& set, int& size_complex_alphabet) {
   int position_in_word_stored{int(word_.size())};
   std::string aux_chain{word_};
   
+  //Recorremos la cadena caracter a caracter, y cuando encontremos un simbolo
+  //complejo, lo añadimos a "result" y de "aux_chain" borramos desde el inicio
+  //del simbolo hasta el final de la cadena, para que cuando repitamos el 
+  //proceso, sea mas facil entontrar el siguiente simbolo
   for(int i{size_complex_alphabet - 1}; i >= 0; --i) {
+    //recorro la cadena por caracteres
     for(int j{position_in_word_stored}; j >= 0; --j) {
+      //en cada caracter de la cadena, recorro todo el alfabeto
       for(int k{0}; k < (int(set.SizeAlphabet())); ++k) {
+        //si desde la posicion en la que estoy hasta el final de la cadena, 
+        //hay un simbolo en el alfabeto que concuerde con esa cadena, la guarda
         if(aux_chain.substr(j, distance_to_the_end) == set.VecPlace(k)) {
           result = result + aux_chain.substr(j, distance_to_the_end);
           aux_chain.erase(j, distance_to_the_end);
           --j;
+          //guardamos este numero porque cuando iteremos de nuevo, sera donde
+          //partiremos
           position_in_word_stored = j;
           distance_to_the_end = 1;
-          break;
+          break;//ahorra buscar mas en el alfabeto innecesariamente
         }
       }
       
+      //si no halla ningun simbolo complejo, aumenta la distancia, y se acerca
+      //mas al inicio de la cadena
       ++distance_to_the_end;
     }    
   }
@@ -117,6 +130,8 @@ std::string Word::Prefixes(Alphabet& set, int& size_complex_alphabet) {
   size_t actual_position{0};
   size_t lenght{1};
 
+  //recorremos la cadena caracter a caracter de inicio a fin, si hallamos un
+  //simbolo complejo, lo metemos en aux_chain, y aux_chain lo añadimos a result
   for(size_t i{0}; i < size_t(size_complex_alphabet); ++i) {
     for(size_t j{actual_position}; j < characters_of_the_word_.size(); ++j) {
       aux_chain = aux_chain + characters_of_the_word_.at(j);
@@ -155,6 +170,14 @@ std::string Word::Suffixes(Alphabet& set, int& size_complex_alphabet) {
   int position_in_word_stored{int(characters_of_the_word_.size() - 1)};
   size_t lenght{0};
 
+  //hacemos lo mismo que el metodo de prefijos para alfabetos complejos, pero
+  //aqui es algo mas complicado el algoritmo, la variable 'i' itera por cada
+  //simbolo complejo, 'j' recorre de inicio a fin la cadena word_, 'k' hace
+  //lo mismo pero la recorre a la inversa, desde el fin al inicio, y 'l' 
+  //recorre todo el alfabeto, en cada iteracion del segundo for, hay que
+  //guardar los valores de 'j' y 'k' para la siguiente iteracion, sino
+  //empezarian desde el inicio, y esos valores se guardan en "actual_position"
+  //y en "position_in_word_stored"
   for(int i{0}; i < size_complex_alphabet; ++i) {
     for(int j{actual_position}, k{position_in_word_stored}; 
     j < int(characters_of_the_word_.size()); ++j, --k) {
@@ -177,9 +200,13 @@ std::string Word::Suffixes(Alphabet& set, int& size_complex_alphabet) {
 
 std::string Word::Substrings() {
   std::string result{"& "};
-  size_t lenght{1};
+  size_t lenght{1}; //Nos ayuda a saber cuantos caracteres debe coger .substr()
 
+  //Empiezo cogiendo las subcadenas de longitud 1, y sigo subiendo de longitud
+  //hasta que llego a "lenght = word_.size()"
   while(lenght <= word_.size()) {
+    //Cuanto mayor es lenght, menos iteraciones hace, cuando 
+    //"lenght = word_.size()", solo hace una
     for(size_t i{0}; i < (word_.size() - lenght + 1); ++i) {
       result = result + word_.substr(i, lenght) + ' ';
     }
@@ -194,9 +221,12 @@ std::string Word::Substrings(Alphabet& set, int& size_complex_alphabet) {
   const size_t kZero{0};
   size_t lenght{1};
   size_t base_position{kZero};
+  //Vector que guarda en orden, los simbolos que tiene la cadena a evaluar
   std::vector<std::string> aux_symbols_in_word;
 
-  for(size_t i{0}; i < word_.size(); ++i) {
+  //Primero, identificamos los simbolos complejos de la palabra, los metemos
+  //en "result" y en el vector
+  for(size_t i{0}; i < word_.size(); ++i) { //recorremos word_ por caracteres
     for(size_t j{0}; j < set.SizeAlphabet(); ++j) {
       if(set.VecPlace(j) == word_.substr(base_position, lenght)) {
         result = result + set.VecPlace(j) + ' ';
@@ -211,6 +241,9 @@ std::string Word::Substrings(Alphabet& set, int& size_complex_alphabet) {
   lenght = 2;
   base_position = kZero;
 
+  //Una vez identificados en orden todos los caracteres complejos de la cadena
+  //Solo tenemos que ponerlos en orden dentro de "result", esto es más facil
+  //que si hubieramos seguido desarrollando el metodo anterior
   while(lenght <= size_t(size_complex_alphabet)) {
     for(size_t i{0}; i < (size_complex_alphabet - lenght + 1); ++i) {
 
