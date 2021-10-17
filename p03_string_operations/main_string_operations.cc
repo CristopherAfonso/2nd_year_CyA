@@ -147,12 +147,18 @@ int main(int argc, char* argv[]) {
 
   input_file.close(); //Cerramos el archivo para liberar memoria
 
-  //En este for, por cada linea guardada, se crean un objeto Alphabet y Word, 
+  //En este for, por cada linea guardada, se crean un objeto Language, 
   //Se les aplica su opcode, se guarda el resultado en el archivo de salida
   //Y se repite el proceso hasta que no hay mas lineas
   for(size_t i{0}; i < set_of_lines.size(); ++i) {
+
+
     //Flujo de entrada de datos que me ayuda a dividirlos para clasificarlos
     std::istringstream actual_line(set_of_lines[i]);
+
+
+
+
     std::string chain{""}; //String entera que guarda una linea
     //String que se le pasara al constructor de la clase Word
     std::string aux_word = {""};
@@ -182,57 +188,28 @@ int main(int argc, char* argv[]) {
       }
     }
 
-    Alphabet alphabet(aux_vec);
-    Word word(aux_word);
+
+
+
+
+
+
+
 
     switch(std::stoi(kOpCode)) {
       case 1:
-        if(!alphabet.AreThereComplexSymbols()) {
-          output_file << word.Size() << '\n';
-        }
-        else {
-          output_file << word.Size(alphabet) << '\n';
-        }
         break;
 
       case 2:
-        if(!alphabet.AreThereComplexSymbols()) {
-          output_file << word.Inverse() << '\n';
-        }
-        else {
-          int size_complex_alphabet{word.Size(alphabet)};
-          output_file << word.Inverse(alphabet, size_complex_alphabet) << '\n';
-        }
         break;
 
       case 3:
-        if(!alphabet.AreThereComplexSymbols()) {
-          output_file << word.Prefixes() << '\n';
-        }
-        else {
-          int size_alphabet{word.Size(alphabet)};
-          output_file << word.Prefixes(alphabet, size_alphabet) << '\n';
-        }
         break;
 
       case 4:
-        if(!alphabet.AreThereComplexSymbols()) {
-          output_file << word.Suffixes() << '\n';
-        }
-        else {
-          int size_alphabet{word.Size(alphabet)};
-          output_file << word.Suffixes(alphabet, size_alphabet) << '\n';
-        }
         break;
 
       case 5:
-        if(!alphabet.AreThereComplexSymbols()) {
-          output_file << word.Substrings() << '\n';
-        }
-        else {
-          int size_alphabet{word.Size(alphabet)};
-          output_file << word.Substrings(alphabet, size_alphabet) << '\n';
-        }
         break;
 
       case 6:

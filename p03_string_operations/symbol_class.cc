@@ -64,3 +64,4 @@ std::istream& std::operator>>(std::istream& input, Symbol& symbol) {
   symbol.SetSymbol(temp);
   return input;
 }
+

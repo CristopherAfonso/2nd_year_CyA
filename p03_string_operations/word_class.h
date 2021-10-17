@@ -17,48 +17,40 @@
 #define _WORD_CLASS_
 
 #include <iostream>
-#include <string>
 #include <vector>
 
-#include "alphabet_class.h"
+#include "symbol_class.h"
 
 class Word {
  public:
   //Constructores
-  Word();
-  Word(const std::string& word);
+  Word(void);
+  Word(const std::vector<Symbol>& word);
+  Word(Word& word);
 
-  // Para cada OpCode hay un métodoo con alfabetos simples y complejos
-  // Así en algunos casos hacemos que el tiempo de respuesta del Programa
-  // Sea más rápido y haga lo que se le pide en menos tiempo.
-  // En este programa hice que la clase Word realizara las operaciones
-  // Solicitadas y la clase Alphabet complementa y apoya esas operaciones
-  // OpCode 1
-  int Size();
-  int Size(Alphabet& set);
+  //Setters y Getter
+  void SetWord(std::vector<Symbol>& word);
+  void SetWord(Word& word);
+  std::vector<Symbol> GetWord(void);
 
-  // OpCode 2
-  std::string Inverse();
-  std::string Inverse(Alphabet& set, int& size_complex_alphabet);
+  //Funciones
+  std::string ShowWord(void); //Muestra la palabra por pantalla
+  //Añadimos un simbolo más al objeto, concretamente al final
+  void EmplaceBackWord(std::string& symbol);
+  void EmplaceBackWord(Symbol& symbol);
+  void ClearWord(void); //Vacía el vector word_
 
-  // OpCode 3
-  std::string Prefixes();
-  std::string Prefixes(Alphabet& set, int& size_complex_alphabet);
+  //Operadores
+  void operator=(Word& word);
+  bool operator==(Word& word);
 
-  // OpCode 4
-  std::string Suffixes();
-  std::string Suffixes(Alphabet& set, int& size_complex_alphabet);
-
-  // OpCode 5
-  std::string Substrings();
-  std::string Substrings(Alphabet& set, int& size_complex_alphabet);
+  //Operadores de Flujo de entrada y salida
+  friend std::ostream& std::operator<<(std::ostream& output, Word& word);
+  friend std::istream& std::operator>>(std::istream& input, Word& word);
 
  private:
  // Donde guardamos la cadena a evaluar
-  std::string word_ = ""; 
-  // Este vector es útil al usarlo en algunos métodos de la clase
-  // porque ahorra mucho trabajo
-  std::vector<char> characters_of_the_word_;
+  std::vector<Symbol> word_;
 };
 
 #endif

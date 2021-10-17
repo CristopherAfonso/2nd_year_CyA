@@ -22,21 +22,21 @@
 class Symbol {
  public:
 
-  // Constructores
+  //Constructores
   Symbol(void);
   Symbol(std::string& chain);
   Symbol(Symbol& symbol);
 
-  // Setters y Getter
+  //Setters y Getter
   void SetSymbol(std::string& chain);
   void SetSymbol(Symbol& symbol);
   std::string GetSymbol(void);
 
-  // Operadores
+  //Operadores
   void operator=(Symbol& chain);
   bool operator==(Symbol& chain);
 
-  // Operadores de Flujo de entrada y salida
+  //Operadores de Flujo de entrada y salida
   friend std::ostream& std::operator<<(std::ostream& output, Symbol& symbol);
   friend std::istream& std::operator>>(std::istream& input, Symbol& symbol);
 
