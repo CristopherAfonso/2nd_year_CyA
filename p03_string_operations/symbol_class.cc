@@ -41,19 +41,24 @@ void Symbol::SetSymbol(Symbol& symbol) {
   symbol_ = symbol.GetSymbol();
 }
 
-std::string Symbol::GetSymbol(void) {
+std::string Symbol::GetSymbol(void) const {
   return symbol_;
 }
 
-void Symbol::operator=(Symbol& chain) {
+Symbol Symbol::operator=(Symbol& chain) {
   chain.SetSymbol(symbol_);
 }
 
-bool Symbol::operator==(Symbol& chain) {
-  return chain.GetSymbol() == symbol_;
+bool operator==(const Symbol& chain1, const Symbol& chain2) {
+  return chain1.GetSymbol() == chain2.GetSymbol();
 }
 
 std::ostream& std::operator<<(std::ostream& output, Symbol& symbol) {
+  output << symbol.GetSymbol();
+  return output;
+}
+
+std::ostream& std::operator<<(std::ostream& output, const Symbol symbol) {
   output << symbol.GetSymbol();
   return output;
 }

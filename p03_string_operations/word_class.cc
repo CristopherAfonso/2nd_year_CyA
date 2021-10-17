@@ -51,12 +51,12 @@ std::string Word::ShowWord(void) {
   return aux;
 }
 
-void Word::EmplaceBackWord(std::string& symbol) {
+void Word::EmplaceBackOfWord(std::string& symbol) {
   Symbol aux_symbol(symbol);
   word_.emplace_back(aux_symbol);
 }
 
-void Word::EmplaceBackWord(Symbol& symbol) {
+void Word::EmplaceBackOfWord(Symbol& symbol) {
   word_.emplace_back(symbol);
 }
 
@@ -91,7 +91,7 @@ std::istream& std::operator>>(std::istream& input, Word& word) {
       std::cout << "\nIntroduzca el siguiente simbolo: ";
     }
     std::cin >> symbol;
-    word.EmplaceBackWord(symbol);
+    word.EmplaceBackOfWord(symbol);
   }
 
   std::cout << "\nLectura terminada\n";

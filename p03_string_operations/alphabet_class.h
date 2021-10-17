@@ -16,23 +16,34 @@
 #ifndef _ALPHABET_CLASS_
 #define _ALPHABET_CLASS_
 
-#include <iostream>
-#include <string>
 #include <vector>
+#include <set>
 
+#include "symbol_class.h"
 
 class Alphabet {
  public:
   //Constructores
-  Alphabet();
-  Alphabet(std::vector<std::string>& set_in_line);
+  Alphabet(void);
+  Alphabet(std::vector<Symbol>& alphabet);
+  Alphabet(Alphabet& alphabet);
 
-  std::string VecPlace(size_t ubication); //Getter
-  bool AreThereComplexSymbols(); //Testea si hay simbolos de varios caracteres
-  size_t SizeAlphabet();
+  //Setters y Getter
+  void SetterSymbol(Symbol& symbol);
+  void SetterAlphabet(Alphabet& alphabet);
+  std::set<Symbol> GetAlphabet(void) const;
+
+  //Funciones
+  size_t SizeAlphabet(void);
+
+  //Operadores
+  void operator=(Alphabet& alphabet);
+
+  //Operadores de Flujo de salida
+  friend std::ostream& std::operator<<(std::ostream& output, Alphabet& alphabet);
 
  private:
-  std::vector<std::string> alphabet_;
+  std::set<Symbol> alphabet_;
 };
 
 #endif

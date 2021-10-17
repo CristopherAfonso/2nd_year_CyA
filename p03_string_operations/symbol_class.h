@@ -30,15 +30,18 @@ class Symbol {
   //Setters y Getter
   void SetSymbol(std::string& chain);
   void SetSymbol(Symbol& symbol);
-  std::string GetSymbol(void);
+  std::string GetSymbol(void) const;
 
   //Operadores
-  void operator=(Symbol& chain);
+  Symbol operator=(Symbol& chain);
   bool operator==(Symbol& chain);
+  bool operator==(const Symbol& chain) const;
 
   //Operadores de Flujo de entrada y salida
   friend std::ostream& std::operator<<(std::ostream& output, Symbol& symbol);
+  friend std::ostream& std::operator<<(std::ostream& output, const Symbol symbol);
   friend std::istream& std::operator>>(std::istream& input, Symbol& symbol);
+  
 
  private:
   std::string symbol_{""};  

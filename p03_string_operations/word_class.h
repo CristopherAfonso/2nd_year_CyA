@@ -16,7 +16,6 @@
 #ifndef _WORD_CLASS_
 #define _WORD_CLASS_
 
-#include <iostream>
 #include <vector>
 
 #include "symbol_class.h"
@@ -36,8 +35,8 @@ class Word {
   //Funciones
   std::string ShowWord(void); //Muestra la palabra por pantalla
   //Añadimos un simbolo más al objeto, concretamente al final
-  void EmplaceBackWord(std::string& symbol);
-  void EmplaceBackWord(Symbol& symbol);
+  void EmplaceBackOfWord(std::string& symbol);
+  void EmplaceBackOfWord(Symbol& symbol);
   void ClearWord(void); //Vacía el vector word_
 
   //Operadores

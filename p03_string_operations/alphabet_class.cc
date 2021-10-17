@@ -18,25 +18,47 @@
 
 #include "alphabet_class.h"
 
-Alphabet::Alphabet(std::vector<std::string>& set_in_line) {
-  alphabet_ = set_in_line;
+Alphabet::Alphabet(void) = default;
+
+Alphabet::Alphabet(std::vector<Symbol>& alphabet) {
+  for(auto actual_symbol: alphabet) {
+    alphabet_.insert(actual_symbol);
+  }
 }
 
-std::string Alphabet::VecPlace(size_t ubication) {
-  return alphabet_.at(ubication);
+Alphabet::Alphabet(Alphabet& alphabet) {
+  *this = alphabet;
 }
 
-bool Alphabet::AreThereComplexSymbols() {
-  bool result{false};
-  for(auto actual_place: alphabet_) {
-    if(actual_place.size() > 1) {
-      result = true;
-      break;
+void Alphabet::SetterSymbol(Symbol& symbol) {
+  alphabet_.insert(symbol);
+}
+
+void Alphabet::SetterAlphabet(Alphabet& alphabet) {
+  *this = alphabet;
+}
+
+std::set<Symbol> Alphabet::GetAlphabet(void) const {
+  return alphabet_;
+}
+
+size_t Alphabet::SizeAlphabet(void) {
+  return alphabet_.size();
+}
+
+void Alphabet::operator=(Alphabet& alphabet) {
+  alphabet.SetterAlphabet(*this);
+}
+
+std::ostream& std::operator<<(std::ostream& output, const Alphabet& alphabet) {
+  output << "(";
+  for(auto &&actual_symbol: alphabet.GetAlphabet()) {
+    if(actual_symbol == *(alphabet.GetAlphabet().end())) {
+      output << actual_symbol.GetSymbol() << ")";
+    }else{
+      output << actual_symbol.GetSymbol() << ", ";
     }
   }
-  return result;
-}
 
-size_t Alphabet::SizeAlphabet() {
-  return alphabet_.size();
+  return output;
 }
