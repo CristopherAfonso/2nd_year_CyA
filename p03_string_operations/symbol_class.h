@@ -25,6 +25,7 @@ class Symbol {
   //Constructores
   Symbol(void);
   Symbol(std::string& chain);
+  Symbol(char& chain);
   Symbol(Symbol& symbol);
 
   //Setters y Getter

@@ -27,6 +27,11 @@ Symbol::Symbol(std::string& chain) {
   symbol_ = chain;
 }
 
+//Constructor para cuando no hay alfabeto y hay que deducirlo
+Symbol::Symbol(char& chain) {
+  symbol_ = chain;
+}
+
 // Constructor de copia
 Symbol::Symbol(Symbol& symbol) {
   symbol_ = symbol.GetSymbol();

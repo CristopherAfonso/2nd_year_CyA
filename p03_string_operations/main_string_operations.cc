@@ -26,8 +26,7 @@
 #include <fstream>
 #include <sstream>
 
-#include "alphabet_class.h"
-#include "word_class.h"
+#include "language_class.h"
 
 //Mensaje de error si no se cumple con el numero de argumentos, que es 4
 void ErrorMessage(const std::string& function_name) { 
@@ -153,18 +152,16 @@ int main(int argc, char* argv[]) {
   for(size_t i{0}; i < set_of_lines.size(); ++i) {
 
 
+
     //Flujo de entrada de datos que me ayuda a dividirlos para clasificarlos
     std::istringstream actual_line(set_of_lines[i]);
 
-
-
-
-    std::string chain{""}; //String entera que guarda una linea
-    //String que se le pasara al constructor de la clase Word
+    std::string chain{""}; //String entera que guarda las cadenas de la linea
+    //String que se le pasara al constructor de la clase Language
     std::string aux_word = {""};
     int alphabet_size{-1};
-    //Vector que se le pasara al constructor de la clase Alphabet
-    std::vector<std::string> aux_vec;
+    //Conjunto que se le pasara al constructor de la clase Language
+    std::vector<Symbol> aux_vec;
 
     //Leemos la linea, si solo tiene una cadena, el alfabeto esta vacio y hay
     //que generarlo a partir de la cadena que hay, si hay mas de una cadena
@@ -172,17 +169,18 @@ int main(int argc, char* argv[]) {
     while(getline(actual_line, chain, ' ')) {
       ++alphabet_size;
       if(alphabet_size > 0) {
-        aux_vec.emplace_back(aux_word);
+        Symbol temp_symbol(aux_word);
+        aux_vec.emplace_back(temp_symbol);
       }
       aux_word = chain;
     }
 
     //Caso particular para cuando creamos el alfabeto a partir de la cadena
     if(alphabet_size <= 0) {
-      aux_vec.clear(); //Vaciamos el vector por si acaso
+      aux_vec.clear(); //Vaciamos el conjunto por si acaso
       for(size_t i{0}; i < aux_word.size(); ++i) {
         if(aux_word.at(i) != ' ') {
-          std::string character{aux_word[i]};
+          Symbol character{aux_word[i]};
           aux_vec.emplace_back(character);
         }
       }
@@ -191,10 +189,7 @@ int main(int argc, char* argv[]) {
 
 
 
-
-
-
-
+    Language language; //Sobre este objeto haremos los opcodes
 
     switch(std::stoi(kOpCode)) {
       case 1:
