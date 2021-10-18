@@ -34,16 +34,13 @@ class Symbol {
   std::string GetSymbol(void) const;
 
   //Operadores
-  Symbol operator=(Symbol& chain);
-  bool operator==(Symbol& chain);
   bool operator==(const Symbol& chain) const;
+  bool operator<(const Symbol& symbol) const;
 
   //Operadores de Flujo de entrada y salida
-  friend std::ostream& std::operator<<(std::ostream& output, Symbol& symbol);
-  friend std::ostream& std::operator<<(std::ostream& output, const Symbol symbol);
-  friend std::istream& std::operator>>(std::istream& input, Symbol& symbol);
+  friend std::ostream& operator<<(std::ostream& output, const Symbol& symbol);
+  friend std::istream& operator>>(std::istream& input, Symbol& symbol);
   
-
  private:
   std::string symbol_{""};  
 };

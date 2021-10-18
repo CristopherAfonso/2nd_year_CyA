@@ -24,13 +24,14 @@ class Word {
  public:
   //Constructores
   Word(void);
-  Word(const std::vector<Symbol>& word);
+  Word(std::vector<Symbol>& word);
   Word(Word& word);
 
   //Setters y Getter
   void SetWord(std::vector<Symbol>& word);
   void SetWord(Word& word);
   std::vector<Symbol> GetWord(void);
+  Symbol GetSymbol(int& position);
 
   //Funciones
   std::string ShowWord(void); //Muestra la palabra por pantalla
@@ -38,14 +39,16 @@ class Word {
   void EmplaceBackOfWord(std::string& symbol);
   void EmplaceBackOfWord(Symbol& symbol);
   void ClearWord(void); //Vacía el vector word_
+  size_t SizeWord(void); //Devuelve el tamaño del vector word_
 
   //Operadores
   void operator=(Word& word);
   bool operator==(Word& word);
+  Word operator+(Word& word);
 
   //Operadores de Flujo de entrada y salida
-  friend std::ostream& std::operator<<(std::ostream& output, Word& word);
-  friend std::istream& std::operator>>(std::istream& input, Word& word);
+  friend std::ostream& operator<<(std::ostream& output, Word& word);
+  friend std::istream& operator>>(std::istream& input, Word& word);
 
  private:
  // Donde guardamos la cadena a evaluar

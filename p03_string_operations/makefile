@@ -17,8 +17,8 @@
 
 CC = g++
 CFLAGS = -I -Weffc++ -Wall -g
-DEPS = symbol_class.h word_class.h alphabet_class.h language_class.h
-OBJ = main_string_operations.o symbol_class.o word_class.o alphabet_class.o language_class.o 
+DEPS = symbol_class.h word_class.h alphabet_class.h language_class.h 
+OBJ = main_string_operations.o symbol_class.o word_class.o alphabet_class.o language_class.o  
 
 %.o: %.cc $(DEPS)
 	$(CC) -c -o $@ $< $(CFLAGS)

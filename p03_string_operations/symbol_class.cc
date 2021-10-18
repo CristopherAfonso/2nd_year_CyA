@@ -50,28 +50,24 @@ std::string Symbol::GetSymbol(void) const {
   return symbol_;
 }
 
-Symbol Symbol::operator=(Symbol& chain) {
-  chain.SetSymbol(symbol_);
-}
-
 bool operator==(const Symbol& chain1, const Symbol& chain2) {
   return chain1.GetSymbol() == chain2.GetSymbol();
 }
 
-std::ostream& std::operator<<(std::ostream& output, Symbol& symbol) {
+bool Symbol::operator<(const Symbol& symbol) const {
+  return symbol.symbol_ < symbol_;
+}
+
+std::ostream& operator<<(std::ostream& output, const Symbol& symbol) {
   output << symbol.GetSymbol();
   return output;
 }
 
-std::ostream& std::operator<<(std::ostream& output, const Symbol symbol) {
-  output << symbol.GetSymbol();
-  return output;
-}
-
-std::istream& std::operator>>(std::istream& input, Symbol& symbol) {
+std::istream& operator>>(std::istream& input, Symbol& symbol) {
   std::string temp{""};
   input >> temp;
   symbol.SetSymbol(temp);
   return input;
 }
+
 

@@ -17,6 +17,7 @@
 #define _LANGUAGE_CLASS_
 
 #include <fstream>
+#include <sstream>
 
 #include "word_class.h"
 #include "alphabet_class.h"
@@ -25,7 +26,7 @@ class Language {
  public:
   //Constructores
   Language(void);
-  Language(std::vector<Symbol>& alphabet, std::vector<Symbol>& word);
+  Language(std::istringstream& actual_line);
   Language(Language& language);
 
   //Setters y Getters
@@ -33,6 +34,20 @@ class Language {
   void SetAlphabetToLanguage(Alphabet& alphabet);
   Word GetWordOfLanguage(void);
   Alphabet GetAlphabetOfLanguage(void);
+
+  //Opcodes
+  const size_t Opcode1Size();
+  const Word Opcode2Inverse();
+  const std::vector<Word> Opcode3Prefix();
+  const std::vector<Word> Opcode4Postfix();
+  const std::vector<Word> Opcode5Substr();
+  const std::string Opcode6ChainCmp();
+  const Word Opcode7ChainConcatenation();
+  const Word Opcode8Power();
+
+  //Funciones 
+  std::string ShowLanguage(std::vector<Word>& set_words);
+  std::string ShowLanguage(Word& word);
 
   //Operadores
   void operator=(Language& language);

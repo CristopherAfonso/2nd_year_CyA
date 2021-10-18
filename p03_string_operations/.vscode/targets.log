@@ -6,7 +6,7 @@ make all --print-data-base --no-builtin-variables --no-builtin-rules --question
 # This is free software: you are free to change and redistribute it.
 # There is NO WARRANTY, to the extent permitted by law.
 
-# Make data base, printed on Sun Oct 17 15:10:55 2021
+# Make data base, printed on Mon Oct 18 20:43:01 2021
 
 # Variables
 
@@ -17,7 +17,7 @@ make all --print-data-base --no-builtin-variables --no-builtin-rules --question
 # default
 .SHELLFLAGS := -c
 # makefile (from 'makefile', line 21)
-OBJ = main_string_operations.o symbol_class.o word_class.o alphabet_class.o language_class.o 
+OBJ = main_string_operations.o symbol_class.o word_class.o alphabet_class.o language_class.o  
 # environment
 XDG_SESSION_CLASS = user
 # environment
@@ -63,7 +63,7 @@ LC_NAME = C.UTF-8
 # environment
 VSCODE_CWD = /home/usuario
 # environment
-SSH_CONNECTION = 10.20.51.165 47064 10.6.129.155 22
+SSH_CONNECTION = 10.20.51.254 46236 10.6.129.155 22
 # environment
 PATH = /home/usuario/.vscode-server/bin/c13f1abb110fc756f9b3a6f16670df9cd9d4cf63/bin:/home/usuario/.vscode-server/bin/c13f1abb110fc756f9b3a6f16670df9cd9d4cf63/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/snap/bin
 # environment
@@ -73,7 +73,7 @@ VSCODE_LOG_STACK = false
 # environment
 LC_NUMERIC = C.UTF-8
 # environment
-VSCODE_IPC_HOOK_CLI = /run/user/1000/vscode-ipc-96f0cd9d-ce13-4e16-a125-d70a7125fe6a.sock
+VSCODE_IPC_HOOK_CLI = /run/user/1000/vscode-ipc-06d36292-9767-4b55-bc43-3d1cffc69ae9.sock
 # default
 .FEATURES := target-specific order-only second-expansion else-if shortest-stem undefine oneshell archives jobserver output-sync check-symlink load
 # environment
@@ -115,7 +115,7 @@ SHLVL = 1
 # makefile (from 'makefile', line 18)
 CC = g++
 # environment
-XDG_SESSION_ID = 254
+XDG_SESSION_ID = 1
 # environment
 USER = usuario
 # environment
@@ -128,8 +128,6 @@ LC_MONETARY = C.UTF-8
 LC_TELEPHONE = C.UTF-8
 # default
 MAKE_COMMAND := make
-# environment
-OLDPWD = /home/usuario/.vscode-server/bin/c13f1abb110fc756f9b3a6f16670df9cd9d4cf63
 # default
 .VARIABLES := 
 # automatic
@@ -139,7 +137,7 @@ MAKEFLAGS = pqrR
 # environment
 MFLAGS = -pqrR
 # environment
-SSH_CLIENT = 10.20.51.165 47064 22
+SSH_CLIENT = 10.20.51.254 46236 22
 # automatic
 +D = $(patsubst %/,%,$(dir $+))
 # environment
@@ -159,7 +157,7 @@ LC_ALL = C
 # environment
 LC_PAPER = C.UTF-8
 # makefile (from 'makefile', line 20)
-DEPS = symbol_class.h word_class.h alphabet_class.h language_class.h
+DEPS = symbol_class.h word_class.h alphabet_class.h language_class.h 
 # default
 SUFFIXES := 
 # default
@@ -179,7 +177,7 @@ VSCODE_EXTHOST_WILL_SEND_SOCKET = true
 # environment
 MOTD_SHOWN = pam
 # variable set hash-table stats:
-# Load=84/1024=8%, Rehash=0, Collisions=16/111=14%
+# Load=83/1024=8%, Rehash=0, Collisions=16/110=15%
 
 # Pattern-specific Variable Values
 
@@ -187,9 +185,9 @@ MOTD_SHOWN = pam
 
 # Directories
 
-# . (device 64768, inode 401881): 17 files, no impossibilities.
+# . (device 64768, inode 401881): 19 files, no impossibilities.
 
-# 17 files, no impossibilities in 1 directories.
+# 19 files, no impossibilities in 1 directories.
 
 # Implicit Rules
 
@@ -230,7 +228,7 @@ main_string_operations: main_string_operations.o symbol_class.o word_class.o alp
 # Not a target:
 makefile:
 #  Implicit rule search has been done.
-#  Last modified 2021-10-17 11:50:17.793925598
+#  Last modified 2021-10-18 16:00:42.788578453
 #  File has been updated.
 #  Successfully updated.
 
@@ -276,10 +274,10 @@ word_class.o:
 # strcache buffers: 1 (0) / strings = 30 / storage = 395 B / avg = 13 B
 # current buf: size = 8162 B / used = 395 B / count = 30 / avg = 13 B
 
-# strcache performance: lookups = 41 / hit rate = 26%
+# strcache performance: lookups = 43 / hit rate = 30%
 # hash-table stats:
-# Load=30/8192=0%, Rehash=0, Collisions=1/41=2%
-# Finished Make data base on Sun Oct 17 15:10:55 2021
+# Load=30/8192=0%, Rehash=0, Collisions=1/43=2%
+# Finished Make data base on Mon Oct 18 20:43:01 2021
 
  
 make: *** No rule to make target 'all'.  Stop.

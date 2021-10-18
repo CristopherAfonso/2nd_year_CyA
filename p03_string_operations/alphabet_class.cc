@@ -34,6 +34,12 @@ void Alphabet::SetterSymbol(Symbol& symbol) {
   alphabet_.insert(symbol);
 }
 
+void Alphabet::SetterAlphabet(std::vector<Symbol>& alphabet) {
+  for(auto actual_symbol: alphabet) {
+    alphabet_.insert(actual_symbol);
+  }
+}
+
 void Alphabet::SetterAlphabet(Alphabet& alphabet) {
   *this = alphabet;
 }
@@ -50,7 +56,7 @@ void Alphabet::operator=(Alphabet& alphabet) {
   alphabet.SetterAlphabet(*this);
 }
 
-std::ostream& std::operator<<(std::ostream& output, const Alphabet& alphabet) {
+std::ostream& operator<<(std::ostream& output, const Alphabet& alphabet) {
   output << "(";
   for(auto &&actual_symbol: alphabet.GetAlphabet()) {
     if(actual_symbol == *(alphabet.GetAlphabet().end())) {

@@ -23,9 +23,6 @@
 // Historial de revisiones
 // 17/10/2021 - Creacion (primera version) del codigo
 
-#include <fstream>
-#include <sstream>
-
 #include "language_class.h"
 
 //Mensaje de error si no se cumple con el numero de argumentos, que es 4
@@ -151,45 +148,10 @@ int main(int argc, char* argv[]) {
   //Y se repite el proceso hasta que no hay mas lineas
   for(size_t i{0}; i < set_of_lines.size(); ++i) {
 
-
-
     //Flujo de entrada de datos que me ayuda a dividirlos para clasificarlos
     std::istringstream actual_line(set_of_lines[i]);
 
-    std::string chain{""}; //String entera que guarda las cadenas de la linea
-    //String que se le pasara al constructor de la clase Language
-    std::string aux_word = {""};
-    int alphabet_size{-1};
-    //Conjunto que se le pasara al constructor de la clase Language
-    std::vector<Symbol> aux_vec;
-
-    //Leemos la linea, si solo tiene una cadena, el alfabeto esta vacio y hay
-    //que generarlo a partir de la cadena que hay, si hay mas de una cadena
-    //en la linea, se van metiendo menos la ultima leida
-    while(getline(actual_line, chain, ' ')) {
-      ++alphabet_size;
-      if(alphabet_size > 0) {
-        Symbol temp_symbol(aux_word);
-        aux_vec.emplace_back(temp_symbol);
-      }
-      aux_word = chain;
-    }
-
-    //Caso particular para cuando creamos el alfabeto a partir de la cadena
-    if(alphabet_size <= 0) {
-      aux_vec.clear(); //Vaciamos el conjunto por si acaso
-      for(size_t i{0}; i < aux_word.size(); ++i) {
-        if(aux_word.at(i) != ' ') {
-          Symbol character{aux_word[i]};
-          aux_vec.emplace_back(character);
-        }
-      }
-    }
-
-
-
-
-    Language language; //Sobre este objeto haremos los opcodes
+    Language language(actual_line); //Sobre este objeto haremos los opcodes
 
     switch(std::stoi(kOpCode)) {
       case 1:

@@ -22,7 +22,7 @@
 Word::Word(void) = default;
 
 //Constructor normal
-Word::Word(const std::vector<Symbol>& word) {
+Word::Word(std::vector<Symbol>& word) {
   word_ = word;
 }
 
@@ -32,15 +32,27 @@ Word::Word(Word& word) {
 }
 
 void Word::SetWord(std::vector<Symbol>& word) {
-  word_ = word;
+  word_.clear(); //Vaciamos el atributo interno por si acaso
+  for(int i{0}; i < int(word.size()); ++i) {
+    word_.emplace_back(word.at(i));
+  }
 }
 
 void Word::SetWord(Word& word) {
-  word_ = word.GetWord();
+  std::vector<Symbol> aux_word = word.GetWord();
+  this->SetWord(aux_word);
 }
 
 std::vector<Symbol> Word::GetWord(void) {
   return word_;
+}
+
+Symbol Word::GetSymbol(int& position) {
+  if((position >= int(word_.size())) || (position < 0)) {
+    Symbol temp;
+    return temp;
+  }
+  return word_.at(position);
 }
 
 std::string Word::ShowWord(void) {
@@ -64,6 +76,10 @@ void Word::ClearWord(void) {
   word_.clear();
 }
 
+size_t Word::SizeWord(void) {
+  return word_.size();
+}
+
 void Word::operator=(Word& word) {
   word.SetWord(word_);
 }
@@ -72,12 +88,19 @@ bool Word::operator==(Word& word) {
   return word.GetWord() == word_;
 }
 
-std::ostream& std::operator<<(std::ostream& output, Word& word) {
+Word Word::operator+(Word& word) {
+  for(auto actual_symbol: word_) {
+    word.EmplaceBackOfWord(actual_symbol);
+  }
+  return word;
+}
+
+std::ostream& operator<<(std::ostream& output, Word& word) {
   output << word.ShowWord();
   return output;
 }
 
-std::istream& std::operator>>(std::istream& input, Word& word) {
+std::istream& operator>>(std::istream& input, Word& word) {
   Symbol symbol;
   size_t aux_size{0};
 

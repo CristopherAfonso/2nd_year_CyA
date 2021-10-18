@@ -30,6 +30,7 @@ class Alphabet {
 
   //Setters y Getter
   void SetterSymbol(Symbol& symbol);
+  void SetterAlphabet(std::vector<Symbol>& alphabet);
   void SetterAlphabet(Alphabet& alphabet);
   std::set<Symbol> GetAlphabet(void) const;
 
@@ -40,10 +41,12 @@ class Alphabet {
   void operator=(Alphabet& alphabet);
 
   //Operadores de Flujo de salida
-  friend std::ostream& std::operator<<(std::ostream& output, Alphabet& alphabet);
+  friend std::ostream& operator<<(std::ostream& output, Alphabet& alphabet);
 
  private:
   std::set<Symbol> alphabet_;
 };
+
+
 
 #endif
