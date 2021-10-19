@@ -32,11 +32,9 @@ Word::Word(Word& word) {
 }
 
 void Word::SetWord(std::vector<Symbol>& word) {
-  Symbol temp(word.front());
-  word_.emplace_back(temp);
-  //word_.clear(); //Vaciamos el atributo interno por si acaso
+  word_.clear(); //Vaciamos el atributo interno por si acaso
   for(int i{0}; i < int(word.size()); ++i) {
-    //word_.emplace_back(word.at(i));
+    word_.emplace_back(word.at(i));
   }
 }
 
@@ -59,7 +57,7 @@ Symbol Word::GetSymbol(int& position) {
 
 std::string Word::ShowWord(void) {
   std::string aux{""};
-  for(size_t i{0}; i <= word_.size(); ++i) {
+  for(size_t i{0}; i < word_.size(); ++i) {
     aux += word_[i].GetSymbol();
   }
   return aux;
@@ -98,7 +96,9 @@ Word Word::operator+(Word& word) {
 }
 
 std::ostream& operator<<(std::ostream& output, Word& word) {
-  output << word.ShowWord();
+  for(size_t i{0}; i < word.word_.size(); ++i) {
+    output << word.word_.at(i);
+  }
   return output;
 }
 

@@ -143,6 +143,9 @@ int main(int argc, char* argv[]) {
 
   input_file.close(); //Cerramos el archivo para liberar memoria
 
+  std::vector<Symbol> temp_user_word; //Variable solo usada en Opcode 6 y 7
+  int power{-1}; // Variable solo usada en Opcode 8
+
   //En este for, por cada linea guardada, se crean un objeto Language, 
   //Se les aplica su opcode, se guarda el resultado en el archivo de salida
   //Y se repite el proceso hasta que no hay mas lineas
@@ -153,29 +156,80 @@ int main(int argc, char* argv[]) {
 
     Language language(actual_line); //Sobre este objeto haremos los opcodes
 
+    if((std::stoi(kOpCode) == 6 || std::stoi(kOpCode) == 7) && i == 0) {
+
+      int number_of_symbols{0};
+      std::string temp_chain{""};
+        
+      while(number_of_symbols < 1 || number_of_symbols > 5) {
+        std::cout << "\n¿Cuantos simbolos va a tener la cadena que va a ";
+        std::cout << "\nintroducir para su operacion?(min 1, max 5): ";
+        std::cin >> number_of_symbols;
+      }
+
+      for(int i{0}; i < number_of_symbols; ++i) {
+        if(number_of_symbols == 0) {
+        std::cout << "\nIntroduzca el primer simbolo: ";
+        std::cin >> temp_chain;
+        }else {
+          std::cout << "\nIntroduzca el siguiente simbolo: ";
+          std::cin >> temp_chain;
+        }
+
+        Symbol temp_symbol(temp_chain);
+        temp_user_word.emplace_back(temp_symbol);
+
+      }
+    }
+
+    if(std::stoi(kOpCode) == 8 && i == 0) {
+      
+      while(true) {
+        std::cout << "\nIntroduzca la potencia n-ésima a la que quiere ";
+        std::cout << "\nelevar su cadena(positivo menor a 21): ";
+        std::cin >> power;
+    
+        if(power >= 0 && power <= 20){
+          break;
+        }
+     
+        std::cerr << "\nLo siento, debe ser un numero positivo menor ";
+        std::cerr << "\na 21, intentelo de nuevo\n\n";
+    
+      }
+    }
+
     switch(std::stoi(kOpCode)) {
       case 1:
+        output_file << language.Opcode1Size() << '\n';
         break;
 
       case 2:
+        output_file << language.Opcode2Inverse().ShowWord() << '\n';
         break;
 
       case 3:
+        output_file << language.Opcode3Prefix() << '\n';
         break;
 
       case 4:
+        output_file << language.Opcode4Postfix() << '\n';
         break;
 
       case 5:
+        output_file << language.Opcode5Substr() << '\n';
         break;
 
       case 6:
+        output_file << language.Opcode6ChainCmp(temp_user_word) << '\n';
         break;
 
       case 7:
+        output_file << language.Opcode7ChainConcatenation(temp_user_word).ShowWord() << '\n';
         break;
       
       case 8:
+        output_file << language.Opcode8Power(power).ShowWord() << '\n';
         break;
       
       //Definido un default por si en el futuro se le hiciera un cambio al

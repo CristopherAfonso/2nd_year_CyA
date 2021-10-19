@@ -1,0 +1,4 @@
+aabab != holaa
+84345 != holaa
+hola != holaa
+guauejemploseraunaprobado != holaa

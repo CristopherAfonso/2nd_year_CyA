@@ -48,15 +48,27 @@ Language::Language(std::istringstream& actual_line) {
 
     //Ahora recorremos chain para reconocer donde están los simbolos
     size_t base_position{0}; //variable que usamos para indicar el inicio
-    for(size_t i{1}; i <= chain.size(); ++i) {
-      for(auto aux_alp_actual_position: aux_alphabet) {
-        if(aux_alp_actual_position.GetSymbol() == 
-           chain.substr(base_position, i)) {
-          aux_word.emplace_back(chain.substr(base_position, i));
-          base_position = i;
-          break;
+    size_t lenght{1};
+
+    if(alphabet_size == 0) {
+      for(int i{0}; i < int(chain.size()); ++i) {
+        std::string aux{""};
+        aux += chain.at(i);
+        aux_alphabet.emplace_back(aux);
+        aux_word.emplace_back(aux);
+      }
+    }else {
+      for(size_t i{0}; i < chain.size(); ++i) {
+        for(size_t j{0}; j < aux_alphabet.size(); ++j) {
+          if(aux_alphabet.at(j).GetSymbol() == 
+             chain.substr(base_position, lenght)) {
+            aux_word.emplace_back(chain.substr(base_position, lenght));
+            base_position = i + 1;
+            lenght = 0;
+          }
         }
-      } 
+        ++lenght;
+      }
     }
     
     //Atributos internos ya inicializados
@@ -88,13 +100,12 @@ const size_t Language::Opcode1Size() {
   return word_user_.SizeWord();
 }
 
-const Word Language::Opcode2Inverse() {
+Word Language::Opcode2Inverse() {
 
   std::vector<Symbol> aux_vec_symbol;
 
-  for(auto actualposition = aux_vec_symbol.rbegin();
-      actualposition != aux_vec_symbol.rend(); ++actualposition) {
-    aux_vec_symbol.emplace_back(*actualposition);
+  for(int i{int(word_user_.GetWord().size() - 1)}; i >= 0; --i) {
+    aux_vec_symbol.emplace_back(word_user_.GetWord().at(i));
   }
   
   Word aux_word(aux_vec_symbol);
@@ -102,41 +113,170 @@ const Word Language::Opcode2Inverse() {
   return aux_word;
 }
 
-// const std::vector<Word> Language::Opcode3Prefix() {
+std::string Language::Opcode3Prefix() {
+  std::string result{"{&, "};
+  int aux{0};
 
-// }
+  for(int i{0}; i < int(word_user_.SizeWord()); ++i) {
+    while(aux <= i) {
+      result += word_user_.GetWord().at(aux).GetSymbol();
+      ++aux;
+      
+    }
+    result += ", ";
+    
+    aux = 0;
+    
+  }
 
-// const std::vector<Word> Language::Opcode4Postfix() {
+  result.pop_back();
+  result.pop_back();
+  result += "}";
+  
+  return result;
+}
 
-// }
+std::string Language::Opcode4Postfix() {
+  std::string result{"{&, "};
+  int lenght{0};
 
-// const std::vector<Word> Language::Opcode5Substr() {
+  for(int i{int(word_user_.SizeWord() - 1)}; i >= 0; --i) {
+    while(i + lenght <= int(word_user_.SizeWord() - 1)) {
+      result += word_user_.GetWord().at(i + lenght).GetSymbol();
+      ++lenght;
 
-// }
+    }
 
-// const std::string Language::Opcode6ChainCmp() {
+    result += ", ";
+    lenght = 0;
+  }
 
-// }
+  result.pop_back();
+  result.pop_back();
+  result += "}";
 
-// const Word Language::Opcode7ChainConcatenation() {
+  return result;
+}
 
-// }
+std::string Language::Opcode5Substr() {
+  std::string result{"{&, "};
+  int lenght{1};
 
-// const Word Language::Opcode8Power() {
+  while(lenght <= int(word_user_.SizeWord())) {
+    for(int i{0}; i < int(word_user_.SizeWord() - lenght + 1); ++i) {
+      for(int j{i}; j < (lenght + i); ++j) {
+        result += word_user_.GetWord().at(j).GetSymbol();
+      }
+      result += ", ";
+    }
+    ++lenght;
+  }
 
-// }
+  result.pop_back();
+  result.pop_back();
+  result += "}";
+
+  return result;
+}
+
+std::string Language::Opcode6ChainCmp(std::vector<Symbol> user_word) {
+  std::string result{""};
+  bool substr{false};
+  int base_position{0};
+  std::vector<Symbol> aux_word(word_user_.GetWord());
+
+  result += word_user_.ShowWord() + " ";
+
+  if(!(user_word > aux_word)) {
+    for(int i{0}; i < int(aux_word.size()); ++i) {
+      for(int j{0}; j < int(user_word.size()); ++j) {
+        if(aux_word.at(i + base_position) == user_word.at(j)) {
+          if(user_word.at(j) == user_word.back()) {
+            substr = true;
+          
+          }
+
+          if(i + base_position < int(aux_word.size() - 1)) {
+            ++base_position;
+
+          }else {
+            break;
+          }
+        
+
+        }else {
+          base_position = 0;
+          break;
+        }
+      }
+
+      if(substr) {
+        break;
+      }
+    }
+
+    if(substr) {
+      if(aux_word.size() == user_word.size()) {
+        result += "== ";
+      }
+
+      if(aux_word.size() > user_word.size()) {
+        result += "> ";
+      }
+    }else {
+      result += "!= ";
+    }
+
+  }else {
+    result += "!= ";
+  }
+  
+
+  Word temp_word(user_word);
+  result += temp_word.ShowWord();
+
+  return result;
+}
+
+Word Language::Opcode7ChainConcatenation(std::vector<Symbol> user_word) {
+
+  std::vector<Symbol> temp_word(word_user_.GetWord());
+
+  for(int i{0}; i < int(user_word.size()); ++i) {
+    temp_word.emplace_back(user_word.at(i));
+    alphabet_user_.SetterSymbol(user_word.at(i));
+  }
+
+  word_user_.SetWord(temp_word);
+
+  return word_user_;
+}
+
+Word Language::Opcode8Power(int& power) {
+  Word result;
+
+  if(power == 0) {
+    Symbol temp_symbol{"&"};
+    std::vector<Symbol> temp_word;
+    temp_word.emplace_back(temp_symbol);
+    result.SetWord(temp_word);
+  }else {
+    std::vector<Symbol> temp_word;
+    
+    for(int i{1}; i <= power; ++i) {
+      for(int j{0}; j < int(word_user_.SizeWord()); ++j) {
+        temp_word.emplace_back(word_user_.GetWord().at(j));
+      }
+    }
+
+    result.SetWord(temp_word);
+  }
+
+  return result;
+}
  
-// std::string Language::ShowLanguage(std::vector<Word>& set_words) {
-
-// }
-
-// std::string Language::ShowLanguage(Word& word) {
-
-// }
-
 void Language::operator=(Language& language) {
   language.SetWordToLanguage(word_user_);
   language.SetAlphabetToLanguage(alphabet_user_);
 }
-
 

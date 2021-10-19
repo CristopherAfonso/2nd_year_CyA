@@ -37,17 +37,13 @@ class Language {
 
   //Opcodes
   const size_t Opcode1Size();
-  const Word Opcode2Inverse();
-  const std::vector<Word> Opcode3Prefix();
-  const std::vector<Word> Opcode4Postfix();
-  const std::vector<Word> Opcode5Substr();
-  const std::string Opcode6ChainCmp();
-  const Word Opcode7ChainConcatenation();
-  const Word Opcode8Power();
-
-  //Funciones 
-  std::string ShowLanguage(std::vector<Word>& set_words);
-  std::string ShowLanguage(Word& word);
+  Word Opcode2Inverse();
+  std::string Opcode3Prefix();
+  std::string Opcode4Postfix();
+  std::string Opcode5Substr();
+  std::string Opcode6ChainCmp(std::vector<Symbol> user_word);
+  Word Opcode7ChainConcatenation(std::vector<Symbol> user_word);
+  Word Opcode8Power(int& power);
 
   //Operadores
   void operator=(Language& language);
