@@ -275,6 +275,26 @@ Word Language::Opcode8Power(int& power) {
   return result;
 }
  
+std::string Language::Opcode9NewPower(int& power) {
+  std::vector<Word> set_words(word_user_.Power(power));
+  std::string result{"L = {&, "};
+
+  for(int i{0}; i < int(set_words.size()); ++i) {
+    std::vector<Symbol> aux_word(set_words.at(i).GetWord());
+    for(int j{0}; j < int(aux_word.size()); ++j) {
+      result += aux_word.at(j).GetSymbol();
+    }
+
+    result += ", ";
+  }
+
+  result.pop_back();
+  result.pop_back();
+  result += "}";
+
+  return result;
+}
+
 void Language::operator=(Language& language) {
   language.SetWordToLanguage(word_user_);
   language.SetAlphabetToLanguage(alphabet_user_);

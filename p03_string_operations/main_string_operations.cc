@@ -103,7 +103,7 @@ int main(int argc, char* argv[]) {
   const std::string kOpCode{argv[3]};
 
   //OpCode mal puesto
-  if(std::stoi(kOpCode) < 1 || std::stoi(kOpCode) > 8) { 
+  if(std::stoi(kOpCode) < 1 || std::stoi(kOpCode) > 9) { 
     ErrorOpcode();
     exit(EXIT_FAILURE);
   }
@@ -182,7 +182,7 @@ int main(int argc, char* argv[]) {
       }
     }
 
-    if(std::stoi(kOpCode) == 8 && i == 0) {
+    if((std::stoi(kOpCode) == 8 || std::stoi(kOpCode) == 9) && i == 0) {
       
       while(true) {
         std::cout << "\nIntroduzca la potencia n-ésima a la que quiere ";
@@ -230,6 +230,10 @@ int main(int argc, char* argv[]) {
       
       case 8:
         output_file << language.Opcode8Power(power).ShowWord() << '\n';
+        break;
+
+      case 9:
+        output_file << language.Opcode9NewPower(power) << '\n';
         break;
       
       //Definido un default por si en el futuro se le hiciera un cambio al

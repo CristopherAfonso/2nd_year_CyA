@@ -40,6 +40,7 @@ class Word {
   void EmplaceBackOfWord(Symbol& symbol);
   void ClearWord(void); //Vacía el vector word_
   size_t SizeWord(void); //Devuelve el tamaño del vector word_
+  std::vector<Word> Power(int& power);
 
   //Operadores
   void operator=(Word& word);

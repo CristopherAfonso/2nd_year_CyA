@@ -80,6 +80,32 @@ size_t Word::SizeWord(void) {
   return word_.size();
 }
 
+std::vector<Word> Word::Power(int& power) {
+  std::vector<Word> aux_set_words;
+
+  Symbol avoid_symbol("&");
+  std::vector<Symbol> aux_vec_symbol;
+  aux_vec_symbol.emplace_back(avoid_symbol);
+
+  Word aux_word(aux_vec_symbol);
+
+  for(int i{0}; i < power; ++i) {
+    std::vector<Symbol> aux_vec_symbol2(aux_word.GetWord());
+    std::vector<Symbol> aux_vec_symbol3(this->GetWord());
+
+    for(int j{0}; j < int(aux_vec_symbol3.size()); ++j) {
+      aux_vec_symbol2.emplace_back(aux_vec_symbol3.at(j));
+    }
+
+    aux_word.SetWord(aux_vec_symbol3);
+
+    aux_set_words.at(i) = aux_word;
+    
+  }
+  
+  return aux_set_words;
+}
+
 void Word::operator=(Word& word) {
   word.SetWord(word_);
 }

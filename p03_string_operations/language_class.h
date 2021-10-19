@@ -44,6 +44,7 @@ class Language {
   std::string Opcode6ChainCmp(std::vector<Symbol> user_word);
   Word Opcode7ChainConcatenation(std::vector<Symbol> user_word);
   Word Opcode8Power(int& power);
+  std::string Opcode9NewPower(int& power);
 
   //Operadores
   void operator=(Language& language);
