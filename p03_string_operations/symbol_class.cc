@@ -23,26 +23,17 @@
 Symbol::Symbol(void) = default;
 
 // Constructor normal
-Symbol::Symbol(std::string& chain) {
+Symbol::Symbol(std::string chain) {
   symbol_ = chain;
 }
 
-//Constructor para cuando no hay alfabeto y hay que deducirlo
-Symbol::Symbol(char& chain) {
-  symbol_ = chain;
-}
-
-// Constructor de copia
-Symbol::Symbol(Symbol& symbol) {
-  symbol_ = symbol.GetSymbol();
-}
 
 // Setters sobrecargados
 void Symbol::SetSymbol(std::string& chain) {
   symbol_ = chain;
 }
 
-void Symbol::SetSymbol(Symbol& symbol) {
+void Symbol::SetSymbol(Symbol symbol) {
   symbol_ = symbol.GetSymbol();
 }
 
@@ -50,8 +41,8 @@ std::string Symbol::GetSymbol(void) const {
   return symbol_;
 }
 
-bool operator==(const Symbol& chain1, const Symbol& chain2) {
-  return chain1.GetSymbol() == chain2.GetSymbol();
+bool Symbol::operator==(const Symbol& chain) const {
+  return (chain.symbol_ == symbol_);
 }
 
 bool Symbol::operator<(const Symbol& symbol) const {

@@ -24,17 +24,15 @@ class Symbol {
 
   //Constructores
   Symbol(void);
-  Symbol(std::string& chain);
-  Symbol(char& chain);
-  Symbol(Symbol& symbol);
+  Symbol(std::string chain);
 
   //Setters y Getter
   void SetSymbol(std::string& chain);
-  void SetSymbol(Symbol& symbol);
+  void SetSymbol(Symbol symbol);
   std::string GetSymbol(void) const;
 
   //Operadores
-  bool operator==(const Symbol& chain) const;
+  bool operator==(const Symbol&) const;
   bool operator<(const Symbol& symbol) const;
 
   //Operadores de Flujo de entrada y salida
@@ -42,7 +40,7 @@ class Symbol {
   friend std::istream& operator>>(std::istream& input, Symbol& symbol);
   
  private:
-  std::string symbol_{""};  
+  std::string symbol_;  
 };
 
 #endif

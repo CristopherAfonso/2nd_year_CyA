@@ -21,8 +21,8 @@
 Alphabet::Alphabet(void) = default;
 
 Alphabet::Alphabet(std::vector<Symbol>& alphabet) {
-  for(auto actual_symbol: alphabet) {
-    alphabet_.insert(actual_symbol);
+  for(auto citr = alphabet.begin(); citr != alphabet.end(); ++citr) {
+    alphabet_.insert(*citr);
   }
 }
 
@@ -30,7 +30,7 @@ Alphabet::Alphabet(Alphabet& alphabet) {
   *this = alphabet;
 }
 
-void Alphabet::SetterSymbol(Symbol& symbol) {
+void Alphabet::SetterSymbol(const Symbol symbol) {
   alphabet_.insert(symbol);
 }
 

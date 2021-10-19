@@ -102,36 +102,37 @@ const Word Language::Opcode2Inverse() {
   return aux_word;
 }
 
-const std::vector<Word> Language::Opcode3Prefix() {
+// const std::vector<Word> Language::Opcode3Prefix() {
 
-}
+// }
 
-const std::vector<Word> Language::Opcode4Postfix() {
+// const std::vector<Word> Language::Opcode4Postfix() {
 
-}
+// }
 
-const std::vector<Word> Language::Opcode5Substr() {
+// const std::vector<Word> Language::Opcode5Substr() {
 
-}
-const std::string Language::Opcode6ChainCmp() {
+// }
 
-}
+// const std::string Language::Opcode6ChainCmp() {
 
-const Word Language::Opcode7ChainConcatenation() {
+// }
 
-}
+// const Word Language::Opcode7ChainConcatenation() {
 
-const Word Language::Opcode8Power() {
+// }
 
-}
+// const Word Language::Opcode8Power() {
+
+// }
  
-std::string Language::ShowLanguage(std::vector<Word>& set_words) {
+// std::string Language::ShowLanguage(std::vector<Word>& set_words) {
 
-}
+// }
 
-std::string Language::ShowLanguage(Word& word) {
+// std::string Language::ShowLanguage(Word& word) {
 
-}
+// }
 
 void Language::operator=(Language& language) {
   language.SetWordToLanguage(word_user_);

@@ -32,9 +32,11 @@ Word::Word(Word& word) {
 }
 
 void Word::SetWord(std::vector<Symbol>& word) {
-  word_.clear(); //Vaciamos el atributo interno por si acaso
+  Symbol temp(word.front());
+  word_.emplace_back(temp);
+  //word_.clear(); //Vaciamos el atributo interno por si acaso
   for(int i{0}; i < int(word.size()); ++i) {
-    word_.emplace_back(word.at(i));
+    //word_.emplace_back(word.at(i));
   }
 }
 

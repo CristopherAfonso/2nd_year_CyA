@@ -29,7 +29,7 @@ class Alphabet {
   Alphabet(Alphabet& alphabet);
 
   //Setters y Getter
-  void SetterSymbol(Symbol& symbol);
+  void SetterSymbol(const Symbol symbol);
   void SetterAlphabet(std::vector<Symbol>& alphabet);
   void SetterAlphabet(Alphabet& alphabet);
   std::set<Symbol> GetAlphabet(void) const;
@@ -46,7 +46,5 @@ class Alphabet {
  private:
   std::set<Symbol> alphabet_;
 };
-
-
 
 #endif
