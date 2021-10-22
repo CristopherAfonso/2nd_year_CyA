@@ -15,8 +15,8 @@
 
 CC = g++
 CFLAGS = -I -Weffc++ -Wall -g   
-DEPS = chain_class.h alphabet_class.h language_class.h
-OBJ = main_code_analyzer.o chain_class.o alphabet_class.o language_class.o 
+DEPS = analyzer_files_cc_class.h
+OBJ = main_code_analyzer.o analyzer_files_cc_class.o 
 
 %.o: %.cc $(DEPS)
 		$(CC) -c -o $@ $< $(CFLAGS)

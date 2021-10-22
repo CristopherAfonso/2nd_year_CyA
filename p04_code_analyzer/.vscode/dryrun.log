@@ -1,0 +1,5 @@
+make --dry-run --keep-going --print-directory
+make: Entering directory '/home/usuario/2nd_year_CyA/p04_code_analyzer'
+make: 'main_code_analyzer' is up to date.
+make: Leaving directory '/home/usuario/2nd_year_CyA/p04_code_analyzer'
+ 
