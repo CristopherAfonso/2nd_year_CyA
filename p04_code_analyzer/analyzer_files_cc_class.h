@@ -21,14 +21,20 @@
 
 #include <iostream>
 #include <string>
+#include <regex>
+#include <fstream>
 
 class AnalyzerFilesCC {
  public:
-  
+  AnalyzerFilesCC();
+  AnalyzerFilesCC(const std::string& kFileName, std::ifstream& input_file);
+
+  //Operadores
+  friend std::ostream& operator<<(std::ostream& cout, const AnalyzerFilesCC& AnalyzedFile);
 
  private:
-  const std::string kFileName;
-  const std::string kFileDescription;
+  const std::string kFileName_;
+  const std::string kFileDescription_;
 
 };
 

@@ -41,22 +41,22 @@
 #include "analyzer_files_cc_class.h"
 
 // Mensaje principal que informa sobre lo que hace el programa por encima
-void MainMessage(const std::string& kNameFile, const std::string& kHelp) {
-  std::cout << '\n' << kNameFile << ": Programa que recibe un archivo con";
+void MainMessage(const std::string& kFileName, const std::string& kHelp) {
+  std::cout << '\n' << kFileName << ": Programa que recibe un archivo con";
   std::cout << "\nextension \".cc\" o \".c++\" y crea un archivo con";
   std::cout << "\nextension \".txt\" donde vuelca en este, informacion";
   std::cout << "\nrelacionada con el contenido del archivo dado.";
   std::cout << "\nPara mas informacion sobre su uso ejecute:";
-  std::cout << '\n' << kNameFile << ' ' << kHelp;
+  std::cout << '\n' << kFileName << ' ' << kHelp;
 }
 
 //Mensaje de informacion que explica detalladamente lo que hace el programa
-void HowToUseThisProgram(const std::string& kNameFile) {
-  std::cout << '\n' << kNameFile << " es un programa que recibe archivos";
+void HowToUseThisProgramMessage(const std::string& kFileName) {
+  std::cout << '\n' << kFileName << " es un programa que recibe archivos";
   std::cout << "\nescritos en C++ unicamente y en base a su contenido, crea";
   std::cout << "\nun archivo de texto y vuelva en el los resultados del";
   std::cout << "\nanalisis del primer archivo, su modo de uso es este:";
-  std::cout << '\n' << kNameFile << " input_file.cc output_file.txt";
+  std::cout << '\n' << kFileName << " input_file.cc output_file.txt";
   
   std::cout << "\n\nDonde \"input_file.cc\" es el archivo escrito en C++";
   std::cout << "\n(tambien es valida la extension \".c++\", pero ninguna mas)";
@@ -91,32 +91,82 @@ void HowToUseThisProgram(const std::string& kNameFile) {
   std::cout << "\n   comentario de cabecera, se muestra en el punto 2.\n\n";
 }
 
-//Mensaje de error
-void ErrorInputMessage(const std::string& kNameFile, const std::string& kHelp) {
+//Mensaje de error en los parametros pasados al programa
+void ErrorInputMessage(const std::string& kFileName, 
+                       const std::string& kHelp) {
   std::cerr << "\nWarning! Faltan/Sobran argumentos para usar este programa";
   std::cerr << "\nSi quiere información sobre como usarlo pruebe:";
-  std::cerr << "\n" << kNameFile << ' ' << kHelp << "\n\n";
+  std::cerr << "\n" << kFileName << ' ' << kHelp << "\n\n";
+}
+
+//Mensaje de extension de archivo invalida, es un archivo con una extension
+//diferente a la permitida por el programa que es ".cc" o ".c++"
+void WrongExtensionMessage(const std::string& kFileName, 
+                           const std::string& kHelp) {
+  std::cerr << "\nWarning! se ha introducido un archivo con una extension";
+  std::cerr << "\nno permitida o se ha intentado crear un archivo con una";
+  std::cerr << "extension no permitida, reviselos e intentelo de nuevo";
+  std::cerr << "\nPara mas informacion sobre como usar el programa pruebe:";
+  std::cerr << "\n" << kFileName << ' ' << kHelp << "\n\n";
+}
+
+//funcion que me permite saber si la extension de los archivos de entrada y
+//el solicitado de texto para crear son validos
+bool CorrectExtension(const std::string& kFileInput, 
+                      const std::string& kFileOutput) {
+  bool result{true};
+  const std::string kExtensionCC1{".cc"};
+  const std::string kExtensionCC2{".c++"};
+  const std::string kExtensionTXT{".txt"};
+
+  //encuentro la posicion donde esta el ultimo '.' del nombre del archivo
+  //de entrada, cojo la subcadena desde ese punto hasta el final, y la comparo
+  //con las extensiones permitidas, si no es valido, se retorna false
+  size_t temp_position{kFileInput.find_last_of(".")};
+  std::string temp_str{kFileInput.substr(temp_position)};
+  if(!(temp_str == kExtensionCC1 || temp_str == kExtensionCC2)) {
+    result = false;
+  }
+
+  //aqui hago lo mismo que arriba, pero con el nombre del archivo de salida
+  temp_position = kFileOutput.find_last_of(".");
+  temp_str = kFileOutput.substr(temp_position);
+  if(!(temp_str == kExtensionTXT)) {
+    result = false;
+  }
+
+  return result;
+}
+
+void ErrorOpenFile() {
+  std::cerr << "\nNo se pudo abrir el archivo para analizarlo";
+  std::cerr << "\nCompruebelo y intentelo de nuevo\n\n";
+}
+
+void ErrorCreateFile() {
+  std::cerr << "\nNo se pudo crear el archivo de texto";
+  std::cerr << "\nIntentelo de nuevo\n\n";
 }
 
 int main(int argc, char* argv[]) {
 
-  const std::string kNameFile{argv[0]};
+  const std::string kFileName{argv[0]};
   const std::string kHelp{"--help"};
 
   //Si se ejecuta el programa sin parametros, sale el mensaje principal
   if(argc == 1) {
-    MainMessage(kNameFile, kHelp);
+    MainMessage(kFileName, kHelp);
     exit(EXIT_SUCCESS);
   }
 
   //Argumento que sera el nombre del archivo a analizar o indicara mostar el
   //mensaje de informacion
-  const std::string KInputFile{argv[1]};
+  const std::string kFileInput{argv[1]};
 
   //Si en vez de dar un archivo de entrada, se solicita el modo de funcionar
   //del programa, sale el mensaje de informacion
-  if(KInputFile == kHelp) {
-    HowToUseThisProgram(kNameFile);
+  if(kFileInput == kHelp) {
+    HowToUseThisProgramMessage(kFileName);
     exit(EXIT_SUCCESS);
   }
 
@@ -124,11 +174,47 @@ int main(int argc, char* argv[]) {
   //argumentos de entrada, se muestra el mensaje de error con los argumentos
   //y se detiene el programa
   if(argc < 3 || argc > 3) {
-    ErrorInputMessage(kNameFile, kHelp);
+    ErrorInputMessage(kFileName, kHelp);
     exit(EXIT_FAILURE);
   }
 
-  
+  const std::string kFileOutput{argv[2]}; //Nombre del archivo de texto a crear
+
+  //si las extensiones no son las permitidas, se termina el programa con un
+  //mensaje de error
+  if(!CorrectExtension(kFileInput, kFileOutput)) {
+    WrongExtensionMessage(kFileName, kHelp);
+    exit(EXIT_FAILURE);
+  }
+
+  //Creo los flujos de entrada y salida como variables de la libreria fstream
+  std::ifstream input_file(kFileInput, std::fstream::in);
+  std::ofstream output_file(kFileOutput, std::fstream::out);
+
+  //si no se puede abrir se termina el programa
+  if(input_file.fail()) {
+    ErrorOpenFile();
+    exit(EXIT_FAILURE);
+  }
+
+  //si no se puede crear se termina el programa
+  if(output_file.fail()) {
+    ErrorCreateFile();
+    exit(EXIT_FAILURE);
+  }
+
+  AnalyzerFilesCC FileCCAnalyzed(kFileName, input_file);
+
+  //cerramos el archivo para liberar memoria, ya no lo
+  //necesitamos ya que ya hemos creado el objeto
+  input_file.close();
+
+  //usamos el operador de extraccion para enviar el contenido del objeto
+  //al archivo de texto ya creado
+  output_file << FileCCAnalyzed;
+
+  //cerramos el archivo, pues ya hemos escribido en el y podemos cerrarlo
+  output_file.close(); 
 
   return 0;
 }

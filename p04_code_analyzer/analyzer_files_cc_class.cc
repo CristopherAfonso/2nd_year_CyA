@@ -22,4 +22,8 @@
 
 #include "analyzer_files_cc_class.h"
 
-
+AnalyzerFilesCC::AnalyzerFilesCC(const std::string& kFileName,
+                                 std::ifstream& input_file): 
+                                 kFileName_{kFileName} {
+    
+}
