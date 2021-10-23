@@ -38,7 +38,7 @@
 // 21/10/21 - Creacion (primera version) del codigo
 // 
 
-#include "analyzer_files_cc_class.h"
+#include "analyzer_cc_class.h"
 
 // Mensaje principal que informa sobre lo que hace el programa por encima
 void MainMessage(const std::string& kFileName, const std::string& kHelp) {
@@ -203,7 +203,7 @@ int main(int argc, char* argv[]) {
     exit(EXIT_FAILURE);
   }
 
-  AnalyzerFilesCC FileCCAnalyzed(kFileName, input_file);
+  AnalyzerCC FileCCAnalyzed(kFileInput, input_file);
 
   //cerramos el archivo para liberar memoria, ya no lo
   //necesitamos ya que ya hemos creado el objeto

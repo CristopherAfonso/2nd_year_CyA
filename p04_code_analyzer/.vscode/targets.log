@@ -1,6 +1,4 @@
 make all --print-data-base --no-builtin-variables --no-builtin-rules --question
-make: *** No rule to make target 'all'.  Stop.
- 
 # GNU Make 4.2.1
 # Built for x86_64-pc-linux-gnu
 # Copyright (C) 1988-2016 Free Software Foundation, Inc.
@@ -8,7 +6,7 @@ make: *** No rule to make target 'all'.  Stop.
 # This is free software: you are free to change and redistribute it.
 # There is NO WARRANTY, to the extent permitted by law.
 
-# Make data base, printed on Fri Oct 22 16:22:18 2021
+# Make data base, printed on Sat Oct 23 16:48:39 2021
 
 # Variables
 
@@ -19,7 +17,7 @@ make: *** No rule to make target 'all'.  Stop.
 # default
 .SHELLFLAGS := -c
 # makefile (from 'Makefile', line 19)
-OBJ = main_code_analyzer.o analyzer_files_cc_class.o 
+OBJ = main_code_analyzer.o analyzer_cc_class.o 
 # environment
 XDG_SESSION_CLASS = user
 # environment
@@ -65,7 +63,7 @@ LC_NAME = C.UTF-8
 # environment
 VSCODE_CWD = /home/usuario
 # environment
-SSH_CONNECTION = 10.150.90.117 44832 10.6.129.155 22
+SSH_CONNECTION = 10.20.50.36 59878 10.6.129.155 22
 # environment
 PATH = /home/usuario/.vscode-server/bin/6cba118ac49a1b88332f312a8f67186f7f3c1643/bin:/home/usuario/.vscode-server/bin/6cba118ac49a1b88332f312a8f67186f7f3c1643/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/snap/bin
 # environment
@@ -75,7 +73,7 @@ VSCODE_LOG_STACK = false
 # environment
 LC_NUMERIC = C.UTF-8
 # environment
-VSCODE_IPC_HOOK_CLI = /run/user/1000/vscode-ipc-4f9bae52-a726-417c-b3fb-5494259a5625.sock
+VSCODE_IPC_HOOK_CLI = /run/user/1000/vscode-ipc-2b180793-d47d-4f8f-a7e2-db89286f3cb4.sock
 # default
 .FEATURES := target-specific order-only second-expansion else-if shortest-stem undefine oneshell archives jobserver output-sync check-symlink load
 # environment
@@ -117,7 +115,7 @@ SHLVL = 1
 # makefile (from 'Makefile', line 16)
 CC = g++
 # environment
-XDG_SESSION_ID = 113
+XDG_SESSION_ID = 145
 # environment
 USER = usuario
 # environment
@@ -139,8 +137,7 @@ MAKEFLAGS = pqrR
 # environment
 MFLAGS = -pqrR
 # environment
- 
-SSH_CLIENT = 10.150.90.117 44832 22
+SSH_CLIENT = 10.20.50.36 59878 22
 # automatic
 +D = $(patsubst %/,%,$(dir $+))
 # environment
@@ -160,7 +157,7 @@ LC_ALL = C
 # environment
 LC_PAPER = C.UTF-8
 # makefile (from 'Makefile', line 18)
-DEPS = analyzer_files_cc_class.h
+DEPS = analyzer_cc_class.h
 # default
 SUFFIXES := 
 # default
@@ -194,7 +191,7 @@ MOTD_SHOWN = pam
 
 # Implicit Rules
 
-%.o: %.cc analyzer_files_cc_class.h
+%.o: %.cc analyzer_cc_class.h
 #  recipe to execute (from 'Makefile', line 22):
 		$(CC) -c -o $@ $< $(CFLAGS)
 
@@ -208,7 +205,7 @@ main_code_analyzer.o:
 #  Modification time never checked.
 #  File has not been updated.
 
-main_code_analyzer: main_code_analyzer.o analyzer_files_cc_class.o
+main_code_analyzer: main_code_analyzer.o analyzer_cc_class.o
 #  Implicit rule search has not been done.
 #  Modification time never checked.
 #  File has not been updated.
@@ -225,12 +222,18 @@ all:
 # Not a target:
 Makefile:
 #  Implicit rule search has been done.
-#  Last modified 2021-10-22 16:21:16.71475353
+#  Last modified 2021-10-23 16:48:25.6607077
 #  File has been updated.
 #  Successfully updated.
 
 # Not a target:
 .DEFAULT:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+
+# Not a target:
+analyzer_cc_class.o:
 #  Implicit rule search has not been done.
 #  Modification time never checked.
 #  File has not been updated.
@@ -242,12 +245,6 @@ clean:
 #  recipe to execute (from 'Makefile', line 28):
 		rm -rf *.o
 
-# Not a target:
-analyzer_files_cc_class.o:
-#  Implicit rule search has not been done.
-#  Modification time never checked.
-#  File has not been updated.
-
 # files hash-table stats:
 # Load=8/1024=1%, Rehash=0, Collisions=0/20=0%
 # VPATH Search Paths
@@ -256,12 +253,14 @@ analyzer_files_cc_class.o:
 
 # No general ('VPATH' variable) search path.
 
-# strcache buffers: 1 (0) / strings = 18 / storage = 233 B / avg = 12 B
-# current buf: size = 8162 B / used = 233 B / count = 18 / avg = 12 B
+# strcache buffers: 1 (0) / strings = 18 / storage = 215 B / avg = 11 B
+# current buf: size = 8162 B / used = 215 B / count = 18 / avg = 11 B
 
 # strcache performance: lookups = 28 / hit rate = 35%
 # hash-table stats:
 # Load=18/8192=0%, Rehash=0, Collisions=1/28=4%
-# Finished Make data base on Fri Oct 22 16:22:18 2021
+# Finished Make data base on Sat Oct 23 16:48:39 2021
 
+ 
+make: *** No rule to make target 'all'.  Stop.
  
