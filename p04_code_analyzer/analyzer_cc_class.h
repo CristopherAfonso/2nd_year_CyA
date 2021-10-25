@@ -21,6 +21,7 @@
 
 #include <iostream>
 #include <string>
+#include <sstream>
 #include <vector>
 #include <regex>
 #include <fstream>
@@ -31,7 +32,7 @@ class AnalyzerCC {
   AnalyzerCC(const std::string& kFileName, std::ifstream& input_file);
 
   //Operadores
-  friend std::ostream& operator<<(std::ostream& cout, const AnalyzerCC& File);
+  friend std::ostream& operator<<(std::ostream& out, const AnalyzerCC& File);
 
  private:
   std::string file_name_{""}; //Nombre del archivo analizado
@@ -40,13 +41,13 @@ class AnalyzerCC {
   std::string file_description_{""};
 
   //Vectores que guardan la posicion de las variables, nombre y declaracion
-  std::vector<size_t> vec_var_line_;
+  std::vector<int> vec_var_line_;
   std::vector<std::string> vec_var_name_;
   size_t vars_int_{0};//Contamos cuantas variables de cada tipo hay
   size_t vars_double_{0};//Es mas comodo declarar variables que hacer un metodo
 
   //Vectores que guardan el tipo de bucle y su linea
-  std::vector<size_t> vec_loop_line_;
+  std::vector<int> vec_loop_line_;
   std::vector<std::string> vec_loop_name_;
   size_t loops_for_{0};//Contamos cuantos bucles de cada tipo se han encontrado
   size_t loops_while_{0};

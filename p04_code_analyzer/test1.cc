@@ -37,8 +37,7 @@ int Factorial(int number) {
   }
 }
 
-int main() {
-
+int main() {      
   std::cout << "Introduzca el numero de factoriales a calcular: ";
   int limit{0};
   std::cin >> limit;
@@ -47,4 +46,6 @@ int main() {
   }
 
   return 0;
+  /*       .
+  ..*/
 }

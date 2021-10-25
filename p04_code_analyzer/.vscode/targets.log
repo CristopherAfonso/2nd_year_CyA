@@ -1,4 +1,6 @@
 make all --print-data-base --no-builtin-variables --no-builtin-rules --question
+make: *** No rule to make target 'all'.  Stop.
+ 
 # GNU Make 4.2.1
 # Built for x86_64-pc-linux-gnu
 # Copyright (C) 1988-2016 Free Software Foundation, Inc.
@@ -6,7 +8,7 @@ make all --print-data-base --no-builtin-variables --no-builtin-rules --question
 # This is free software: you are free to change and redistribute it.
 # There is NO WARRANTY, to the extent permitted by law.
 
-# Make data base, printed on Sat Oct 23 16:48:39 2021
+# Make data base, printed on Mon Oct 25 10:09:52 2021
 
 # Variables
 
@@ -63,7 +65,7 @@ LC_NAME = C.UTF-8
 # environment
 VSCODE_CWD = /home/usuario
 # environment
-SSH_CONNECTION = 10.20.50.36 59878 10.6.129.155 22
+SSH_CONNECTION = 10.150.90.117 52956 10.6.129.155 22
 # environment
 PATH = /home/usuario/.vscode-server/bin/6cba118ac49a1b88332f312a8f67186f7f3c1643/bin:/home/usuario/.vscode-server/bin/6cba118ac49a1b88332f312a8f67186f7f3c1643/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/snap/bin
 # environment
@@ -73,7 +75,7 @@ VSCODE_LOG_STACK = false
 # environment
 LC_NUMERIC = C.UTF-8
 # environment
-VSCODE_IPC_HOOK_CLI = /run/user/1000/vscode-ipc-2b180793-d47d-4f8f-a7e2-db89286f3cb4.sock
+VSCODE_IPC_HOOK_CLI = /run/user/1000/vscode-ipc-b6cc9195-9a95-4f87-9a55-3e2622ce6eae.sock
 # default
 .FEATURES := target-specific order-only second-expansion else-if shortest-stem undefine oneshell archives jobserver output-sync check-symlink load
 # environment
@@ -115,7 +117,7 @@ SHLVL = 1
 # makefile (from 'Makefile', line 16)
 CC = g++
 # environment
-XDG_SESSION_ID = 145
+XDG_SESSION_ID = 1
 # environment
 USER = usuario
 # environment
@@ -137,7 +139,7 @@ MAKEFLAGS = pqrR
 # environment
 MFLAGS = -pqrR
 # environment
-SSH_CLIENT = 10.20.50.36 59878 22
+SSH_CLIENT = 10.150.90.117 52956 22
 # automatic
 +D = $(patsubst %/,%,$(dir $+))
 # environment
@@ -185,9 +187,9 @@ MOTD_SHOWN = pam
 
 # Directories
 
-# . (device 64768, inode 659946): 10 files, no impossibilities.
+# . (device 64768, inode 659946): 12 files, no impossibilities.
 
-# 10 files, no impossibilities in 1 directories.
+# 12 files, no impossibilities in 1 directories.
 
 # Implicit Rules
 
@@ -253,14 +255,12 @@ clean:
 
 # No general ('VPATH' variable) search path.
 
-# strcache buffers: 1 (0) / strings = 18 / storage = 215 B / avg = 11 B
-# current buf: size = 8162 B / used = 215 B / count = 18 / avg = 11 B
+# strcache buffers: 1 (0) / strings = 20 / storage = 240 B / avg = 12 B
+# current buf: size = 8162 B / used = 240 B / count = 20 / avg = 12 B
 
-# strcache performance: lookups = 28 / hit rate = 35%
+# strcache performance: lookups = 30 / hit rate = 33%
 # hash-table stats:
-# Load=18/8192=0%, Rehash=0, Collisions=1/28=4%
-# Finished Make data base on Sat Oct 23 16:48:39 2021
+# Load=20/8192=0%, Rehash=0, Collisions=1/30=3%
+# Finished Make data base on Mon Oct 25 10:09:52 2021
 
- 
-make: *** No rule to make target 'all'.  Stop.
  
