@@ -6,7 +6,7 @@ make all --print-data-base --no-builtin-variables --no-builtin-rules --question
 # This is free software: you are free to change and redistribute it.
 # There is NO WARRANTY, to the extent permitted by law.
 
-# Make data base, printed on Tue Oct 26 07:32:35 2021
+# Make data base, printed on Wed Oct 27 23:28:05 2021
 
 # Variables
 
@@ -17,7 +17,7 @@ make all --print-data-base --no-builtin-variables --no-builtin-rules --question
 # default
 .SHELLFLAGS := -c
 # makefile (from 'Makefile', line 19)
-OBJ = main_code_analyzer.o analyzer_cc_class.o 
+OBJ = alphabet_class.o dfa_dna_class.o set_status_class.o trans_func_class.o main_dna_sequencer.o
 # environment
 XDG_SESSION_CLASS = user
 # environment
@@ -35,7 +35,7 @@ VSCODE_LOG_NATIVE = false
 # default
 MAKE_VERSION := 4.2.1
 # makefile
-CURDIR := /home/usuario/2nd_year_CyA/p04_code_analyzer
+CURDIR := /home/usuario/2nd_year_CyA/p05_dna_sequencer
 # makefile
 SHELL = /bin/sh
 # environment
@@ -43,7 +43,7 @@ VSCODE_NLS_CONFIG = {"locale":"en","availableLanguages":{}}
 # environment
 _ = /home/usuario/.vscode-server/bin/6cba118ac49a1b88332f312a8f67186f7f3c1643/node
 # makefile (from 'Makefile', line 17)
-CFLAGS = -I -Weffc++ -Wall -g   
+CFLAGS = -I -Weffc++ -Wall -g
 # makefile (from 'Makefile', line 1)
 MAKEFILE_LIST :=  Makefile
 # 'override' directive
@@ -63,7 +63,7 @@ LC_NAME = C.UTF-8
 # environment
 VSCODE_CWD = /home/usuario
 # environment
-SSH_CONNECTION = 10.150.90.117 40868 10.6.129.155 22
+SSH_CONNECTION = 10.20.52.156 44364 10.6.129.155 22
 # environment
 PATH = /home/usuario/.vscode-server/bin/6cba118ac49a1b88332f312a8f67186f7f3c1643/bin:/home/usuario/.vscode-server/bin/6cba118ac49a1b88332f312a8f67186f7f3c1643/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/snap/bin
 # environment
@@ -73,7 +73,7 @@ VSCODE_LOG_STACK = false
 # environment
 LC_NUMERIC = C.UTF-8
 # environment
-VSCODE_IPC_HOOK_CLI = /run/user/1000/vscode-ipc-f0b32435-f236-434c-8a7e-00f0ba0adc41.sock
+VSCODE_IPC_HOOK_CLI = /run/user/1000/vscode-ipc-3001f824-b850-4b84-8136-d0381659775b.sock
 # default
 .FEATURES := target-specific order-only second-expansion else-if shortest-stem undefine oneshell archives jobserver output-sync check-symlink load
 # environment
@@ -83,7 +83,7 @@ LS_COLORS =
 # environment
 VSCODE_PIPE_LOGGING = true
 # environment
-PWD = /home/usuario/2nd_year_CyA/p04_code_analyzer
+PWD = /home/usuario/2nd_year_CyA/p05_dna_sequencer
 # default
 .LOADED := 
 # automatic
@@ -121,7 +121,7 @@ USER = usuario
 # environment
 LC_MONETARY = C.UTF-8
 # makefile
-.DEFAULT_GOAL := main_code_analyzer
+.DEFAULT_GOAL := main_dna_sequencer
 # automatic
 %D = $(patsubst %/,%,$(dir $%))
 # environment
@@ -137,7 +137,7 @@ MAKEFLAGS = pqrR
 # environment
 MFLAGS = -pqrR
 # environment
-SSH_CLIENT = 10.150.90.117 40868 22
+SSH_CLIENT = 10.20.52.156 44364 22
 # automatic
 +D = $(patsubst %/,%,$(dir $+))
 # environment
@@ -157,7 +157,7 @@ LC_ALL = C
 # environment
 LC_PAPER = C.UTF-8
 # makefile (from 'Makefile', line 18)
-DEPS = analyzer_cc_class.h
+DEPS = alphabet_class.h dfa_dna_class.h set_status_class.h trans_func_class.h
 # default
 SUFFIXES := 
 # default
@@ -185,13 +185,13 @@ MOTD_SHOWN = pam
 
 # Directories
 
-# . (device 64768, inode 659946): 12 files, no impossibilities.
+# . (device 64768, inode 525397): 13 files, no impossibilities.
 
-# 12 files, no impossibilities in 1 directories.
+# 13 files, no impossibilities in 1 directories.
 
 # Implicit Rules
 
-%.o: %.cc analyzer_cc_class.h
+%.o: %.cc alphabet_class.h dfa_dna_class.h set_status_class.h trans_func_class.h
 #  recipe to execute (from 'Makefile', line 22):
 		$(CC) -c -o $@ $< $(CFLAGS)
 
@@ -200,17 +200,10 @@ MOTD_SHOWN = pam
 # Files
 
 # Not a target:
-main_code_analyzer.o:
+alphabet_class.o:
 #  Implicit rule search has not been done.
 #  Modification time never checked.
 #  File has not been updated.
-
-main_code_analyzer: main_code_analyzer.o analyzer_cc_class.o
-#  Implicit rule search has not been done.
-#  Modification time never checked.
-#  File has not been updated.
-#  recipe to execute (from 'Makefile', line 25):
-		$(CC) -o $@ $^ $(CFLAGS)
 
 # Not a target:
 all:
@@ -220,20 +213,33 @@ all:
 #  File has not been updated.
 
 # Not a target:
-Makefile:
-#  Implicit rule search has been done.
-#  Last modified 2021-10-23 16:48:25.6607077
-#  File has been updated.
-#  Successfully updated.
-
-# Not a target:
-.DEFAULT:
+trans_func_class.o:
 #  Implicit rule search has not been done.
 #  Modification time never checked.
 #  File has not been updated.
 
 # Not a target:
-analyzer_cc_class.o:
+Makefile:
+#  Implicit rule search has been done.
+#  Last modified 2021-10-27 23:27:52.702055628
+#  File has been updated.
+#  Successfully updated.
+
+# Not a target:
+main_dna_sequencer.o:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+
+main_dna_sequencer: alphabet_class.o dfa_dna_class.o set_status_class.o trans_func_class.o main_dna_sequencer.o
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+#  recipe to execute (from 'Makefile', line 25):
+		$(CC) -o $@ $^ $(CFLAGS)
+
+# Not a target:
+.DEFAULT:
 #  Implicit rule search has not been done.
 #  Modification time never checked.
 #  File has not been updated.
@@ -245,21 +251,33 @@ clean:
 #  recipe to execute (from 'Makefile', line 28):
 		rm -rf *.o
 
+# Not a target:
+set_status_class.o:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+
+# Not a target:
+dfa_dna_class.o:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+
 # files hash-table stats:
-# Load=8/1024=1%, Rehash=0, Collisions=0/20=0%
+# Load=11/1024=1%, Rehash=0, Collisions=0/26=0%
 # VPATH Search Paths
 
 # No 'vpath' search paths.
 
 # No general ('VPATH' variable) search path.
 
-# strcache buffers: 1 (0) / strings = 20 / storage = 240 B / avg = 12 B
-# current buf: size = 8162 B / used = 240 B / count = 20 / avg = 12 B
+# strcache buffers: 1 (0) / strings = 27 / storage = 371 B / avg = 13 B
+# current buf: size = 8162 B / used = 371 B / count = 27 / avg = 13 B
 
-# strcache performance: lookups = 30 / hit rate = 33%
+# strcache performance: lookups = 37 / hit rate = 27%
 # hash-table stats:
-# Load=20/8192=0%, Rehash=0, Collisions=1/30=3%
-# Finished Make data base on Tue Oct 26 07:32:35 2021
+# Load=27/8192=0%, Rehash=0, Collisions=1/37=3%
+# Finished Make data base on Wed Oct 27 23:28:05 2021
 
  
 make: *** No rule to make target 'all'.  Stop.

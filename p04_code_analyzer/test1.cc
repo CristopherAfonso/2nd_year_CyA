@@ -25,9 +25,9 @@ int Factorial(int number) {
   switch(number) {
     case 0:
     case 1:
-      return 1;
+      
     
-    default:
+    default: return false;
       int factorial = 1;
       for(int i = 1; i <= number; ++i) {
         factorial *= i;
@@ -46,6 +46,4 @@ int main() {
   }
 
   return 0;
-  /*       .
-  ..*/
 }

@@ -52,15 +52,17 @@ AnalyzerCC::AnalyzerCC(const std::string& kFileName, std::ifstream& in_file) {
   std::smatch loops;
   std::smatch comments_one_line;
   std::smatch comments_multiline;
+  //Modificacion
+  std::smatch vec_returns;
 
   for(int i{0}; i < int(whole_file.size()); ++i) {
 
     //Codigo para almacenar la descripcion
-    if(more_gen_descrip) { //si todavia queda comentario por leer, se entra
-      if(regex_match(whole_file[i], gen_descrip_end)) {
+    if (more_gen_descrip) { //si todavia queda comentario por leer, se entra
+      if (regex_match(whole_file[i], gen_descrip_end)) {
         //si ha aparecido un '#', entonces ya no hay descripcion general
         more_gen_descrip = false;
-      }else {
+      } else {
         //si la linea esta en blanco, se omite, no es relevante
         if(!regex_match(whole_file[i], std::regex("^\\s*$"))) {
           //si es la primera vez que se entra, se establece la linea inicial
@@ -121,6 +123,14 @@ AnalyzerCC::AnalyzerCC(const std::string& kFileName, std::ifstream& in_file) {
             ++loops_while_;
           }
         }
+
+        //Modificacion
+        if(regex_search(whole_file[i], vec_returns, 
+           std::regex("^\\s*?\\w*?.?\\s*?(return)\\s*(.*?)\\s*;\\s*$"))) {
+          vec_ret_line_.emplace_back(std::to_string(i + 1));
+          vec_ret_body_.emplace_back(vec_returns[2].str());
+        }
+
       }
 
       //si hay un int main() se torna true el valor de la clase
@@ -144,6 +154,7 @@ AnalyzerCC::AnalyzerCC(const std::string& kFileName, std::ifstream& in_file) {
       }
 
       //Codigo para almacenar comentarios multilinea del tipo /*...\n...*/
+      //Si ya estoy dentro de un comentario multilinea, y es el final, capto hasta el final
       if(regex_search(whole_file[i], comments_multiline,
          std::regex("^(.*?\\*/).*$")) && in_comment_multiline) {
         ++comm_end;
@@ -152,12 +163,14 @@ AnalyzerCC::AnalyzerCC(const std::string& kFileName, std::ifstream& in_file) {
                                     std::to_string(comm_end));
         in_comment_multiline = false;
       }
-
+      //Si estoy dentro de un comentario multilinea, lo capto
       if(in_comment_multiline) {
         ++comm_end;
         vec_comm_body_.back() += whole_file[i] + '\n';
       }
 
+      //si no estoy dentro de un comentario multilina y capto el inicio
+      //pillo el inicio solo
       if(regex_search(whole_file[i], comments_multiline, 
          std::regex("^.*?(/\\*.*)$")) && (!in_comment_multiline)) {
         comm_init = i + 1;
@@ -228,11 +241,20 @@ std::ostream& operator<<(std::ostream& out, const AnalyzerCC& File) {
       out << "ERROR: algo ha ido mal al detectar el tipo de bucle";
       break;
     }
-    out << '\n';
 
   }else {
     out << "\nAlgo ha ido mal al guardar las lineas de los bucles\n";
   }
+  //Modificacion en clase
+  if (File.vec_ret_line_.size() == File.vec_ret_body_.size()) {
+    for (int i{0}; i < int(File.vec_ret_line_.size()); ++i) {
+      out << "\n[Line " << File.vec_ret_line_.at(i) << "] ";
+      out << "RETURN: " << File.vec_ret_body_.at(i);
+    }
+  }else {
+    out << "\nAlgo ha ido mal al guardar las lineas de los returns\n";
+  }
+  out << '\n';
 
   out << "\nMAIN: ";
   if(File.is_it_main_) {

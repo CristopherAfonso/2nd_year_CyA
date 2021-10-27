@@ -26,13 +26,12 @@ VARIABLES: NumInt: 1, NumDouble: 0
 STATEMENTS: NumFor: 2, NumWhile: 0
 [Line 32] LOOP: for
 [Line 44] LOOP: for
+[Line 30] RETURN: false
+[Line 36] RETURN: factorial
+[Line 48] RETURN: 0
 
 MAIN: True
 
 COMMENTS: 
 [Line 1-18] DESCRIPTION
 [Line 23] // Returns the factorial of the argument
-[Line 49-50] 
-/*       .
-  ..*/
-

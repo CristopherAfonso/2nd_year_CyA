@@ -58,6 +58,10 @@ class AnalyzerCC {
   std::vector<std::string> vec_comm_line_;
   std::vector<std::string> vec_comm_body_;
 
+  //Modificacion en aula, ahora el programa debe guardar los returns
+  std::vector<std::string> vec_ret_line_;
+  std::vector<std::string> vec_ret_body_;
+
 };
 
 #endif
