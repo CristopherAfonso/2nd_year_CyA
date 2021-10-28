@@ -22,6 +22,11 @@
 #include <iostream>
 #include <vector>
 
-
+class SetStatus {
+ public:
+  
+ private:
+  
+};
 
 #endif

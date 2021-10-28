@@ -21,7 +21,24 @@
 
 #include <iostream>
 #include <set>
+#include <string>
 
+class Alphabet {
+ public:
+  Alphabet(); // Constructor por defecto
+  // Constructor para analizar cadenas de ADN
+  Alphabet(const std::string& name, char& A, char& T, char& G, char& C); 
+  Alphabet(const Alphabet& alphabet); // Constructor de copia
 
+  // Funciones de la clase
+  // Comprueba si todos los simbolos de la cadena estan en el alfabeto
+  bool IsItInAlphabet(const std::string& chain);
+  friend std::ostream& operator<<(std::ostream& out, const Alphabet& alphabet);
+
+ private:
+  // Nombre del alfabeto, para aclarar en el operador<< que simbolos usamos
+  std::string name_; 
+  std::set<char> alphabet_;
+};
 
 #endif
