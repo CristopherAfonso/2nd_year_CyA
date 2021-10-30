@@ -6,7 +6,7 @@ make all --print-data-base --no-builtin-variables --no-builtin-rules --question
 # This is free software: you are free to change and redistribute it.
 # There is NO WARRANTY, to the extent permitted by law.
 
-# Make data base, printed on Thu Oct 28 17:19:50 2021
+# Make data base, printed on Sat Oct 30 11:35:44 2021
 
 # Variables
 
@@ -63,7 +63,7 @@ LC_NAME = C.UTF-8
 # environment
 VSCODE_CWD = /home/usuario
 # environment
-SSH_CONNECTION = 10.20.53.25 50570 10.6.129.155 22
+SSH_CONNECTION = 10.20.53.228 38670 10.6.129.155 22
 # environment
 PATH = /home/usuario/.vscode-server/bin/6cba118ac49a1b88332f312a8f67186f7f3c1643/bin:/home/usuario/.vscode-server/bin/6cba118ac49a1b88332f312a8f67186f7f3c1643/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/snap/bin
 # environment
@@ -73,7 +73,7 @@ VSCODE_LOG_STACK = false
 # environment
 LC_NUMERIC = C.UTF-8
 # environment
-VSCODE_IPC_HOOK_CLI = /run/user/1000/vscode-ipc-3b02851b-1883-4e01-94aa-a293318d7c92.sock
+VSCODE_IPC_HOOK_CLI = /run/user/1000/vscode-ipc-6fa2165d-f279-408a-93c0-31b15678f67c.sock
 # default
 .FEATURES := target-specific order-only second-expansion else-if shortest-stem undefine oneshell archives jobserver output-sync check-symlink load
 # environment
@@ -115,7 +115,7 @@ SHLVL = 1
 # makefile (from 'Makefile', line 16)
 CC = g++
 # environment
-XDG_SESSION_ID = 32
+XDG_SESSION_ID = 33
 # environment
 USER = usuario
 # environment
@@ -137,7 +137,7 @@ MAKEFLAGS = pqrR
 # environment
 MFLAGS = -pqrR
 # environment
-SSH_CLIENT = 10.20.53.25 50570 22
+SSH_CLIENT = 10.20.53.228 38670 22
 # automatic
 +D = $(patsubst %/,%,$(dir $+))
 # environment
@@ -277,7 +277,7 @@ dfa_dna_class.o:
 # strcache performance: lookups = 38 / hit rate = 28%
 # hash-table stats:
 # Load=27/8192=0%, Rehash=0, Collisions=1/38=3%
-# Finished Make data base on Thu Oct 28 17:19:50 2021
+# Finished Make data base on Sat Oct 30 11:35:44 2021
 
  
 make: *** No rule to make target 'all'.  Stop.

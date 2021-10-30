@@ -23,18 +23,21 @@
 // 28/10/2021 - He creado el contenido de la clase, 3 constructores, dos
 //            funciones, dos atributos privados y he escrito el codigo de
 //            los metodos
+// 30/10/2021 - He terminado la clase y sus metodos
 
 #include "alphabet_class.h"
 
-Alphabet::Alphabet() : name_("Alfabeto Sin Nombre"), alphabet_() {}
+Alphabet::Alphabet() {
+  name_ = "Alfabeto Sin Nombre";
+}
 
 // Constructor para alfabetos de cadenas de ADN
-Alphabet::Alphabet(const std::string& name, char& A, char& T, char& G, char& C) 
+Alphabet::Alphabet(const std::string& name, char& A, char& C, char& G, char& T) 
     : name_("Alfabeto " + name), alphabet_() {
   alphabet_.insert(A);
-  alphabet_.insert(T);
-  alphabet_.insert(G);
   alphabet_.insert(C);
+  alphabet_.insert(G);
+  alphabet_.insert(T);
 }
 
 Alphabet::Alphabet(const Alphabet& alphabet) 
@@ -44,7 +47,7 @@ Alphabet::Alphabet(const Alphabet& alphabet)
 bool Alphabet::IsItInAlphabet(const std::string& chain) {
   bool result{true};
   bool aux{false}; // Nos dice si el caracter actual está contenido 
-  for (int i{0}; i < chain.size(); ++i) {
+  for (size_t i{0}; i < chain.size(); ++i) {
     aux = false;
     for (std::set<char>::iterator j{alphabet_.begin()}; j != alphabet_.end();
          ++j) {
@@ -61,14 +64,25 @@ bool Alphabet::IsItInAlphabet(const std::string& chain) {
   return result;
 }
 
-std::ostream& operator<<(std::ostream& out, const Alphabet& alphabet) {
-  out << alphabet.name_ + " = {";
-  std::string aux{""};
-  for (std::set<char>::iterator i{alphabet.alphabet_.begin()}; 
-       i != alphabet.alphabet_.end(); ++i) {
-    aux += ' ' + *i + ",";
+std::ostream& operator<<(std::ostream& out, Alphabet& alphabet) {
+  out << alphabet.name_ + " = ";
+  std::string aux{"{"};
+  if (alphabet.alphabet_.size() > 0) {
+    size_t j{0};
+    for (std::set<char>::iterator i{alphabet.alphabet_.begin()}; 
+         j < alphabet.alphabet_.size(); ++i, ++j) {
+      aux = aux + *i + ", ";
+    }
+    aux.pop_back(); // Quitamos la ultima coma y espacio
+    aux.pop_back();
+    out << aux << '}';
+  } else {
+    out << "VOID";
   }
-  aux.pop_back(); // Quitamos la ultima coma
-  out << aux + "}";
+  
   return out;
+}
+
+std::set<char> Alphabet::GetAlphabet() {
+  return alphabet_;
 }

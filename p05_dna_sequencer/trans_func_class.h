@@ -22,6 +22,21 @@
 #include <iostream>
 #include <vector>
 
+#include "alphabet_class.h"
 
+class TransFunc {
+ public:
+  TransFunc(); // Constructor por defecto
+  // Constructor para el DFA
+  TransFunc(const std::vector<std::vector<size_t>>& trans_func, 
+            Alphabet& alphabet);
+  TransFunc(const TransFunc& trans_func); // Constructor de copia
+
+  size_t NextState(const size_t& actual_state, const char& actual_symbol);
+
+ private:
+  std::vector<std::vector<size_t>> trans_func_;
+  std::vector<std::vector<std::string>> conversion_table_;
+};
 
 #endif

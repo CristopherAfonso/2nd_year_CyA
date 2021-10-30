@@ -24,9 +24,19 @@
 
 class SetStatus {
  public:
-  
+  SetStatus(); // Constructor por defecto
+  // Constructor usado para llenar cada posición con su posion relativa en el
+  SetStatus(const size_t& num_status);
+  // Constructor usado para asignarle valores exactos en cada posicion 
+  SetStatus(const std::vector<size_t>& end_status);
+  SetStatus(const SetStatus& set_status); // Constructor de copia
+
+  // Funciones de la clase
+  // Devuelve si el número es parte del conjunto
+  bool IsItAState(const size_t num);
+
  private:
-  
+  std::vector<size_t> set_status_;
 };
 
 #endif
