@@ -177,7 +177,7 @@ int main(int argc, char* argv[]) {
   for (auto i: aux_vec) {
     output_file << i << '\n';
   }
-  
+
   output_file.close(); // Ya hemos terminado de escribir en el archivo
 
   return 0;

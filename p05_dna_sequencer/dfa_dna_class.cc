@@ -128,7 +128,9 @@ std::vector<std::string> DfaDna::AllAcceptedSubstr(const std::string& dna_chain)
             act_state = trans_func_.NextState(act_state, aux_char);
           }
           // Si el estado actual es de aceptación, entonces se añade la
-          // subcadena a la string de retorno
+          // subcadena al vector de retorno, pero antes de añadirla,
+          // comprobamos si la cadena que vamos a añadir, ya está incluida
+          // en el vector, en cuyo caso, no la ponemos, es redundante
           if (aceptation_status_.IsItAState(act_state)) {
             if (result.size() == 0) {
               result.emplace_back(act_substr);
@@ -145,4 +147,52 @@ std::vector<std::string> DfaDna::AllAcceptedSubstr(const std::string& dna_chain)
   }
 
   return result;
+}
+
+std::ostream& operator<<(std::ostream& out, DfaDna& dfa_dna) {
+  out << "Este Autómata Finito Determinista (AFN o DFA) está compuesto por";
+  out << "\nuna colección de 5 elementos:";
+  out << "\n\n1. Un alfabeto de entrada (Sigma):";
+  // Debido a como tengo declarado el método, tengo que crear un objeto de la
+  // clase y mostrar ese, porque no me deja mostrarlo directamente
+  Alphabet show_alphabet(dfa_dna.GetAlphabet());
+  out << "\n   " << show_alphabet; 
+
+  out << "\n\n2. Una colección finita de estados Q:";
+  SetStatus show_all_status(dfa_dna.GetAllStatus());
+  out << "\n   " << show_all_status;
+
+  out << "\n\n3. Un estado inicial 's': " << dfa_dna.GetInitialState();
+
+  out << "\n\n4. Una colección F de estados finales o de aceptación:";
+  SetStatus show_aceptation_status(dfa_dna.GetAceptationStatus());
+  out << "\n   " << show_aceptation_status;
+
+  out << "\n\n5. Una función de transición de estados: Q x (Símb. Alf.) ==> Q";
+  out << "\n   que determina el único estado siguiente para el";
+  out << "\n   par (Qi, simb.) correspondiente al estado actual y la entrada:";
+  TransFunc show_trans_func(dfa_dna.GetTransFunc());
+  out << '\n' << show_trans_func << '\n';
+
+  return out;
+}
+
+Alphabet DfaDna::GetAlphabet() {
+  return alphabet_;
+}
+
+SetStatus DfaDna::GetAllStatus() {
+  return all_status_;
+}
+
+size_t DfaDna::GetInitialState() {
+  return initial_state_;
+}
+
+SetStatus DfaDna::GetAceptationStatus() {
+  return aceptation_status_;
+}
+
+TransFunc DfaDna::GetTransFunc() {
+  return trans_func_;
 }
