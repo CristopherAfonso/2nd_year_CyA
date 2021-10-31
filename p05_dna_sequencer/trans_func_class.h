@@ -32,7 +32,10 @@ class TransFunc {
             Alphabet& alphabet);
   TransFunc(const TransFunc& trans_func); // Constructor de copia
 
+  // Funciones de la clase
   size_t NextState(const size_t& actual_state, const char& actual_symbol);
+  void operator=(const TransFunc& trans_func);
+  friend std::ostream& operator<<(std::ostream& out, TransFunc& trans_func);
 
  private:
   std::vector<std::vector<size_t>> trans_func_;

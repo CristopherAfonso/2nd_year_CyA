@@ -26,3 +26,4 @@ main_dna_sequencer: $(OBJ)
 
 clean: 
 		rm -rf *.o
+		rm -rf *.txt

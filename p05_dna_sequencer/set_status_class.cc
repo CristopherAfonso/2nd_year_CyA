@@ -18,33 +18,34 @@
 //
 // Historial de revisiones
 // 27/10/2021 - Creacion (primera version) del codigo
-//            Solo he creado el archivo, le he puesto el comentario de
-//            cabecera y declarado su include
+//              Solo he creado el archivo, le he puesto el comentario de
+//              cabecera y declarado su include
 // 30/10/2021 - He terminado la clase y sus metodos
 
 #include "set_status_class.h"
 
-SetStatus::SetStatus() = default; 
+SetStatus::SetStatus() 
+    : name_("Conjunto de Estados sin nombre"), set_status_() {}
 
-SetStatus::SetStatus(const size_t& num_status) {
+SetStatus::SetStatus(const std::string& name, const size_t& num_status) 
+    : name_("Conjunto de Estados " + name), set_status_() {
   set_status_.reserve(num_status); // Reservamos el espacio una vez
   for (size_t i{0}; i < num_status; ++i) {
-    set_status_.at(i) = i; // Metemos el valor de la posicion
+    set_status_.emplace_back(i); // Metemos el valor de la posicion
   }
 }
 
-SetStatus::SetStatus(const std::vector<size_t>& end_status) {
-  set_status_ = end_status;
-}
+SetStatus::SetStatus(const std::string& name, 
+                     const std::vector<size_t>& end_status)
+    : name_("Conjunto de Estados " + name), set_status_(end_status) {}
 
-SetStatus::SetStatus(const SetStatus& set_status) {
-  set_status_ = set_status.set_status_;
-}
+SetStatus::SetStatus(const SetStatus& set_status) 
+    : name_(set_status.name_), set_status_(set_status.set_status_) {}
 
 bool SetStatus::IsItAState(const size_t num) {
   bool result{false};
-  for (auto actual_position: set_status_) {
-    if (num == actual_position) {
+  for (size_t i{0}; i < set_status_.size(); ++i) {
+    if (num == set_status_[i]) {
       result = true;
       break;
     }
@@ -52,4 +53,23 @@ bool SetStatus::IsItAState(const size_t num) {
   return result;
 }
 
+void SetStatus::operator=(const SetStatus& set_status) {
+  name_ = set_status.name_;
+  set_status_ = set_status.set_status_;
+}
 
+std::ostream& operator<<(std::ostream& out, SetStatus& set_status) {
+  out << set_status.name_ << " = ";
+  if (set_status.set_status_.size() > 0) {
+    std::string aux{"{"};
+    for (size_t i{0}; i < set_status.set_status_.size(); ++i) {
+      aux += std::to_string(set_status.set_status_[i]) + ", ";
+    }
+    aux.pop_back();
+    aux.pop_back();
+    out << aux + "}";
+  } else {
+    out << "{VOID}";
+  }
+  return out;
+}

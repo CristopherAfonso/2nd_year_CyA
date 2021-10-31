@@ -33,9 +33,11 @@
 
 #include "dfa_dna_class.h"
 
+#include <fstream>
+
 // Mensaje principal del programa
 inline void MainMenssage(const std::string& kProgramName, 
-                         const std::string kHelp) {
+                         const std::string& kHelp) {
   std::cout << "Modo de empleo: " << kProgramName << " [CADENA DE ADN] ";
   std::cout << "[NOMBRE FICHERO DE SALIDA]" << std::endl;
   std::cout << "Pruebe '" << kProgramName << " " << kHelp << "' ";
@@ -70,7 +72,7 @@ void InfoMessage(const std::string kProgramName) {
 // Mensaje de error debido a que no hay la cantidad de argumentos esperados por
 // el programa, que son 3
 inline void ErrorMessage(const std::string& kProgramName, 
-                         const std::string kHelp) {
+                         const std::string& kHelp) {
   std::cerr << "Warning!, Faltan/Sobran argumentos para este programa";
   std::cerr << "\nPruebe '" << kProgramName << " " << kHelp << "' ";
   std::cerr << "para más información.\n";
@@ -82,6 +84,30 @@ inline void ErrorFileName(const std::string& kProgramName,
   std::cerr << "Warning!, formato de archivo de salida no aceptado";
   std::cerr << "\nPruebe '" << kProgramName << " " << kHelp << "' ";
   std::cerr << "para más información.\n"; 
+}
+
+inline void ErrorOpenOutputFile(const std::string& kProgramName, 
+                         const std::string& kHelp, 
+                         const std::string& kProgramOutFile) {
+  std::cerr << "Warning!, ha habido un error a la hora de crear el archivo de";
+  std::cerr << "\nsalida llamado \"" << kProgramOutFile << "\", pruebe otro";
+  std::cerr << "\nnombre y intentelo de nuevo.";
+  std::cerr << "\nPruebe '" << kProgramName << " " << kHelp << "' ";
+  std::cerr << "para más información.\n";
+}
+
+void ErrorDNAChain(const std::string& kProgramName, 
+                   const std::string& kHelp, 
+                   const std::string& kProgramDNAChain) {
+  std::cerr << "Warning!, la cadena introducida al programa tiene símbolos";
+  std::cerr << "\ndiferentes a los del alfabeto de una cadena de ADN o es muy";
+  std::cerr << "\npequeña para ser evaluada (tiene logitud 0 o 1), si quiere";
+  std::cerr << "\nque el programa funcione quite los símbolos que sobren y";
+  std::cerr << "\ndeje solo los del alfabeto del ADN y también considere si";
+  std::cerr << "\nsu cadena es muy pequeña, en cuyo caso añadale simbolos";
+  std::cerr << "\ncorrectos para que el programa acepte la cadena.";
+  std::cerr << "\nPruebe '" << kProgramName << " " << kHelp << "' ";
+  std::cerr << "para más información.\n";
 }
 
 int main(int argc, char* argv[]) {
@@ -130,17 +156,29 @@ int main(int argc, char* argv[]) {
     ErrorFileName(kProgramName, kHelp);
     exit(EXIT_FAILURE);
   }
+  
+  DfaDna dfa_dna;
+  // Si la cadena pasada por el usuario no contiene simbolos del alfabeto
+  // DFA, entonces se termina el programa con un mensaje de error
+  if (!dfa_dna.IsItInAlphabet(kProgramDNAChain) || 
+      kProgramDNAChain.size() < 2) {
+    ErrorDNAChain(kProgramName, kHelp, kProgramDNAChain);
+    exit(EXIT_FAILURE);
+  }
 
-  Alphabet a;
-  std::string adn{"adn"};
-  char A{'A'};
-  char C{'C'};
-  char G{'G'};
-  char T{'T'};
-  Alphabet b(adn, A, C, G, T);
-  Alphabet c(b);
+  std::ofstream output_file(kProgramOutFile, std::fstream::out);
+  if (output_file.fail()) { // Si no se puede abrir, se termina el programa
+    ErrorOpenOutputFile(kProgramName, kHelp, kProgramOutFile);
+    exit(EXIT_FAILURE);
+  }
 
-  std::cout << b << std::endl;
+  // Dentro de un vector, le pasamos todas las subcadenas al archivo de salida
+  const std::vector<std::string> aux_vec{dfa_dna.AllAcceptedSubstr(kProgramDNAChain)};
+  for (auto i: aux_vec) {
+    output_file << i << '\n';
+  }
+  
+  output_file.close(); // Ya hemos terminado de escribir en el archivo
 
   return 0;
 }

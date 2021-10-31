@@ -20,22 +20,26 @@
 #define _SET_STATUS_CLASS_
 
 #include <iostream>
+#include <string>
 #include <vector>
 
 class SetStatus {
  public:
   SetStatus(); // Constructor por defecto
   // Constructor usado para llenar cada posición con su posion relativa en el
-  SetStatus(const size_t& num_status);
+  SetStatus(const std::string& name, const size_t& num_status);
   // Constructor usado para asignarle valores exactos en cada posicion 
-  SetStatus(const std::vector<size_t>& end_status);
+  SetStatus(const std::string& name, const std::vector<size_t>& end_status);
   SetStatus(const SetStatus& set_status); // Constructor de copia
 
   // Funciones de la clase
   // Devuelve si el número es parte del conjunto
   bool IsItAState(const size_t num);
+  void operator=(const SetStatus& set_status);
+  friend std::ostream& operator<<(std::ostream& out, SetStatus& set_status);
 
  private:
+  std::string name_;
   std::vector<size_t> set_status_;
 };
 

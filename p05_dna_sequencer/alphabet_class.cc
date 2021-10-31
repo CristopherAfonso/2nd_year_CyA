@@ -18,21 +18,20 @@
 // 
 // Historial de revisiones
 // 27/10/2021 - Creacion (primera version) del codigo
-//            Solo he creado el archivo, le he puesto el comentario de
-//            cabecera y declarado su include
+//              Solo he creado el archivo, le he puesto el comentario de
+//              cabecera y declarado su include
 // 28/10/2021 - He creado el contenido de la clase, 3 constructores, dos
-//            funciones, dos atributos privados y he escrito el codigo de
-//            los metodos
+//              funciones, dos atributos privados y he escrito el codigo de
+//              los metodos
 // 30/10/2021 - He terminado la clase y sus metodos
 
 #include "alphabet_class.h"
 
-Alphabet::Alphabet() {
-  name_ = "Alfabeto Sin Nombre";
-}
+Alphabet::Alphabet() : name_("Alfabeto Sin Nombre"), alphabet_() {}
 
 // Constructor para alfabetos de cadenas de ADN
-Alphabet::Alphabet(const std::string& name, char& A, char& C, char& G, char& T) 
+Alphabet::Alphabet(const std::string& name, 
+                   const char& A, const char& C, const char& G, const char& T)
     : name_("Alfabeto " + name), alphabet_() {
   alphabet_.insert(A);
   alphabet_.insert(C);
@@ -64,6 +63,11 @@ bool Alphabet::IsItInAlphabet(const std::string& chain) {
   return result;
 }
 
+void Alphabet::operator=(const Alphabet& alphabet) {
+  name_ = alphabet.name_;
+  alphabet_ = alphabet.alphabet_;
+}
+
 std::ostream& operator<<(std::ostream& out, Alphabet& alphabet) {
   out << alphabet.name_ + " = ";
   std::string aux{"{"};
@@ -77,7 +81,7 @@ std::ostream& operator<<(std::ostream& out, Alphabet& alphabet) {
     aux.pop_back();
     out << aux << '}';
   } else {
-    out << "VOID";
+    out << "{VOID}";
   }
   
   return out;

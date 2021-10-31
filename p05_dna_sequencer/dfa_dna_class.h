@@ -23,6 +23,21 @@
 #include "set_status_class.h"
 #include "trans_func_class.h"
 
+class DfaDna {
+ public:
+  DfaDna(); // Constructor que usaré
+  DfaDna(const DfaDna& dfa_dna); // constructor de copia
 
+  // Funciones
+  bool IsItInAlphabet(const std::string& dna_chain);
+  std::vector<std::string> AllAcceptedSubstr(const std::string& dna_chain); 
+
+ private:
+  Alphabet alphabet_;
+  SetStatus all_status_;
+  size_t initial_state_;
+  SetStatus aceptation_status_;
+  TransFunc trans_func_;
+};
 
 #endif
