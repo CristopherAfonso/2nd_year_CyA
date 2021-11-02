@@ -39,7 +39,7 @@
 inline void MainMenssage(const std::string& kProgramName, 
                          const std::string& kHelp) {
   std::cout << "Modo de empleo: " << kProgramName << " [CADENA DE ADN] ";
-  std::cout << "[NOMBRE FICHERO DE SALIDA]" << std::endl;
+  std::cout << "[NOMBRE FICHERO DE SALIDA] [NOMBRE FICHERO DE SALIDA]\n";
   std::cout << "Pruebe '" << kProgramName << " " << kHelp << "' ";
   std::cout << "para más información." << std::endl;
 }
@@ -48,8 +48,8 @@ inline void MainMenssage(const std::string& kProgramName,
 void InfoMessage(const std::string kProgramName) {
   std::cout << kProgramName << " es un programa que recibe solo como";
   std::cout << "\nargumentos una cadena de ADN en su segundo argumento y el";
-  std::cout << "\nnombre de un archivo de salida en su tercer argumento.";
-  std::cout << "\n(Solo se admite el formato \".txt\" con uno o más";
+  std::cout << "\nnombre de dos archivo de salida en su tercer  y cuarto ";
+  std::cout << "\nargumento.(Solo se admite el formato \".txt\" con uno o más";
   std::cout << "\ncaracteres a la izquierda del punto de \".txt\").";
   std::cout << "\nCon esas entradas, el programa simula el comportamiento de";
   std::cout << "\nun Autómata Finito Determinista (AFN o DFA), coge la cadena";
@@ -59,7 +59,7 @@ void InfoMessage(const std::string kProgramName) {
   std::cout << "\nes si la subcadena dada, inicia y termina por 'A' o inicia";
   std::cout << "\ny termina por 'T' y tiene una longitud mayor a 2, si cumple";
   std::cout << "\nesas condiciones la subcadena se plasmará en el archivo";
-  std::cout << "\n\".txt\" cuyo nombre elegirá usted en el tercer argumento.";
+  std::cout << "\n\".txt\" primero, las que no irán en el segundo archivo.";
   std::cout << "\n\nUna cadena de ADN solo tiene 4 símbolos en su alfabeto y";
   std::cout << "\nestos son: 'A', 'C', 'G', 'T'.";
   std::cout << "\n\nSi su cadena introducida al programa tiene algún otro";
@@ -131,13 +131,14 @@ int main(int argc, char* argv[]) {
 
   // Si hay más de un parametro, pero su suma no es igual a 3, entonces se
   // termina el programa con un mensaje de error
-  if (argc < 3 || argc > 3) {
+  if (argc < 4 || argc > 4) {
     ErrorMessage(kProgramName, kHelp);
     exit(EXIT_FAILURE);
   }
 
   // Pasamos a string el nombre del archivo de salida
   const std::string kProgramOutFile{argv[2]};
+  const std::string kProgramOutFile2{argv[3]};
   // Analizamos si el tercer argumento tiene extension ".txt", sino es así
   // se termina el programa
   for (int i{int(kProgramOutFile.size() - 1)}, j{0}; (j < 5) && (i >= 0); 
@@ -156,6 +157,23 @@ int main(int argc, char* argv[]) {
     ErrorFileName(kProgramName, kHelp);
     exit(EXIT_FAILURE);
   }
+
+  for (int i{int(kProgramOutFile2.size() - 1)}, j{0}; (j < 5) && (i >= 0); 
+       --i, ++j) { // No uso un Switch porque en cada if tengo dos condiciones
+    // Si kProgramOutFile2 tiene como longitud 4 y contiene ".txt" no se acepta
+    // o si es menor a la longitud de ".txt" que es 4 tampoco
+    if (j == 0 && i <= 3) {
+      ErrorFileName(kProgramName, kHelp);
+      exit(EXIT_FAILURE);
+    }
+
+    if ((kProgramOutFile2[i] == 't') && (j == 0 || j == 2)) continue;
+    if ((kProgramOutFile2[i] == 'x') && (j == 1)) continue;
+    if ((kProgramOutFile2[i] == '.') && (j == 3)) continue;
+    if (j == 4) continue;
+    ErrorFileName(kProgramName, kHelp);
+    exit(EXIT_FAILURE);
+  }
   
   DfaDna dfa_dna;
   // Si la cadena pasada por el usuario no contiene simbolos del alfabeto
@@ -166,19 +184,23 @@ int main(int argc, char* argv[]) {
     exit(EXIT_FAILURE);
   }
 
-  std::ofstream output_file(kProgramOutFile, std::fstream::out);
-  if (output_file.fail()) { // Si no se puede abrir, se termina el programa
+  std::ofstream out_file_accep(kProgramOutFile, std::fstream::out);
+  if (out_file_accep.fail()) { // Si no se puede abrir, se termina el programa
+    ErrorOpenOutputFile(kProgramName, kHelp, kProgramOutFile);
+    exit(EXIT_FAILURE);
+  }
+
+  std::ofstream out_file_rejec(kProgramOutFile2, std::fstream::out);
+  if (out_file_rejec.fail()) { // Si no se puede abrir, se termina el programa
     ErrorOpenOutputFile(kProgramName, kHelp, kProgramOutFile);
     exit(EXIT_FAILURE);
   }
 
   // Dentro de un vector, le pasamos todas las subcadenas al archivo de salida
-  const std::vector<std::string> aux_vec{dfa_dna.AllAcceptedSubstr(kProgramDNAChain)};
-  for (auto i: aux_vec) {
-    output_file << i << '\n';
-  }
+  dfa_dna.EvalSubstr(kProgramDNAChain, out_file_accep, out_file_rejec);
 
-  output_file.close(); // Ya hemos terminado de escribir en el archivo
+  out_file_accep.close(); // Ya hemos terminado de escribir en los archivo
+  out_file_rejec.close();
 
   return 0;
 }

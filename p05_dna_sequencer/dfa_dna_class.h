@@ -30,7 +30,9 @@ class DfaDna {
 
   // Funciones
   bool IsItInAlphabet(const std::string& dna_chain);
-  std::vector<std::string> AllAcceptedSubstr(const std::string& dna_chain);
+  void EvalSubstr(const std::string& dna_chain, 
+                           std::ostream& output_accepted, 
+                           std::ostream& output_rejected);
   friend std::ostream& operator<<(std::ostream& out, DfaDna& dfa_dna);
 
   // Getters

@@ -94,18 +94,20 @@ bool DfaDna::IsItInAlphabet(const std::string& dna_chain) {
   return alphabet_.IsItInAlphabet(dna_chain);
 }
 
-std::vector<std::string> DfaDna::AllAcceptedSubstr(const std::string& dna_chain) {
-  std::vector<std::string> result;
+void DfaDna::EvalSubstr(const std::string& dna_chain, 
+                           std::ostream& output_accepted, 
+                           std::ostream& output_rejected) {
+  std::vector<std::string> vec_accepted;
   // Este if sería igual al if del main_dna_sequencer.cc donde miro si la
   // cadena tiene simbolos desconocidos, pero lo hago dos veces, una aquí
   // y otra allí porque así me aseguro de que nunca se le pase una cadena
   // invalida, por si en el futuro en una futura modificación del programa
   // reusara esta función y lo usara en un lugar donde no tenga el if del main
   if (!alphabet_.IsItInAlphabet(dna_chain)) {
-    result.emplace_back("Error al leer la cadena de ADN, tiene simbolos desconocidos");
+    vec_accepted.emplace_back("Error de lectura, hay simbolos desconocidos");
   } else {
     if (dna_chain.size() < 2) {
-      result.emplace_back("Error, cadena muy pequeña para ser evaluada");
+      vec_accepted.emplace_back("Error, cadena muy pequeña para ser evaluada");
     } else {
       std::string act_substr{""};
       size_t act_state{initial_state_};
@@ -132,12 +134,27 @@ std::vector<std::string> DfaDna::AllAcceptedSubstr(const std::string& dna_chain)
           // comprobamos si la cadena que vamos a añadir, ya está incluida
           // en el vector, en cuyo caso, no la ponemos, es redundante
           if (aceptation_status_.IsItAState(act_state)) {
-            if (result.size() == 0) {
-              result.emplace_back(act_substr);
+            if (vec_accepted.size() == 0) {
+              vec_accepted.emplace_back(act_substr);
+              output_accepted << act_substr << '\n';
             } else {
-              for (size_t i{0}; i < result.size(); ++i) {
-                if (act_substr == result[i]) break;
-                if (i == (result.size() - 1)) result.emplace_back(act_substr);
+              for (size_t i{0}; i < vec_accepted.size(); ++i) {
+                if (act_substr == vec_accepted[i]) break;
+                if (i == (vec_accepted.size() - 1)) {
+                  vec_accepted.emplace_back(act_substr);
+                  output_accepted << act_substr << '\n';
+                }
+              }
+            }
+          } else {
+            if (vec_accepted.size() == 0) {
+              output_rejected << act_substr << '\n';
+            } else {
+              for (size_t i{0}; i < vec_accepted.size(); ++i) {
+                if (act_substr == vec_accepted[i]) break;
+                if (i == (vec_accepted.size() - 1)) {
+                  output_rejected << act_substr << '\n';
+                }
               }
             }
           }
@@ -146,7 +163,6 @@ std::vector<std::string> DfaDna::AllAcceptedSubstr(const std::string& dna_chain)
     }
   }
 
-  return result;
 }
 
 std::ostream& operator<<(std::ostream& out, DfaDna& dfa_dna) {

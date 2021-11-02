@@ -1,6 +1,4 @@
 make all --print-data-base --no-builtin-variables --no-builtin-rules --question
-make: *** No rule to make target 'all'.  Stop.
- 
 # GNU Make 4.2.1
 # Built for x86_64-pc-linux-gnu
 # Copyright (C) 1988-2016 Free Software Foundation, Inc.
@@ -8,7 +6,7 @@ make: *** No rule to make target 'all'.  Stop.
 # This is free software: you are free to change and redistribute it.
 # There is NO WARRANTY, to the extent permitted by law.
 
-# Make data base, printed on Sun Oct 31 14:14:39 2021
+# Make data base, printed on Tue Nov  2 08:33:02 2021
 
 # Variables
 
@@ -65,7 +63,7 @@ LC_NAME = C.UTF-8
 # environment
 VSCODE_CWD = /home/usuario
 # environment
-SSH_CONNECTION = 10.20.50.44 49036 10.6.129.155 22
+SSH_CONNECTION = 10.150.90.117 56426 10.6.129.155 22
 # environment
 PATH = /home/usuario/.vscode-server/bin/6cba118ac49a1b88332f312a8f67186f7f3c1643/bin:/home/usuario/.vscode-server/bin/6cba118ac49a1b88332f312a8f67186f7f3c1643/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/snap/bin
 # environment
@@ -75,7 +73,7 @@ VSCODE_LOG_STACK = false
 # environment
 LC_NUMERIC = C.UTF-8
 # environment
-VSCODE_IPC_HOOK_CLI = /run/user/1000/vscode-ipc-617220c0-e4e6-4d5f-ae5c-2224680b6899.sock
+VSCODE_IPC_HOOK_CLI = /run/user/1000/vscode-ipc-d9e9cc69-4b38-4d96-afb3-fcc6b8617394.sock
 # default
 .FEATURES := target-specific order-only second-expansion else-if shortest-stem undefine oneshell archives jobserver output-sync check-symlink load
 # environment
@@ -117,7 +115,7 @@ SHLVL = 1
 # makefile (from 'Makefile', line 16)
 CC = g++
 # environment
-XDG_SESSION_ID = 65
+XDG_SESSION_ID = 1
 # environment
 USER = usuario
 # environment
@@ -139,7 +137,7 @@ MAKEFLAGS = pqrR
 # environment
 MFLAGS = -pqrR
 # environment
-SSH_CLIENT = 10.20.50.44 49036 22
+SSH_CLIENT = 10.150.90.117 56426 22
 # automatic
 +D = $(patsubst %/,%,$(dir $+))
 # environment
@@ -280,6 +278,8 @@ dfa_dna_class.o:
 # strcache performance: lookups = 38 / hit rate = 28%
 # hash-table stats:
 # Load=27/8192=0%, Rehash=0, Collisions=1/38=3%
-# Finished Make data base on Sun Oct 31 14:14:39 2021
+# Finished Make data base on Tue Nov  2 08:33:02 2021
 
+ 
+make: *** No rule to make target 'all'.  Stop.
  
