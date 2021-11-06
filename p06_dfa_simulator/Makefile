@@ -25,8 +25,8 @@
 
 CC = g++
 CFLAGS = -I -Weffc++ -Wall -g
-DEPS = alphabet.h chain.h dfa.h set_status.h trans_func.h
-OBJ = main_dfa_simulator.o alphabet.o chain.o dfa.o set_status.o trans_func.o
+DEPS = alphabet.h chain.h dfa.h set_status.h symbol.h trans_func.h
+OBJ = main_dfa_simulator.o alphabet.o chain.o dfa.o set_status.o symbol.o trans_func.o
 
 %.o: %.cc $(DEPS)
 		$(CC) -c -o $@ $< $(CFLAGS)
