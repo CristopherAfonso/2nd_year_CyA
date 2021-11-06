@@ -6,7 +6,7 @@ make all --print-data-base --no-builtin-variables --no-builtin-rules --question
 # This is free software: you are free to change and redistribute it.
 # There is NO WARRANTY, to the extent permitted by law.
 
-# Make data base, printed on Sat Nov  6 12:43:55 2021
+# Make data base, printed on Sat Nov  6 21:19:32 2021
 
 # Variables
 
@@ -17,7 +17,7 @@ make all --print-data-base --no-builtin-variables --no-builtin-rules --question
 # default
 .SHELLFLAGS := -c
 # makefile (from 'Makefile', line 29)
-OBJ = main_dfa_simulator.o alphabet.o chain.o dfa.o set_status.o trans_func.o
+OBJ = main_dfa_simulator.o alphabet.o chain.o dfa.o set_status.o symbol.o trans_func.o
 # environment
 XDG_SESSION_CLASS = user
 # environment
@@ -73,7 +73,7 @@ VSCODE_LOG_STACK = false
 # environment
 LC_NUMERIC = C.UTF-8
 # environment
-VSCODE_IPC_HOOK_CLI = /run/user/1000/vscode-ipc-c8c189ee-bdaa-4a63-b459-80369a28a446.sock
+VSCODE_IPC_HOOK_CLI = /run/user/1000/vscode-ipc-4625c208-116a-48af-a6f7-a3e23bf0a46a.sock
 # default
 .FEATURES := target-specific order-only second-expansion else-if shortest-stem undefine oneshell archives jobserver output-sync check-symlink load
 # environment
@@ -159,7 +159,7 @@ LC_ALL = C
 # environment
 LC_PAPER = C.UTF-8
 # makefile (from 'Makefile', line 28)
-DEPS = alphabet.h chain.h dfa.h set_status.h trans_func.h
+DEPS = alphabet.h chain.h dfa.h set_status.h symbol.h trans_func.h
 # default
 SUFFIXES := 
 # default
@@ -187,19 +187,25 @@ MOTD_SHOWN = pam
 
 # Directories
 
-# . (device 64768, inode 658017): 16 files, no impossibilities.
+# . (device 64768, inode 658017): 18 files, no impossibilities.
 
-# 16 files, no impossibilities in 1 directories.
+# 18 files, no impossibilities in 1 directories.
 
 # Implicit Rules
 
-%.o: %.cc alphabet.h chain.h dfa.h set_status.h trans_func.h
+%.o: %.cc alphabet.h chain.h dfa.h set_status.h symbol.h trans_func.h
 #  recipe to execute (from 'Makefile', line 32):
 		$(CC) -c -o $@ $< $(CFLAGS)
 
 # 1 implicit rules, 0 (0.0%) terminal.
 
 # Files
+
+# Not a target:
+symbol.o:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
 
 # Not a target:
 set_status.o:
@@ -217,7 +223,7 @@ all:
 # Not a target:
 Makefile:
 #  Implicit rule search has been done.
-#  Last modified 2021-11-06 01:35:57.115491774
+#  Last modified 2021-11-06 16:43:16.487633084
 #  File has been updated.
 #  Successfully updated.
 
@@ -245,7 +251,7 @@ main_dfa_simulator.o:
 #  Modification time never checked.
 #  File has not been updated.
 
-main_dfa_simulator: main_dfa_simulator.o alphabet.o chain.o dfa.o set_status.o trans_func.o
+main_dfa_simulator: main_dfa_simulator.o alphabet.o chain.o dfa.o set_status.o symbol.o trans_func.o
 #  Implicit rule search has not been done.
 #  Modification time never checked.
 #  File has not been updated.
@@ -272,22 +278,21 @@ clean:
 		rm -rf *.o
 
 # files hash-table stats:
-# Load=12/1024=1%, Rehash=0, Collisions=0/28=0%
+# Load=13/1024=1%, Rehash=0, Collisions=0/30=0%
 # VPATH Search Paths
 
 # No 'vpath' search paths.
 
 # No general ('VPATH' variable) search path.
 
-# strcache buffers: 1 (0) / strings = 30 / storage = 312 B / avg = 10 B
+# strcache buffers: 1 (0) / strings = 33 / storage = 340 B / avg = 10 B
+# current buf: size = 8162 B / used = 340 B / count = 33 / avg = 10 B
+
+# strcache performance: lookups = 46 / hit rate = 28%
+# hash-table stats:
+# Load=33/8192=0%, Rehash=0, Collisions=2/46=4%
+# Finished Make data base on Sat Nov  6 21:19:32 2021
+
  
 make: *** No rule to make target 'all'.  Stop.
- 
-# current buf: size = 8162 B / used = 312 B / count = 30 / avg = 10 B
-
-# strcache performance: lookups = 42 / hit rate = 28%
-# hash-table stats:
-# Load=30/8192=0%, Rehash=0, Collisions=2/42=5%
-# Finished Make data base on Sat Nov  6 12:43:55 2021
-
  

@@ -12,11 +12,10 @@
  * @file dfa.h 
  * @brief Donde se aloja la declaración de la clase Dfa y la declaracion de sus
  * metodos. La clase Dfa contiene 5 atributos privados y son:
- * Un objeto Alphabet, dos SetStatus, uno TransFunc, y un const size_t, este 
- * último el const size_t, representará el estado inicial del Dfa, a un objeto
- * Dfa, hay que pasarle uno Chain, y el Dfa analizará al objeto Chain y
- * devolverá un resultado diciendo si ha aceptado al objeto Chain o lo ha
- * rechazado.
+ * Un objeto Alphabet, dos SetStatus, uno TransFunc, y un size_t, este último
+ * el size_t, representará el estado inicial del Dfa, a un objeto Dfa,
+ * hay que pasarle uno Chain, y el Dfa analizará al objeto Chain y devolverá
+ * un resultado diciendo si ha aceptado al objeto Chain o lo ha rechazado.
  *
  * @bug No hay bugs conocidos
  * 
@@ -38,6 +37,8 @@
 #include "chain.h"
 #include "set_status.h"
 #include "trans_func.h"
+
+#include <fstream>
 
 class Dfa {
 
