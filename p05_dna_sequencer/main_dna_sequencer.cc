@@ -202,5 +202,7 @@ int main(int argc, char* argv[]) {
   out_file_accep.close(); // Ya hemos terminado de escribir en los archivo
   out_file_rejec.close();
 
+  std::cout << dfa_dna << "\n";
+
   return 0;
 }
