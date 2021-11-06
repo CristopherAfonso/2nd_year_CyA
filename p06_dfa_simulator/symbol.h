@@ -9,11 +9,13 @@
  * Correo: alu0101402031@ull.edu.es
  * @date 05/11/2021
  * 
- * @file chain.h 
- * @brief Donde se aloja la declaración de la clase Chain y la declaracion de
- * sus metodos. La clase Chain contiene una variable std::vector<Symbol> y cada
- * objeto de la clase será una palabra o cadena, que le pasaremos a nuestro Dfa
- * para que analice si es aceptada o rechazada.
+ * @file symbol.h 
+ * @brief Donde se aloja la declaración de la clase Symbol y la declaracion de
+ * sus metodos. La clase Symbol contiene un std::string que será cada etiqueta
+ * necesaria para transitar de un estado a otro del Dfa, también será un trozo
+ * de una palabra o cadena que le será pasada al Dfa para que la analice, y
+ * sepa, a que estado tiene que ir, partiendo desde el que está, con el Symbol
+ * actual que tiene.
  *
  * @bug No hay bugs conocidos
  * 
@@ -28,13 +30,14 @@
  *
  */
 
-#ifndef _CHAIN_
-#define _CHAIN_
+#ifndef _SYMBOL_
+#define _SYMBOL_
 
-#include "symbol.h"
-#include <vector>
+#include <iostream>
+#include <string>
 
-class Chain {
+class Symbol {
 
 };
-#endif
+#endif 
+

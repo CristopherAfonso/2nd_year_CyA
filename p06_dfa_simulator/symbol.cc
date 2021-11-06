@@ -1,7 +1,7 @@
 /** 
  * Universidad de La Laguna (ULL)
- * Escuela Superior de Ingenieria y Tecnologia (ESIT)
- * Grado en Ingenieria Informatica
+ * Escuela Superior de Ingenierıa y Tecnologıa (ESIT)
+ * Grado en Ingenierıa Informatica
  * Asignatura: Computabilidad y Algoritmia
  * Curso: 2º
  * Practica 6: Simulacion de DFA's (Autómatas Finitos Deterministas)
@@ -9,16 +9,14 @@
  * Correo: alu0101402031@ull.edu.es
  * @date 05/11/2021
  * 
- * @file chain.h 
- * @brief Donde se aloja la declaración de la clase Chain y la declaracion de
- * sus metodos. La clase Chain contiene una variable std::vector<Symbol> y cada
- * objeto de la clase será una palabra o cadena, que le pasaremos a nuestro Dfa
- * para que analice si es aceptada o rechazada.
+ * @file symbol.cc
+ * @brief Donde se desarrollan las funciones de la clase Symbol contenida
+ * en el archivo de cabecera symbol.h.
  *
  * @bug No hay bugs conocidos
  * 
  * Referencias: Enlaces de Interes
- * @see 
+ * @see
  * 
  * @version 1.0
  * @brief Historial de Revisiones 
@@ -28,13 +26,6 @@
  *
  */
 
-#ifndef _CHAIN_
-#define _CHAIN_
-
 #include "symbol.h"
-#include <vector>
 
-class Chain {
 
-};
-#endif

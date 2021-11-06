@@ -6,7 +6,7 @@ make all --print-data-base --no-builtin-variables --no-builtin-rules --question
 # This is free software: you are free to change and redistribute it.
 # There is NO WARRANTY, to the extent permitted by law.
 
-# Make data base, printed on Sat Nov  6 01:37:22 2021
+# Make data base, printed on Sat Nov  6 12:43:55 2021
 
 # Variables
 
@@ -41,7 +41,7 @@ SHELL = /bin/sh
 # environment
 VSCODE_NLS_CONFIG = {"locale":"en","availableLanguages":{}}
 # environment
-_ = /home/usuario/.vscode-server/bin/6cba118ac49a1b88332f312a8f67186f7f3c1643/node
+_ = /home/usuario/.vscode-server/bin/b3318bc0524af3d74034b8bb8a64df0ccf35549a/node
 # makefile (from 'Makefile', line 27)
 CFLAGS = -I -Weffc++ -Wall -g
 # makefile (from 'Makefile', line 1)
@@ -63,9 +63,9 @@ LC_NAME = C.UTF-8
 # environment
 VSCODE_CWD = /home/usuario
 # environment
-SSH_CONNECTION = 10.20.52.166 47424 10.6.129.155 22
+SSH_CONNECTION = 10.20.52.208 55870 10.6.129.155 22
 # environment
-PATH = /home/usuario/.vscode-server/bin/6cba118ac49a1b88332f312a8f67186f7f3c1643/bin:/home/usuario/.vscode-server/bin/6cba118ac49a1b88332f312a8f67186f7f3c1643/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/snap/bin
+PATH = /home/usuario/.vscode-server/bin/b3318bc0524af3d74034b8bb8a64df0ccf35549a/bin:/home/usuario/.vscode-server/bin/b3318bc0524af3d74034b8bb8a64df0ccf35549a/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/snap/bin
 # environment
 XDG_RUNTIME_DIR = /run/user/1000
 # environment
@@ -73,7 +73,7 @@ VSCODE_LOG_STACK = false
 # environment
 LC_NUMERIC = C.UTF-8
 # environment
-VSCODE_IPC_HOOK_CLI = /run/user/1000/vscode-ipc-5998b10f-6339-41de-8503-592c6fa838da.sock
+VSCODE_IPC_HOOK_CLI = /run/user/1000/vscode-ipc-c8c189ee-bdaa-4a63-b459-80369a28a446.sock
 # default
 .FEATURES := target-specific order-only second-expansion else-if shortest-stem undefine oneshell archives jobserver output-sync check-symlink load
 # environment
@@ -115,7 +115,7 @@ SHLVL = 1
 # makefile (from 'Makefile', line 26)
 CC = g++
 # environment
-XDG_SESSION_ID = 116
+XDG_SESSION_ID = 134
 # environment
 USER = usuario
 # environment
@@ -128,6 +128,8 @@ LC_MONETARY = C.UTF-8
 LC_TELEPHONE = C.UTF-8
 # default
 MAKE_COMMAND := make
+# environment
+OLDPWD = /home/usuario/.vscode-server/bin/b3318bc0524af3d74034b8bb8a64df0ccf35549a
 # default
 .VARIABLES := 
 # automatic
@@ -137,11 +139,11 @@ MAKEFLAGS = pqrR
 # environment
 MFLAGS = -pqrR
 # environment
-SSH_CLIENT = 10.20.52.166 47424 22
+SSH_CLIENT = 10.20.52.208 55870 22
 # automatic
 +D = $(patsubst %/,%,$(dir $+))
 # environment
-BROWSER = /home/usuario/.vscode-server/bin/6cba118ac49a1b88332f312a8f67186f7f3c1643/bin/helpers/browser.sh
+BROWSER = /home/usuario/.vscode-server/bin/b3318bc0524af3d74034b8bb8a64df0ccf35549a/bin/helpers/browser.sh
 # environment
 LC_IDENTIFICATION = C.UTF-8
 # default
@@ -163,7 +165,7 @@ SUFFIXES :=
 # default
 .INCLUDE_DIRS = /usr/include /usr/local/include /usr/include
 # environment
-VSCODE_INJECT_NODE_MODULE_LOOKUP_PATH = /home/usuario/.vscode-server/bin/6cba118ac49a1b88332f312a8f67186f7f3c1643/remote/node_modules
+VSCODE_INJECT_NODE_MODULE_LOOKUP_PATH = /home/usuario/.vscode-server/bin/b3318bc0524af3d74034b8bb8a64df0ccf35549a/remote/node_modules
 # default
 .RECIPEPREFIX := 
 # environment
@@ -177,7 +179,7 @@ VSCODE_EXTHOST_WILL_SEND_SOCKET = true
 # environment
 MOTD_SHOWN = pam
 # variable set hash-table stats:
-# Load=83/1024=8%, Rehash=0, Collisions=16/110=15%
+# Load=84/1024=8%, Rehash=0, Collisions=16/111=14%
 
 # Pattern-specific Variable Values
 
@@ -265,9 +267,6 @@ trans_func.o:
 clean:
 #  Implicit rule search has not been done.
 #  Modification time never checked.
- 
-make: *** No rule to make target 'all'.  Stop.
- 
 #  File has not been updated.
 #  recipe to execute (from 'Makefile', line 38):
 		rm -rf *.o
@@ -281,11 +280,14 @@ make: *** No rule to make target 'all'.  Stop.
 # No general ('VPATH' variable) search path.
 
 # strcache buffers: 1 (0) / strings = 30 / storage = 312 B / avg = 10 B
+ 
+make: *** No rule to make target 'all'.  Stop.
+ 
 # current buf: size = 8162 B / used = 312 B / count = 30 / avg = 10 B
 
 # strcache performance: lookups = 42 / hit rate = 28%
 # hash-table stats:
 # Load=30/8192=0%, Rehash=0, Collisions=2/42=5%
-# Finished Make data base on Sat Nov  6 01:37:22 2021
+# Finished Make data base on Sat Nov  6 12:43:55 2021
 
  
