@@ -45,7 +45,7 @@
  * @param kProgramName Nombre el programa que invoca a la función.
  * @param kHelp Palabra clave para solicitar las instrucciones del programa.
  */
-inline void MainMessage(const std::string& kProgramName, 
+void MainMessage(const std::string& kProgramName, 
                         const std::string& kHelp) {
   std::cout << "Modo de empleo: " << kProgramName << " input.dfa input.txt ";
   std::cout << "output.txt";
@@ -160,7 +160,7 @@ void HelpMessage(const std::string& kProgramName) {
  * @param kProgramName nombre del programa que llama a la función.
  * @param kHelp palabra clave para solicitar las instrucciones del programa.
  */
-inline void ErrorParameters(const std::string& kProgramName, 
+void ErrorParameters(const std::string& kProgramName, 
                             const std::string& kHelp) {
   std::cout << "Warning!, Faltan/Sobran argumentos para ejecutar este ";
   std::cout << "programa.";
@@ -178,7 +178,7 @@ inline void ErrorParameters(const std::string& kProgramName,
  * @param kProgramName Nombre del programa.
  * @param kHelp Palabra clave para solicitar las instrucciones del programa.
  */
-inline void ErrorSizeParameters(const std::string& kProgramName, 
+void ErrorSizeParameters(const std::string& kProgramName, 
                                 const std::string& kHelp) {
   std::cout << "Warning! debe introducir parametros válidos al programa,";
   std::cout << "\ncompruebelos y intentelo de nuevo.";
@@ -195,7 +195,7 @@ inline void ErrorSizeParameters(const std::string& kProgramName,
  * @param kProgramName Nombre del programa.
  * @param kHelp Palabra clave para solicitar las instrucciones del programa.
  */
-inline void ErrorExtensions(const std::string& kProgramName, 
+void ErrorExtensions(const std::string& kProgramName, 
                             const std::string& kHelp) {
   std::cout << "Warning! hay archivos con extensiones no aceptadas por";
   std::cout << "\nel programa en los argumentos, pruebe con otros archivos";
@@ -210,7 +210,7 @@ inline void ErrorExtensions(const std::string& kProgramName,
  * @param kProgramName Nombre del programa.
  * @param kHelp Palabra clave para solicitar las instrucciones del programa.
  */
-inline void ErrorDfaOpen(const std::string& kProgramName, 
+void ErrorDfaOpen(const std::string& kProgramName, 
                          const std::string& kHelp) {
   std::cout << "Warning! error al abrir el archivo que contiene la definión";
   std::cout << "\ndel DFA, reviselo y intentelo de nuevo.";
@@ -225,7 +225,7 @@ inline void ErrorDfaOpen(const std::string& kProgramName,
  * @param kProgramName Nombre del programa.
  * @param kHelp Palabra clave para solicitar las instrucciones del programa.
  */
-inline void ErrorDfaWordsOpen(const std::string& kProgramName, 
+void ErrorDfaWordsOpen(const std::string& kProgramName, 
                               const std::string& kHelp) {
   std::cout << "Warning! error al abrir el archivo que contiene la palabras";
   std::cout << "\nque va a analizar el DFA, reviselo y intentelo de nuevo.";
@@ -241,7 +241,7 @@ inline void ErrorDfaWordsOpen(const std::string& kProgramName,
  * @param kProgramName 
  * @param kHelp 
  */
-inline void ErrorDfaOutFile(const std::string& kProgramName, 
+void ErrorDfaOutFile(const std::string& kProgramName, 
                             const std::string& kHelp) {
   std::cout << "Warning! error al crear el archivo que contiene la palabras";
   std::cout << "\nya analizas del DFA, intentelo de nuevo.";
@@ -309,8 +309,6 @@ int main(int argc, char* argv[]) {
     ErrorDfaOutFile(kProgramName, kHelp);
     exit(EXIT_FAILURE);
   }
-
-  
 
   dfa_file.close();
   dfa_words.close();

@@ -28,4 +28,69 @@
 
 #include "symbol.h"
 
+Symbol::Symbol() : symbol_() {}
 
+Symbol::Symbol(const char& character) {
+  symbol_ = character;
+}
+
+Symbol::Symbol(const std::string& chain) : symbol_(chain) {}
+
+Symbol::Symbol(const Symbol& symbol) : symbol_(symbol.GetSymbol()){}
+
+void Symbol::SetSymbol(const char& character) {
+  symbol_ = character;
+}
+
+void Symbol::SetSymbol(const std::string& chain) {
+  symbol_ = chain;
+}
+
+void Symbol::SetSymbol(Symbol& symbol) {
+  *this = symbol;
+}
+
+void Symbol::EmplaceBack(const char& character) {
+  symbol_ += character;
+}
+
+void Symbol::EmplaceBack(const std::string& chain) {
+  symbol_ += chain;
+}
+
+void Symbol::EmplaceBack(Symbol& symbol) {
+  symbol_ += symbol.symbol_;
+}
+
+std::string Symbol::GetSymbol(void) const {
+  return symbol_;
+}
+
+bool Symbol::operator==(const Symbol& symbol) const {
+  return symbol_ == symbol.symbol_;
+}
+
+void Symbol::operator=(Symbol& symbol) {
+  symbol_ = symbol.symbol_;
+}
+
+void Symbol::operator+=(Symbol& symbol) {
+  symbol_ += symbol.symbol_;
+}
+
+Symbol Symbol::operator+(Symbol& symbol) {
+  *this += symbol;
+  return *this;
+}
+
+bool Symbol::operator<(Symbol& symbol) const {
+  return (symbol_ < symbol.symbol_);
+}
+
+std::ostream& operator<<(std::ostream& out, const Symbol& symbol) {
+  return out << symbol.symbol_;
+}
+
+std::istream& operator>>(std::istream& input, Symbol& symbol) {
+  return input >> symbol.symbol_;
+}

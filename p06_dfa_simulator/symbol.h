@@ -36,8 +36,47 @@
 #include <iostream>
 #include <string>
 
+/**
+ * @class Symbol. 
+ * @brief Para poder tratar con alfabetos con símbolos de longitud mayor a 1
+ * (con un alfabeto que contenga el símbolo "hola" por ejemplo), necesitamos
+ * definir que es un símbolo exactamente, lo que hace esta clase.
+ */
 class Symbol {
+ public:
+  /// Constructores. Tenemos 3, el por defecto, el predeterminado (el que 
+  /// usamos más), y el de copia, el primero inicializa el simbolo a nada, el
+  /// segundo copia al atributo interno la string que se le pase, y el tercero
+  /// usa el operator "=" con las strings de los dos objetos.
+  Symbol(void);
+  Symbol(const char& character);
+  Symbol(const std::string& chain);
+  Symbol(const Symbol& symbol);
 
+  /// Setters.
+  void SetSymbol(const char& character);
+  void SetSymbol(const std::string& chain);
+  void SetSymbol(Symbol& symbol);
+  void EmplaceBack(const char& character);
+  void EmplaceBack(const std::string& chain);
+  void EmplaceBack(Symbol& symbol);
+
+  /// Getter.
+  std::string GetSymbol(void) const;
+
+  /// Operadores sobrecargados.
+  bool operator==(const Symbol& symbol) const;
+  void operator=(Symbol& symbol);
+  void operator+=(Symbol& symbol);
+  Symbol operator+(Symbol& symbol);
+  bool operator<(Symbol& symbol) const;
+
+  /// Operadores de flujo de entrada y salida.
+  friend std::ostream& operator<<(std::ostream& out, const Symbol& symbol);
+  friend std::istream& operator>>(std::istream& input, Symbol& symbol);
+  
+ private:
+  std::string symbol_;
 };
 #endif 
 

@@ -1,4 +1,6 @@
 make all --print-data-base --no-builtin-variables --no-builtin-rules --question
+make: *** No rule to make target 'all'.  Stop.
+ 
 # GNU Make 4.2.1
 # Built for x86_64-pc-linux-gnu
 # Copyright (C) 1988-2016 Free Software Foundation, Inc.
@@ -6,7 +8,7 @@ make all --print-data-base --no-builtin-variables --no-builtin-rules --question
 # This is free software: you are free to change and redistribute it.
 # There is NO WARRANTY, to the extent permitted by law.
 
-# Make data base, printed on Sat Nov  6 21:19:32 2021
+# Make data base, printed on Sun Nov  7 11:01:58 2021
 
 # Variables
 
@@ -63,7 +65,7 @@ LC_NAME = C.UTF-8
 # environment
 VSCODE_CWD = /home/usuario
 # environment
-SSH_CONNECTION = 10.20.52.208 55870 10.6.129.155 22
+SSH_CONNECTION = 10.20.53.60 37908 10.6.129.155 22
 # environment
 PATH = /home/usuario/.vscode-server/bin/b3318bc0524af3d74034b8bb8a64df0ccf35549a/bin:/home/usuario/.vscode-server/bin/b3318bc0524af3d74034b8bb8a64df0ccf35549a/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/snap/bin
 # environment
@@ -73,7 +75,7 @@ VSCODE_LOG_STACK = false
 # environment
 LC_NUMERIC = C.UTF-8
 # environment
-VSCODE_IPC_HOOK_CLI = /run/user/1000/vscode-ipc-4625c208-116a-48af-a6f7-a3e23bf0a46a.sock
+VSCODE_IPC_HOOK_CLI = /run/user/1000/vscode-ipc-8275721c-db9b-483f-adcb-2ab1f65cfedb.sock
 # default
 .FEATURES := target-specific order-only second-expansion else-if shortest-stem undefine oneshell archives jobserver output-sync check-symlink load
 # environment
@@ -115,7 +117,7 @@ SHLVL = 1
 # makefile (from 'Makefile', line 26)
 CC = g++
 # environment
-XDG_SESSION_ID = 134
+XDG_SESSION_ID = 166
 # environment
 USER = usuario
 # environment
@@ -128,8 +130,6 @@ LC_MONETARY = C.UTF-8
 LC_TELEPHONE = C.UTF-8
 # default
 MAKE_COMMAND := make
-# environment
-OLDPWD = /home/usuario/.vscode-server/bin/b3318bc0524af3d74034b8bb8a64df0ccf35549a
 # default
 .VARIABLES := 
 # automatic
@@ -139,7 +139,7 @@ MAKEFLAGS = pqrR
 # environment
 MFLAGS = -pqrR
 # environment
-SSH_CLIENT = 10.20.52.208 55870 22
+SSH_CLIENT = 10.20.53.60 37908 22
 # automatic
 +D = $(patsubst %/,%,$(dir $+))
 # environment
@@ -179,7 +179,7 @@ VSCODE_EXTHOST_WILL_SEND_SOCKET = true
 # environment
 MOTD_SHOWN = pam
 # variable set hash-table stats:
-# Load=84/1024=8%, Rehash=0, Collisions=16/111=14%
+# Load=83/1024=8%, Rehash=0, Collisions=16/110=15%
 
 # Pattern-specific Variable Values
 
@@ -187,9 +187,9 @@ MOTD_SHOWN = pam
 
 # Directories
 
-# . (device 64768, inode 658017): 18 files, no impossibilities.
+# . (device 64768, inode 658017): 28 files, no impossibilities.
 
-# 18 files, no impossibilities in 1 directories.
+# 28 files, no impossibilities in 1 directories.
 
 # Implicit Rules
 
@@ -282,17 +282,16 @@ clean:
 # VPATH Search Paths
 
 # No 'vpath' search paths.
+ 
 
 # No general ('VPATH' variable) search path.
 
-# strcache buffers: 1 (0) / strings = 33 / storage = 340 B / avg = 10 B
-# current buf: size = 8162 B / used = 340 B / count = 33 / avg = 10 B
+# strcache buffers: 1 (0) / strings = 36 / storage = 373 B / avg = 10 B
+# current buf: size = 8162 B / used = 373 B / count = 36 / avg = 10 B
 
-# strcache performance: lookups = 46 / hit rate = 28%
+# strcache performance: lookups = 56 / hit rate = 35%
 # hash-table stats:
-# Load=33/8192=0%, Rehash=0, Collisions=2/46=4%
-# Finished Make data base on Sat Nov  6 21:19:32 2021
+# Load=36/8192=0%, Rehash=0, Collisions=2/56=4%
+# Finished Make data base on Sun Nov  7 11:01:58 2021
 
- 
-make: *** No rule to make target 'all'.  Stop.
  

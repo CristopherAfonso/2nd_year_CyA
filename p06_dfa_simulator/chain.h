@@ -34,7 +34,47 @@
 #include "symbol.h"
 #include <vector>
 
+/**
+ * @class Chain.
+ * @brief Para poder trabajar de forma más eficiente con las palabras que se le
+ * pasan al programa dentro del archivo input.txt, está esta clase, cada objeto
+ * simula una palabra que se le pasará al DFA, y este trabajará con sus
+ * símbolos, porque si trabajara con caracteres directamente, estaríamos
+ * obviando a los alfabetos con símbolos complejos (que mínimo uno de sus
+ * símbolos, se representa con dos caracteres). 
+ */
 class Chain {
+ public:
+  /// Constructores. Tenemos 3, el por defecto, que es un vector vacío, el
+  /// predeterminado y el de copia, usaremos más del por defecto.
+  Chain(void);
+  Chain(const std::vector<Symbol>& chain);
+  Chain(Chain& chain);
 
+  /// Setters.
+  void EmplaceBack(const char& symbol);
+  void EmplaceBack(const std::string& symbol);
+  void EmplaceBack(Symbol& symbol);
+
+  /// Getters.
+  std::vector<Symbol> GetChain(void) const;
+  Symbol At(const size_t& position) const;
+
+  /// Funciones.
+  void Clear(void); ///< Vacía chain_ y tamaño = 0.
+  size_t Size(void) const; ///< Devuelve el tamaño de chain_.
+
+  /// Operadores sobrecargados.
+  void operator=(const Chain& chain);
+  bool operator==(const Chain& chain) const;
+  Symbol operator[](const size_t& position) const;
+  Chain operator+(Chain& chain);
+
+  /// Operadores de flujo de entrada y salida.
+  friend std::ostream& operator<<(std::ostream& out, const Chain& chain);
+  friend std::istream& operator>>(std::istream& input, Chain& chain);
+
+ private:
+  std::vector<Symbol> chain_;
 };
 #endif
