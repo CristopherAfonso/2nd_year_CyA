@@ -23,7 +23,8 @@
  * 05/11/21 - Creacion (primera version) del codigo:
  *            Solo he creado el archivo, le he puesto el comentario de
  *            cabecera y declarado su include 
- *
+ * 07/11/21 - Clase terminada.
+ * 
  */
 
 #include "chain.h"
@@ -32,7 +33,7 @@ Chain::Chain(void) : chain_() {}
 
 Chain::Chain(const std::vector<Symbol>& chain) : chain_(chain) {}
 
-Chain::Chain(Chain& chain) : chain_(chain.GetChain()) {}
+Chain::Chain(const Chain& chain) : chain_(chain.GetChain()) {}
 
 void Chain::EmplaceBack(const char& symbol) {
   Symbol aux(symbol);
@@ -44,7 +45,7 @@ void Chain::EmplaceBack(const std::string& symbol) {
   chain_.emplace_back(aux);
 }
 
-void Chain::EmplaceBack(Symbol& symbol) {
+void Chain::EmplaceBack(const Symbol& symbol) {
   chain_.emplace_back(symbol);
 }
 
@@ -95,7 +96,7 @@ Symbol Chain::operator[](const size_t& position) const {
   return this->At(position);
 }
 
-Chain Chain::operator+(Chain& chain) {
+Chain Chain::operator+(const Chain& chain) {
   for (size_t i{0}; i < chain.Size(); ++i) {
     chain_.emplace_back(chain[i]);
   }

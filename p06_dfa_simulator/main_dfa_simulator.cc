@@ -33,7 +33,9 @@
  * 05/11/21 - Creacion (primera version) del codigo:
  *            Solo he creado el archivo, le he puesto el comentario de
  *            cabecera y declarado su include 
- *
+ * 07/11/21 - He terminado la mayor parte del main, solo me hace falta la parte
+ *            donde llamo a los métodos de la clase Dfa.
+ * 
  */
 
 #include "dfa.h"
@@ -309,6 +311,8 @@ int main(int argc, char* argv[]) {
     ErrorDfaOutFile(kProgramName, kHelp);
     exit(EXIT_FAILURE);
   }
+
+  
 
   dfa_file.close();
   dfa_words.close();

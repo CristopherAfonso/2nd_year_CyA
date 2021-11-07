@@ -27,7 +27,8 @@
  * 05/11/21 - Creacion (primera version) del codigo:
  *            Solo he creado el archivo, le he puesto el comentario de
  *            cabecera y declarado su include 
- *
+ * 07/11/21 - Clase terminada.
+ * 
  */
 
 #ifndef _SYMBOL_
@@ -44,10 +45,8 @@
  */
 class Symbol {
  public:
-  /// Constructores. Tenemos 3, el por defecto, el predeterminado (el que 
-  /// usamos más), y el de copia, el primero inicializa el simbolo a nada, el
-  /// segundo copia al atributo interno la string que se le pase, y el tercero
-  /// usa el operator "=" con las strings de los dos objetos.
+  /// Constructores. Tenemos 4, el por defecto, los dos predeterminados (los
+  /// usamos más), y el de copia.
   Symbol(void);
   Symbol(const char& character);
   Symbol(const std::string& chain);
@@ -56,20 +55,20 @@ class Symbol {
   /// Setters.
   void SetSymbol(const char& character);
   void SetSymbol(const std::string& chain);
-  void SetSymbol(Symbol& symbol);
+  void SetSymbol(const Symbol& symbol);
   void EmplaceBack(const char& character);
   void EmplaceBack(const std::string& chain);
-  void EmplaceBack(Symbol& symbol);
+  void EmplaceBack(const Symbol& symbol);
 
-  /// Getter.
+  /// Getters.
   std::string GetSymbol(void) const;
 
   /// Operadores sobrecargados.
   bool operator==(const Symbol& symbol) const;
-  void operator=(Symbol& symbol);
-  void operator+=(Symbol& symbol);
-  Symbol operator+(Symbol& symbol);
-  bool operator<(Symbol& symbol) const;
+  void operator=(const Symbol& symbol);
+  void operator+=(const Symbol& symbol);
+  Symbol operator+(const Symbol& symbol);
+  bool operator<(const Symbol& symbol) const;
 
   /// Operadores de flujo de entrada y salida.
   friend std::ostream& operator<<(std::ostream& out, const Symbol& symbol);

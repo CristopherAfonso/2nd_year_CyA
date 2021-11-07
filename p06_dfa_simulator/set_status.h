@@ -36,9 +36,53 @@
 #define _SET_STATUS_
 
 #include <iostream>
-#include <vector>
+#include <set>
+#include <sstream>
 
+/**
+ * @class SetStatus.
+ * @brief Dos elementos importantes de un DFA son el conjunto de estados de
+ * todo el DFA, y el conjunto de estados de aceptación, esta clase se encarga
+ * de definirlos y usarlos según convenga.
+ */
 class SetStatus {
+ public:
+  /// Constructores. Tenemos 5 constructores, el predeterminado y el que usamos
+  /// cuando solo queremos darle un nombre al conjunto (los más usados), el que
+  /// nos permite enumerar estados desde el cero hasta un número que decidamos,
+  /// (también usado), el que nos permite pasarle un vector con estados ya
+  /// puestos y el de copia.
+  SetStatus(void);
+  SetStatus(const std::string& name);
+  SetStatus(const std::string& name, const size_t& num_status);
+  SetStatus(const std::string& name, const std::set<size_t>& status);
+  SetStatus(const SetStatus& status);
 
+  /// Setters.
+  void Insert(const size_t& state);
+  void SetSet(const std::set<size_t>& status);
+  void SetSet(const SetStatus& status);
+  void SetName(const char& name);
+  void SetName(const std::string& name);
+
+  /// Getters.
+  int At(const size_t& position) const;
+  std::string GetName(void) const;
+  std::set<size_t> GetSetStatus(void) const;
+
+  /// Funciones de la clase (Métodos).
+  bool IsItAState(const size_t& num) const;
+  void Clear(void);
+
+  /// Operadores sobrecargados.
+  void operator=(const SetStatus& set_status);
+  int operator[](const size_t& state) const;
+
+  /// Operador de flujo de salida.
+  friend std::ostream& operator<<(std::ostream& out, const SetStatus& status);
+
+ private:
+  std::string name_; ///< Nombre del conjunto de estados, para diferenciarlos.
+  std::set<size_t> set_status_;
 };
 #endif

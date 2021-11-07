@@ -33,12 +33,12 @@
 #ifndef _DFA_
 #define _DFA_
 
+#include <fstream>
+
 #include "alphabet.h"
 #include "chain.h"
 #include "set_status.h"
 #include "trans_func.h"
-
-#include <fstream>
 
 class Dfa {
 

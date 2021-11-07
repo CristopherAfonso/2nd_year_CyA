@@ -25,14 +25,16 @@
  * 05/11/21 - Creacion (primera version) del codigo:
  *            Solo he creado el archivo, le he puesto el comentario de
  *            cabecera y declarado su include 
- *
+ * 07/11/21 - Clase terminada.
+ * 
  */
 
 #ifndef _CHAIN_
 #define _CHAIN_
 
-#include "symbol.h"
 #include <vector>
+
+#include "symbol.h"
 
 /**
  * @class Chain.
@@ -49,18 +51,18 @@ class Chain {
   /// predeterminado y el de copia, usaremos más del por defecto.
   Chain(void);
   Chain(const std::vector<Symbol>& chain);
-  Chain(Chain& chain);
+  Chain(const Chain& chain);
 
   /// Setters.
   void EmplaceBack(const char& symbol);
   void EmplaceBack(const std::string& symbol);
-  void EmplaceBack(Symbol& symbol);
+  void EmplaceBack(const Symbol& symbol);
 
   /// Getters.
   std::vector<Symbol> GetChain(void) const;
   Symbol At(const size_t& position) const;
 
-  /// Funciones.
+  /// Funciones de la clase (Métodos).
   void Clear(void); ///< Vacía chain_ y tamaño = 0.
   size_t Size(void) const; ///< Devuelve el tamaño de chain_.
 
@@ -68,7 +70,7 @@ class Chain {
   void operator=(const Chain& chain);
   bool operator==(const Chain& chain) const;
   Symbol operator[](const size_t& position) const;
-  Chain operator+(Chain& chain);
+  Chain operator+(const Chain& chain);
 
   /// Operadores de flujo de entrada y salida.
   friend std::ostream& operator<<(std::ostream& out, const Chain& chain);

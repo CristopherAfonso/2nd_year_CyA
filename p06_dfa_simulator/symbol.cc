@@ -23,7 +23,8 @@
  * 05/11/21 - Creacion (primera version) del codigo:
  *            Solo he creado el archivo, le he puesto el comentario de
  *            cabecera y declarado su include 
- *
+ * 07/11/21 - Clase terminada.
+ * 
  */
 
 #include "symbol.h"
@@ -46,7 +47,7 @@ void Symbol::SetSymbol(const std::string& chain) {
   symbol_ = chain;
 }
 
-void Symbol::SetSymbol(Symbol& symbol) {
+void Symbol::SetSymbol(const Symbol& symbol) {
   *this = symbol;
 }
 
@@ -58,7 +59,7 @@ void Symbol::EmplaceBack(const std::string& chain) {
   symbol_ += chain;
 }
 
-void Symbol::EmplaceBack(Symbol& symbol) {
+void Symbol::EmplaceBack(const Symbol& symbol) {
   symbol_ += symbol.symbol_;
 }
 
@@ -70,20 +71,20 @@ bool Symbol::operator==(const Symbol& symbol) const {
   return symbol_ == symbol.symbol_;
 }
 
-void Symbol::operator=(Symbol& symbol) {
+void Symbol::operator=(const Symbol& symbol) {
   symbol_ = symbol.symbol_;
 }
 
-void Symbol::operator+=(Symbol& symbol) {
+void Symbol::operator+=(const Symbol& symbol) {
   symbol_ += symbol.symbol_;
 }
 
-Symbol Symbol::operator+(Symbol& symbol) {
+Symbol Symbol::operator+(const Symbol& symbol) {
   *this += symbol;
   return *this;
 }
 
-bool Symbol::operator<(Symbol& symbol) const {
+bool Symbol::operator<(const Symbol& symbol) const {
   return (symbol_ < symbol.symbol_);
 }
 
