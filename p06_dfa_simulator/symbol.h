@@ -63,6 +63,9 @@ class Symbol {
   /// Getters.
   std::string GetSymbol(void) const;
 
+  /// Funciones de la clase (Métodos).
+  size_t Size(void) const;
+
   /// Operadores sobrecargados.
   bool operator==(const Symbol& symbol) const;
   void operator=(const Symbol& symbol);

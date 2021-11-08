@@ -67,6 +67,10 @@ std::string Symbol::GetSymbol(void) const {
   return symbol_;
 }
 
+size_t Symbol::Size(void) const {
+  return symbol_.size();
+}
+
 bool Symbol::operator==(const Symbol& symbol) const {
   return symbol_ == symbol.symbol_;
 }

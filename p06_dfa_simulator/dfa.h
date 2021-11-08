@@ -27,7 +27,7 @@
  * 05/11/21 - Creacion (primera version) del codigo:
  *            Solo he creado el archivo, le he puesto el comentario de
  *            cabecera y declarado su include 
- *
+ * 08/11/21 - He terminado la clase y sus métodos.
  */
 
 #ifndef _DFA_
@@ -40,7 +40,41 @@
 #include "set_status.h"
 #include "trans_func.h"
 
+/**
+ * @class Dfa.
+ * @brief Clase que imitará el funcionamiento de un Dfa que le pasaremos su
+ * definición por medio de un archivo. 
+ */
 class Dfa {
+ public:
+  /// Constructores. Tenemos 3, el por defecto, el que creamos nosotros 
+  /// (que lo usaremos más) y el de copia.
+  Dfa(void);
+  Dfa(std::ifstream& dfa_def);
+  Dfa(const Dfa& dfa);
 
+  /// Getters.
+  Alphabet GetAlphabet(void) const;
+  SetStatus GetAllStatus(void) const;
+  int GetInitialState(void) const;
+  SetStatus GetAceptationStatus(void) const;
+  TransFunc GetTransFunc(void) const;
+  bool Fail(void) const;
+
+  /// Funciones de la clase (Métodos).
+  bool IsItInAlphabet(const Chain& chain) const;
+  bool EvalStr(const Chain& chain) const;
+  void EvalStrInFile(std::ifstream& input, std::ofstream& out) const;
+
+  /// Operador de flujo de salida.
+  friend std::ostream& operator<<(std::ostream& out, const Dfa& dfa);
+
+ private:
+  Alphabet alphabet_;
+  SetStatus all_status_;
+  int initial_state_;
+  SetStatus aceptation_status_;
+  TransFunc trans_func_;
+  bool creation_failed_; ///< Nos dice si el archivo ".dfa" está correcto.crea
 };
 #endif

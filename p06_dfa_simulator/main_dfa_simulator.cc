@@ -35,7 +35,8 @@
  *            cabecera y declarado su include 
  * 07/11/21 - He terminado la mayor parte del main, solo me hace falta la parte
  *            donde llamo a los métodos de la clase Dfa.
- * 
+ * 08/11/21 - He terminado el proyecto, ya que terminé la clase Dfa, solo usé
+ *            los métodos que desarrollé como debía y listo.
  */
 
 #include "dfa.h"
@@ -164,10 +165,10 @@ void HelpMessage(const std::string& kProgramName) {
  */
 void ErrorParameters(const std::string& kProgramName, 
                             const std::string& kHelp) {
-  std::cout << "Warning!, Faltan/Sobran argumentos para ejecutar este ";
-  std::cout << "programa.";
-  std::cout << "\nPruebe '" << kProgramName << " " << kHelp << "' ";
-  std::cout << "para más información.\n";
+  std::cerr << "Warning!, Faltan/Sobran argumentos para ejecutar este ";
+  std::cerr << "programa.";
+  std::cerr << "\nPruebe '" << kProgramName << " " << kHelp << "' ";
+  std::cerr << "para más información.\n";
 }
 
 /**
@@ -182,10 +183,10 @@ void ErrorParameters(const std::string& kProgramName,
  */
 void ErrorSizeParameters(const std::string& kProgramName, 
                                 const std::string& kHelp) {
-  std::cout << "Warning! debe introducir parametros válidos al programa,";
-  std::cout << "\ncompruebelos y intentelo de nuevo.";
-  std::cout << "\nPruebe '" << kProgramName << " " << kHelp << "' ";
-  std::cout << "para más información.\n";
+  std::cerr << "Warning! debe introducir parametros válidos al programa,";
+  std::cerr << "\ncompruebelos y intentelo de nuevo.";
+  std::cerr << "\nPruebe '" << kProgramName << " " << kHelp << "' ";
+  std::cerr << "para más información.\n";
 }
 
 /**
@@ -199,11 +200,11 @@ void ErrorSizeParameters(const std::string& kProgramName,
  */
 void ErrorExtensions(const std::string& kProgramName, 
                             const std::string& kHelp) {
-  std::cout << "Warning! hay archivos con extensiones no aceptadas por";
-  std::cout << "\nel programa en los argumentos, pruebe con otros archivos";
-  std::cout << "\no cambieles el formato para poder ejecutar este programa";
-  std::cout << "\nPruebe '" << kProgramName << " " << kHelp << "' ";
-  std::cout << "para más información.\n";
+  std::cerr << "Warning! hay archivos con extensiones no aceptadas por";
+  std::cerr << "\nel programa en los argumentos, pruebe con otros archivos";
+  std::cerr << "\no cambieles el formato para poder ejecutar este programa";
+  std::cerr << "\nPruebe '" << kProgramName << " " << kHelp << "' ";
+  std::cerr << "para más información.\n";
 }
 
 /**
@@ -214,10 +215,10 @@ void ErrorExtensions(const std::string& kProgramName,
  */
 void ErrorDfaOpen(const std::string& kProgramName, 
                          const std::string& kHelp) {
-  std::cout << "Warning! error al abrir el archivo que contiene la definión";
-  std::cout << "\ndel DFA, reviselo y intentelo de nuevo.";
-  std::cout << "\nPruebe '" << kProgramName << " " << kHelp << "' ";
-  std::cout << "para más información.\n";
+  std::cerr << "Warning! error al abrir el archivo que contiene la definión";
+  std::cerr << "\ndel DFA, reviselo y intentelo de nuevo.";
+  std::cerr << "\nPruebe '" << kProgramName << " " << kHelp << "' ";
+  std::cerr << "para más información.\n";
 }
 
 /**
@@ -229,10 +230,10 @@ void ErrorDfaOpen(const std::string& kProgramName,
  */
 void ErrorDfaWordsOpen(const std::string& kProgramName, 
                               const std::string& kHelp) {
-  std::cout << "Warning! error al abrir el archivo que contiene la palabras";
-  std::cout << "\nque va a analizar el DFA, reviselo y intentelo de nuevo.";
-  std::cout << "\nPruebe '" << kProgramName << " " << kHelp << "' ";
-  std::cout << "para más información.\n";
+  std::cerr << "Warning! error al abrir el archivo que contiene la palabras";
+  std::cerr << "\nque va a analizar el DFA, reviselo y intentelo de nuevo.";
+  std::cerr << "\nPruebe '" << kProgramName << " " << kHelp << "' ";
+  std::cerr << "para más información.\n";
 }
 
 /**
@@ -245,10 +246,18 @@ void ErrorDfaWordsOpen(const std::string& kProgramName,
  */
 void ErrorDfaOutFile(const std::string& kProgramName, 
                             const std::string& kHelp) {
-  std::cout << "Warning! error al crear el archivo que contiene la palabras";
-  std::cout << "\nya analizas del DFA, intentelo de nuevo.";
-  std::cout << "\nPruebe '" << kProgramName << " " << kHelp << "' ";
-  std::cout << "para más información.\n";
+  std::cerr << "Warning! error al crear el archivo que contiene la palabras";
+  std::cerr << "\nya analizas del DFA, intentelo de nuevo.";
+  std::cerr << "\nPruebe '" << kProgramName << " " << kHelp << "' ";
+  std::cerr << "para más información.\n";
+}
+
+void ErrorDfaFile(const std::string& kProgramName, const std::string& kHelp) {
+  std::cerr << "Warning! ha habido un error al leer el archivo que contiene";
+  std::cerr << "\nla definición del DFA, modifiquelo para que sea leíble por";
+  std::cerr << "\neste programa y intentelo de nuevo.";
+  std::cerr << "\nPruebe '" << kProgramName << " " << kHelp << "' ";
+  std::cerr << "para más información.\n";
 }
 
 int main(int argc, char* argv[]) {
@@ -312,10 +321,16 @@ int main(int argc, char* argv[]) {
     exit(EXIT_FAILURE);
   }
 
-  
-
+  Dfa dfa(dfa_file);
   dfa_file.close();
+  if (dfa.Fail()) {
+    ErrorDfaFile(kProgramName, kHelp);
+    exit(EXIT_FAILURE);
+  }
+
+  dfa.EvalStrInFile(dfa_words, dfa_out_file);
   dfa_words.close();
   dfa_out_file.close();
+
   return 0;
 }

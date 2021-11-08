@@ -30,7 +30,7 @@
  * 05/11/21 - Creacion (primera version) del codigo:
  *            Solo he creado el archivo, le he puesto el comentario de
  *            cabecera y declarado su include 
- *
+ * 08/11/21 - He terminado la clase y sus métodos.
  */
 
 #ifndef _TRANS_FUNC_
@@ -40,7 +40,49 @@
 #include <string>
 #include <vector>
 
-class TransFunc {
+#include "symbol.h"
 
+/**
+ * @class TransFunc.
+ * @brief Contiene la tabla de transición que usará nuestro DFA para saber cual
+ * es el estado siguiente al que hay que transitar. 
+ */
+class TransFunc {
+ public:
+  /// Constructores.
+  TransFunc(void); 
+  TransFunc(const int& num_status);
+  TransFunc(const TransFunc& trans_func);
+
+  /// Setters.
+  void AddSymbol(const Symbol& symbol);
+  /// Si se devuelve true, ha habido un error a la hora de asignar el estado.
+  bool AddState(const int& state);
+  bool AddTransition(const int& state, const Symbol& symbol, 
+                     const int& next_state);
+
+  /// Getters.
+  int NextState(const int& state, const Symbol& symbol) const;
+
+  /// Funciones de la clase (Métodos).
+  bool IsItADfa(void) const;
+  bool IsItInConversionTable(const Symbol& symbol) const;
+  bool IsItAState(const int& state) const;
+  size_t Size(void) const;
+
+  /// Operadores sobrecargados.
+  void operator=(const TransFunc& trans_func);
+
+  /// Operador de flujo de salida.
+  friend std::ostream& operator<<(std::ostream& out, const TransFunc& trans_func);
+
+ private:
+  std::vector<std::vector<int>> trans_func_;
+  /// Convierte símbolos a números, así sabemos que símbolo se asocia con una 
+  /// determinada columna en nuestra tabla, uso un vector y no un set, porque
+  /// yo le voy a asociar un simbolo a cada columan de la tabla, y si usara un
+  /// std::set<Symbol>, entoces los simbolos no los ordeno yo, y eso podría 
+  /// ocasionar que las columnas no se correspondan con los simbolos.
+  std::vector<Symbol> conversion_table_;
 };
 #endif
