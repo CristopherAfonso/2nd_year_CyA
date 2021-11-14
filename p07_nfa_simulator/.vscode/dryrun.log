@@ -1,0 +1,12 @@
+make --dry-run --keep-going --print-directory
+make: Entering directory '/home/usuario/2nd_year_CyA/p07_nfa_simulator'
+g++    -c -o alphabet.o alphabet.cc
+g++    -c -o chain.o chain.cc
+g++    -c -o nfa.o nfa.cc
+g++    -c -o set_status.o set_status.cc
+g++    -c -o symbol.o symbol.cc
+make: Leaving directory '/home/usuario/2nd_year_CyA/p07_nfa_simulator'
+ 
+make: *** No rule to make target 'main_dfa_simulator.o', needed by 'main_dfa_simulator'.
+make: *** No rule to make target 'state.o', needed by 'main_dfa_simulator'.
+ 

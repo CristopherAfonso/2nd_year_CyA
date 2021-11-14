@@ -4,16 +4,16 @@
  * Grado en Ingenieria Informatica
  * Asignatura: Computabilidad y Algoritmia
  * Curso: 2º
- * Practica 6: Simulacion de DFA's (Autómatas Finitos Deterministas)
+ * Practica 7: Simulacion de NFA's (Autómatas Finitos No Deterministas)
  * @author Cristopher Manuel Afonso Mora
  * Correo: alu0101402031@ull.edu.es
- * @date 05/11/2021
+ * @date 11/11/2021
  * 
  * @file symbol.h 
  * @brief Donde se aloja la declaración de la clase Symbol y la declaracion de
  * sus metodos. La clase Symbol contiene un std::string que será cada etiqueta
- * necesaria para transitar de un estado a otro del Dfa, también será un trozo
- * de una palabra o cadena que le será pasada al Dfa para que la analice, y
+ * necesaria para transitar de un estado a otro del Nfa, también será un trozo
+ * de una palabra o cadena que le será pasada al Nfa para que la analice, y
  * sepa, a que estado tiene que ir, partiendo desde el que está, con el Symbol
  * actual que tiene.
  *
@@ -24,11 +24,9 @@
  * 
  * @version 1.0
  * @brief Historial de Revisiones 
- * 05/11/21 - Creacion (primera version) del codigo:
+ * 11/11/21 - Creacion (primera version) del codigo:
  *            Solo he creado el archivo, le he puesto el comentario de
- *            cabecera y declarado su include 
- * 07/11/21 - Clase terminada.
- * 
+ *            cabecera y declarado su include.
  */
 
 #ifndef _SYMBOL_
@@ -69,7 +67,6 @@ class Symbol {
   /// Operadores sobrecargados.
   bool operator==(const Symbol& symbol) const;
   void operator=(const Symbol& symbol);
-  void operator+=(const Symbol& symbol);
   Symbol operator+(const Symbol& symbol);
   bool operator<(const Symbol& symbol) const;
 

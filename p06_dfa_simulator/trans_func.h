@@ -77,7 +77,7 @@ class TransFunc {
   friend std::ostream& operator<<(std::ostream& out, const TransFunc& trans_func);
 
  private:
-  std::vector<std::vector<int>> trans_func_;
+  std::vector<std::vector<int>> trans_func_; ///< Función de transición.
   /// Convierte símbolos a números, así sabemos que símbolo se asocia con una 
   /// determinada columna en nuestra tabla, uso un vector y no un set, porque
   /// yo le voy a asociar un simbolo a cada columan de la tabla, y si usara un

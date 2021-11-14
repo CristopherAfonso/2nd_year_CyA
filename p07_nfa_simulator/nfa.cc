@@ -4,14 +4,14 @@
  * Grado en Ingenierıa Informatica
  * Asignatura: Computabilidad y Algoritmia
  * Curso: 2º
- * Practica 6: Simulacion de DFA's (Autómatas Finitos Deterministas)
+ * Practica 7: Simulacion de NFA's (Autómatas Finitos No Deterministas)
  * @author Cristopher Manuel Afonso Mora
  * Correo: alu0101402031@ull.edu.es
- * @date 05/11/2021
+ * @date 11/11/2021
  * 
- * @file dfa.cc
- * @brief Donde se desarrollan las funciones de la clase Dfa contenida
- * en el archivo de cabecera dfa.h.
+ * @file nfa.cc
+ * @brief Donde se desarrollan las funciones de la clase Nfa contenida
+ * en el archivo de cabecera nfa.h.
  *
  * @bug No hay bugs conocidos
  * 
@@ -22,19 +22,17 @@
  * @brief Historial de Revisiones 
  * 05/11/21 - Creacion (primera version) del codigo:
  *            Solo he creado el archivo, le he puesto el comentario de
- *            cabecera y declarado su include 
- * 08/11/21 - He terminado la clase y sus métodos.
+ *            cabecera y declarado su include.
  */
 
-#include "dfa.h"
+#include "nfa.h"
 
-Dfa::Dfa(void) 
-    : alphabet_(), all_status_(), initial_state_(), aceptation_status_(), 
-      trans_func_() {}
+Nfa::Nfa(void) 
+    : alphabet_(), all_status_(), initial_state_(), aceptation_status_() {}
 
-Dfa::Dfa(std::ifstream& dfa_def) 
+Nfa::Nfa(std::ifstream& nfa_def) 
     : alphabet_(), all_status_(), initial_state_(-1), aceptation_status_(), 
-      trans_func_(), creation_failed_(false) {
+      creation_failed_(false) {
   std::vector<std::string> file;
   std::string aux_chain{""};
   int num_transitions{-1}; 
@@ -42,8 +40,8 @@ Dfa::Dfa(std::ifstream& dfa_def)
   Symbol symbol;
 
   /// Leemos todo el archivo de entrada para almacenarlo.
-  while (!dfa_def.eof()) {
-    getline(dfa_def, aux_chain);
+  while (!nfa_def.eof()) {
+    getline(nfa_def, aux_chain);
     file.emplace_back(aux_chain);
   }
   
@@ -191,37 +189,32 @@ Dfa::Dfa(std::ifstream& dfa_def)
   if (count_lines != (2 + trans_func_.Size())) creation_failed_ = true;
 }
 
-Dfa::Dfa(const Dfa& dfa)
-    : alphabet_(dfa.alphabet_), all_status_(dfa.all_status_), 
-      initial_state_(dfa.initial_state_), 
-      aceptation_status_(dfa.aceptation_status_), 
-      trans_func_(dfa.trans_func_) {}
+Nfa::Nfa(const Nfa& nfa)
+    : alphabet_(nfa.alphabet_), all_status_(nfa.all_status_), 
+      initial_state_(nfa.initial_state_), 
+      aceptation_status_(nfa.aceptation_status_) {}
 
-Alphabet Dfa::GetAlphabet(void) const {
+Alphabet Nfa::GetAlphabet(void) const {
   return alphabet_;
 }
 
-SetStatus Dfa::GetAllStatus(void) const {
+SetStatus Nfa::GetAllStatus(void) const {
   return all_status_;
 }
 
-int Dfa::GetInitialState(void) const {
+int Nfa::GetInitialState(void) const {
   return initial_state_;
 }
 
-SetStatus Dfa::GetAceptationStatus(void) const {
+SetStatus Nfa::GetAceptationStatus(void) const {
   return aceptation_status_;
 }
 
-TransFunc Dfa::GetTransFunc(void) const {
-  return trans_func_;
-}
-
-bool Dfa::Fail(void) const {
+bool Nfa::Fail(void) const {
   return creation_failed_;
 }
 
-bool Dfa::IsItInAlphabet(const Chain& chain) const {
+bool Nfa::IsItInAlphabet(const Chain& chain) const {
   bool result{true};
   for (size_t i{0}; i < chain.Size(); ++i) {
     if (!alphabet_.IsItInAlphabet(chain[i])) {
@@ -232,7 +225,7 @@ bool Dfa::IsItInAlphabet(const Chain& chain) const {
   return result;
 }
 
-bool Dfa::EvalStr(const Chain& chain) const {
+bool Nfa::EvalStr(const Chain& chain) const {
   bool result{false};
   int act_state{initial_state_};
   for (size_t i{0}; i < chain.Size(); ++i) {
@@ -243,7 +236,7 @@ bool Dfa::EvalStr(const Chain& chain) const {
   return result;
 }
 
-void Dfa::EvalStrInFile(std::ifstream& input, std::ofstream& out) const {
+void Nfa::EvalStrInFile(std::ifstream& input, std::ofstream& out) const {
   std::vector<std::string> vec_words;
   std::string aux_chain{""};
   while (!input.eof()) {
@@ -280,20 +273,19 @@ void Dfa::EvalStrInFile(std::ifstream& input, std::ofstream& out) const {
   }
 }
 
-std::ostream& operator<<(std::ostream& out, const Dfa& dfa) {
+std::ostream& operator<<(std::ostream& out, const Nfa& nfa) {
   out << "Este Autómata Finito Determinista (AFN o DFA) está compuesto por";
   out << "\nuna colección de 5 elementos:";
   out << "\n\n1. Un alfabeto de entrada (Sigma):";
-  out << "\n   " << dfa.alphabet_; 
+  out << "\n   " << nfa.alphabet_; 
   out << "\n\n2. Una colección finita de estados Q:";
-  out << "\n   " << dfa.all_status_;
-  out << "\n\n3. Un estado inicial 's': " << dfa.initial_state_;
+  out << "\n   " << nfa.all_status_;
+  out << "\n\n3. Un estado inicial 's': " << nfa.initial_state_;
   out << "\n\n4. Una colección F de estados finales o de aceptación:";
-  out << "\n   " << dfa.aceptation_status_;
+  out << "\n   " << nfa.aceptation_status_;
   out << "\n\n5. Una función de transición de estados: Q x (Símb. Alf.) ==> Q";
   out << "\n   que determina el único estado siguiente para el";
   out << "\n   par (Qi, simb.) correspondiente al estado actual y la entrada:";
-  out << '\n' << dfa.trans_func_ << '\n';
 
   return out;
 }

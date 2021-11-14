@@ -4,15 +4,15 @@
  * Grado en Ingenieria Informatica
  * Asignatura: Computabilidad y Algoritmia
  * Curso: 2º
- * Practica 6: Simulacion de DFA's (Autómatas Finitos Deterministas)
+ * Practica 7: Simulacion de NFA's (Autómatas Finitos No Deterministas)
  * @author Cristopher Manuel Afonso Mora
  * Correo: alu0101402031@ull.edu.es
- * @date 05/11/2021
+ * @date 11/11/2021
  * 
  * @file alphabet.h 
  * @brief Donde se aloja la declaración de la clase Alphabet y la declaracion
  * de sus metodos. La clase Alphabet contiene un std::set<Symbol> que será la
- * variable que usaremos a modo de alphabeto en la clase Dfa.
+ * variable que usaremos a modo de alphabeto en la clase Nfa.
  *
  * @bug No hay bugs conocidos
  * 
@@ -21,10 +21,9 @@
  * 
  * @version 1.0
  * @brief Historial de Revisiones 
- * 05/11/21 - Creacion (primera version) del codigo:
+ * 11/11/21 - Creacion (primera version) del codigo:
  *            Solo he creado el archivo, le he puesto el comentario de
- *            cabecera y declarado su include 
- * 07/11/21 - Clase terminada.
+ *            cabecera y declarado su include.
  * 
  */
 
