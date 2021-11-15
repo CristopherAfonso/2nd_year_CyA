@@ -297,7 +297,7 @@ int main(int argc, char* argv[]) {
   /// Si la extensión del segundo parametro es distinta de ".nfa" o si las
   /// extensiones del segundo y tercer parámetro son distindas de ".txt"
   /// entonces se termina el programa notificando ese error.
-  if (kNfaFile.substr(kNfaFile.size() - 4) != ".dfa" || 
+  if (kNfaFile.substr(kNfaFile.size() - 4) != ".nfa" || 
       kNfaWords.substr(kNfaWords.size() - 4) != ".txt" || 
       kNfaOutFile.substr(kNfaOutFile.size() - 4) != ".txt") {
     ErrorExtensions(kProgramName, kHelp);
@@ -323,14 +323,14 @@ int main(int argc, char* argv[]) {
     exit(EXIT_FAILURE);
   }
 
-  Nfa nfa(nfa_file);
-  nfa_file.close();
-  if (nfa.Fail()) {
-    ErrorNfaFile(kProgramName, kHelp);
-    exit(EXIT_FAILURE);
-  }
+  // Nfa nfa(nfa_file);
+  // nfa_file.close();
+  // if (nfa.Fail()) {
+  //   ErrorNfaFile(kProgramName, kHelp);
+  //   exit(EXIT_FAILURE);
+  // }
 
-  nfa.EvalStrInFile(nfa_words, nfa_out_file);
+  // nfa.EvalStrInFile(nfa_words, nfa_out_file);
   nfa_words.close();
   nfa_out_file.close();
 

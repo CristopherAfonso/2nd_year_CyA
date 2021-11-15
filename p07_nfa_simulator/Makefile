@@ -24,14 +24,14 @@
 #
 
 CC = g++
-CFLAGS = -I -std=c++20 -Wall -Weffc++ -Wextra -Werror -g
-DEPS = alphabet.h chain.h nfa.h set_status.h state.h symbol.h
-OBJ = main_dfa_simulator.o alphabet.o chain.o nfa.o set_status.o state.o symbol.o
+CFLAGS = -I -std=c++20 -Wall -Weffc++ -Wextra -g
+DEPS = alphabet.h chain.h nfa.h set_status.h state_nfa.h symbol.h
+OBJ = main_nfa_simulator.o alphabet.o chain.o nfa.o set_status.o state_nfa.o symbol.o
 
 %.o: %.cc $(DEPS)
 		$(CC) -c -o $@ $< $(CFLAGS)
 
-main_dfa_simulator: $(OBJ)
+main_nfa_simulator: $(OBJ)
 	$(CC) -o $@ $^ $(CFLAGS)
 
 clean: 

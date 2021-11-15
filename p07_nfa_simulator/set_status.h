@@ -39,6 +39,8 @@
 #include <set>
 #include <sstream>
 
+#include "state_nfa.h"
+
 /**
  * @class SetStatus.
  * @brief Dos elementos importantes de un DFA son el conjunto de estados de

@@ -62,8 +62,6 @@ Nfa::Nfa(std::ifstream& nfa_def)
             creation_failed_ = true;
             break;
           } else {
-            TransFunc aux(std::stoi(aux_chain));
-            trans_func_ = aux;
           }
         } else {
           creation_failed_ = true;
@@ -81,8 +79,7 @@ Nfa::Nfa(std::ifstream& nfa_def)
       while (getline(act_line, aux_chain, ' ')) {
         if (!readed) {
           readed = true;
-          if (std::stoi(aux_chain) < 0 || 
-              std::stoi(aux_chain) >= int(trans_func_.Size())) {
+          if (std::stoi(aux_chain) < 0) {
             creation_failed_ = true;
             break;
           } else {
@@ -106,8 +103,7 @@ Nfa::Nfa(std::ifstream& nfa_def)
       ++readed_things_in_line;
       /// Leemos que estado vamos a analizar.
       if (readed_things_in_line == 1) {
-        if (std::stoi(aux_chain) >= 0 && 
-            std::stoi(aux_chain) < int(trans_func_.Size())) {
+        if (std::stoi(aux_chain) >= 0) {
           act_state = std::stoi(aux_chain);
         } else {
           creation_failed_ = true;
@@ -159,17 +155,10 @@ Nfa::Nfa(std::ifstream& nfa_def)
           }
         } else {
           alphabet_.Insert(symbol);
-          trans_func_.AddSymbol(symbol);
         }
       } else { /// Las impares son los estados a los que llevan.
-        if (std::stoi(aux_chain) >= 0 && 
-            std::stoi(aux_chain) < int(trans_func_.Size())) {
+        if (std::stoi(aux_chain) >= 0) {
               int next_state{std::stoi(aux_chain)};
-          /// Si devuelve true, ha habido un error.
-          if (trans_func_.AddTransition(act_state, symbol, next_state)) {
-            creation_failed_ = true;
-            break;
-          }
         } else {
           creation_failed_ = true;
           break;
@@ -185,8 +174,6 @@ Nfa::Nfa(std::ifstream& nfa_def)
 
     if (creation_failed_) break;
   }
-
-  if (count_lines != (2 + trans_func_.Size())) creation_failed_ = true;
 }
 
 Nfa::Nfa(const Nfa& nfa)
@@ -228,9 +215,7 @@ bool Nfa::IsItInAlphabet(const Chain& chain) const {
 bool Nfa::EvalStr(const Chain& chain) const {
   bool result{false};
   int act_state{initial_state_};
-  for (size_t i{0}; i < chain.Size(); ++i) {
-    act_state = trans_func_.NextState(act_state, chain[i]);
-  }
+  for (size_t i{0}; i < chain.Size(); ++i) {}
 
   if (aceptation_status_.IsItAState(std::size_t(act_state))) result = true;
   return result;
