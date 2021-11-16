@@ -322,7 +322,7 @@ int main(int argc, char* argv[]) {
     ErrorNfaOutFile(kProgramName, kHelp);
     exit(EXIT_FAILURE);
   }
-
+  
   // Nfa nfa(nfa_file);
   // nfa_file.close();
   // if (nfa.Fail()) {

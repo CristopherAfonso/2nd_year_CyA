@@ -71,6 +71,7 @@ class StateNfa {
   /// Operadores sobrecargados.
   void operator=(const StateNfa& state);
   bool operator==(const StateNfa& state) const;
+  bool operator<(const StateNfa& state) const;
 
   /// Operador de flujo de salida.
   friend std::ostream& operator<<(std::ostream& out, const StateNfa& state_nfa);
@@ -80,5 +81,4 @@ class StateNfa {
   std::map<Symbol, std::vector<size_t>> transitions_; ///< Transiciones. 
   bool aceptation_; ///< Señala si es un estado de aceptación.
 };
-
 #endif

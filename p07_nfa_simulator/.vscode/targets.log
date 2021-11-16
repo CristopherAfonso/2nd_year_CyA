@@ -8,7 +8,7 @@ make: *** No rule to make target 'all'.  Stop.
 # This is free software: you are free to change and redistribute it.
 # There is NO WARRANTY, to the extent permitted by law.
 
-# Make data base, printed on Mon Nov 15 13:30:01 2021
+# Make data base, printed on Tue Nov 16 00:32:57 2021
 
 # Variables
 
@@ -19,7 +19,7 @@ make: *** No rule to make target 'all'.  Stop.
 # default
 .SHELLFLAGS := -c
 # makefile (from 'Makefile', line 29)
-OBJ = main_nfa_simulator.o alphabet.o chain.o nfa.o set_status.o state_nfa.o symbol.o
+OBJ = main_nfa_simulator.o alphabet.o chain.o nfa.o state_nfa.o symbol.o
 # environment
 XDG_SESSION_CLASS = user
 # environment
@@ -75,7 +75,7 @@ VSCODE_LOG_STACK = false
 # environment
 LC_NUMERIC = C.UTF-8
 # environment
-VSCODE_IPC_HOOK_CLI = /run/user/1000/vscode-ipc-f94ba488-99e4-4b95-b930-d4716f82bebb.sock
+VSCODE_IPC_HOOK_CLI = /run/user/1000/vscode-ipc-31c1ea70-6201-41d2-9449-0ea50566cbd7.sock
 # default
 .FEATURES := target-specific order-only second-expansion else-if shortest-stem undefine oneshell archives jobserver output-sync check-symlink load
 # environment
@@ -159,7 +159,7 @@ LC_ALL = C
 # environment
 LC_PAPER = C.UTF-8
 # makefile (from 'Makefile', line 28)
-DEPS = alphabet.h chain.h nfa.h set_status.h state_nfa.h symbol.h
+DEPS = alphabet.h chain.h nfa.h state_nfa.h symbol.h
 # default
 SUFFIXES := 
 # default
@@ -187,13 +187,13 @@ MOTD_SHOWN = pam
 
 # Directories
 
-# . (device 64768, inode 917778): 21 files, no impossibilities.
+# . (device 64768, inode 917778): 19 files, no impossibilities.
 
-# 21 files, no impossibilities in 1 directories.
+# 19 files, no impossibilities in 1 directories.
 
 # Implicit Rules
 
-%.o: %.cc alphabet.h chain.h nfa.h set_status.h state_nfa.h symbol.h
+%.o: %.cc alphabet.h chain.h nfa.h state_nfa.h symbol.h
 #  recipe to execute (from 'Makefile', line 32):
 		$(CC) -c -o $@ $< $(CFLAGS)
 
@@ -203,12 +203,6 @@ MOTD_SHOWN = pam
 
 # Not a target:
 symbol.o:
-#  Implicit rule search has not been done.
-#  Modification time never checked.
-#  File has not been updated.
-
-# Not a target:
-set_status.o:
 #  Implicit rule search has not been done.
 #  Modification time never checked.
 #  File has not been updated.
@@ -229,7 +223,7 @@ nfa.o:
 # Not a target:
 Makefile:
 #  Implicit rule search has been done.
-#  Last modified 2021-11-15 01:48:05.82303558
+#  Last modified 2021-11-15 22:20:32.790626745
 #  File has been updated.
 #  Successfully updated.
 
@@ -270,7 +264,7 @@ main_nfa_simulator.o:
 #  Modification time never checked.
 #  File has not been updated.
 
-main_nfa_simulator: main_nfa_simulator.o alphabet.o chain.o nfa.o set_status.o state_nfa.o symbol.o
+main_nfa_simulator: main_nfa_simulator.o alphabet.o chain.o nfa.o state_nfa.o symbol.o
 #  Implicit rule search has not been done.
 #  Modification time never checked.
 #  File has not been updated.
@@ -278,20 +272,20 @@ main_nfa_simulator: main_nfa_simulator.o alphabet.o chain.o nfa.o set_status.o s
 	$(CC) -o $@ $^ $(CFLAGS)
 
 # files hash-table stats:
-# Load=13/1024=1%, Rehash=0, Collisions=0/30=0%
+# Load=12/1024=1%, Rehash=0, Collisions=0/28=0%
 # VPATH Search Paths
 
 # No 'vpath' search paths.
- 
 
 # No general ('VPATH' variable) search path.
 
-# strcache buffers: 1 (0) / strings = 36 / storage = 376 B / avg = 10 B
-# current buf: size = 8162 B / used = 376 B / count = 36 / avg = 10 B
+# strcache buffers: 1 (0) / strings = 33 / storage = 336 B / avg = 10 B
+# current buf: size = 8162 B / used = 336 B / count = 33 / avg = 10 B
 
-# strcache performance: lookups = 49 / hit rate = 26%
+ 
+# strcache performance: lookups = 45 / hit rate = 26%
 # hash-table stats:
-# Load=36/8192=0%, Rehash=0, Collisions=1/49=2%
-# Finished Make data base on Mon Nov 15 13:30:01 2021
+# Load=33/8192=0%, Rehash=0, Collisions=1/45=2%
+# Finished Make data base on Tue Nov 16 00:32:57 2021
 
  

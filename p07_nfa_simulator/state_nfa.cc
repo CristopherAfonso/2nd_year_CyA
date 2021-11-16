@@ -37,7 +37,6 @@ StateNfa::StateNfa(void) : state_(SIZE_MAX), transitions_(),
                            aceptation_(false) {}
 
 /**
- * @fn StateNfa::StateNfa(const size_t& state, const bool& aceptation)
  * @brief Construye un nuevo objeto de la clase StateNfa, este es el
  * constructor predeterminado, el que usaremos más, la función solo copia los
  * valores pasados a la función a sus respectivos atributos internos.
@@ -91,15 +90,15 @@ void StateNfa::SetAceptationState(const bool& aceptation_state) {
  * @param state es el valor que vamos a añadir al vector.
  */
 void StateNfa::SetTransition(const Symbol& symbol, const size_t& state) {
-  if (transitions_.find(symbol) != transitions_.end()) {
-    std::vector<size_t> aux{transitions_.find(symbol)->second};
-    for (auto i: aux) {
-      if (i == state) return;
-    }
-    transitions_[symbol].emplace_back(state);
-  } else {
+  if (transitions_.size() == 0) {
     std::vector<size_t> aux{state};
     transitions_.insert(std::make_pair(symbol, aux));
+  } else {
+    for (auto i: transitions_) {
+      std::cout << i.first << '\n';
+      if (i.first == symbol) return;
+    }
+    transitions_[symbol].emplace_back(state);
   }
 }
 
@@ -148,8 +147,14 @@ size_t StateNfa::GetState(void) const {
  */
 std::vector<size_t> StateNfa::GetTransitions(const Symbol& symbol) const {
   std::vector<size_t> aux;
-  if (transitions_.find(symbol) != transitions_.end())
-    aux = transitions_.find(symbol)->second;
+  std::cout << '\n' << symbol << " Symbol" << '\n';
+  for (auto i: transitions_) {
+    std::cout << i.first << '\n';
+    if (symbol == i.first) {
+      aux = transitions_.find(symbol)->second;
+      break;
+    }
+  }    
   return aux;
 }
 
@@ -205,6 +210,21 @@ void StateNfa::operator=(const StateNfa& state) {
 bool StateNfa::operator==(const StateNfa& state) const {
   return (state_ == state.state_) && (aceptation_ == state.aceptation_) && 
          (transitions_ == state.transitions_);
+}
+
+/**
+ * @fn bool StateNfa::operator<(const StateNfa& state) const
+ * @brief Sobrecarga del operador "<", como la clase representa estados, lo que
+ * se compara son los atributos internos "state_" de cada objeto.
+ * 
+ * @param state es el objeto que va a la derecha del operando cuando se llama.
+ * @return true, el valor del atributo "state_" del objeto que está a la
+ * izquierda, es menor que el de la derecha.
+ * @return false el valor del atributo "state_" del objeto que está a la
+ * izquierda, es igual o mayor que el del objeto que está a la derecha.
+ */
+bool StateNfa::operator<(const StateNfa& state) const {
+  return state_ < state.state_;
 }
 
 /**

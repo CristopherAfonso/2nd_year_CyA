@@ -12,8 +12,8 @@
  * @file nfa.h 
  * @brief Donde se aloja la declaración de la clase Nfa y la declaracion de sus
  * metodos. La clase Nfa contiene 4 atributos privados y son:
- * Un objeto Alphabet, dos SetStatus, y un size_t, este último
- * el size_t, representará el estado inicial del Nfa, a un objeto Nfa,
+ * Un objeto Alphabet, un std::set<StateNfa>, un bool y un StateNfa, este 
+ * último, representará el estado inicial del Nfa, a un objeto Nfa,
  * hay que pasarle uno Chain, y el Nfa analizará al objeto Chain y devolverá
  * un resultado diciendo si ha aceptado al objeto Chain o lo ha rechazado.
  *
@@ -33,10 +33,11 @@
 #define _NFA_
 
 #include <fstream>
+#include <regex>
 
 #include "alphabet.h"
 #include "chain.h"
-#include "set_status.h"
+#include "state_nfa.h"
 
 /**
  * @class Nfa.
@@ -53,26 +54,25 @@ class Nfa {
 
   /// Getters.
   Alphabet GetAlphabet(void) const;
-  SetStatus GetAllStatus(void) const;
-  int GetInitialState(void) const;
-  SetStatus GetAceptationStatus(void) const;
+  std::set<StateNfa> GetAllStatus(void) const;
+  StateNfa GetInitialState(void) const;
   bool Fail(void) const;
 
   /// Funciones de la clase (Métodos).
   bool IsItInAlphabet(const Chain& chain) const;
-  bool EvalStr(const Chain& chain) const;
+  bool EvalStr(const Chain& chain, const StateNfa& act_state) const;
   void EvalStrInFile(std::ifstream& input, std::ofstream& out) const;
-  void ShowTransFunc(void) const;
+  std::string ShowAllStatus(void) const;
+  std::string ShowAcepStatus(void) const;
+  std::string ShowTransFunc(void) const;
 
   /// Operador de flujo de salida.
   friend std::ostream& operator<<(std::ostream& out, const Nfa& dfa);
 
  private:
   Alphabet alphabet_; ///< Alfabeto del DFA.
-  SetStatus all_status_; ///< Conjunto de estados totales.
-  int initial_state_; ///< Estado inicial del Dfa.
-  SetStatus aceptation_status_; ///< Conjunto de estados de aceptación.
-
+  std::set<StateNfa> all_status_; ///< Conjunto de estados totales.
+  StateNfa initial_state_; ///< Estado inicial del Dfa.
   bool creation_failed_; ///< Nos dice si el archivo ".dfa" está correcto.
 };
 #endif

@@ -1,4 +1,6 @@
 make all --print-data-base --no-builtin-variables --no-builtin-rules --question
+make: *** No rule to make target 'all'.  Stop.
+ 
 # GNU Make 4.2.1
 # Built for x86_64-pc-linux-gnu
 # Copyright (C) 1988-2016 Free Software Foundation, Inc.
@@ -6,7 +8,7 @@ make all --print-data-base --no-builtin-variables --no-builtin-rules --question
 # This is free software: you are free to change and redistribute it.
 # There is NO WARRANTY, to the extent permitted by law.
 
-# Make data base, printed on Tue Nov  9 12:08:56 2021
+# Make data base, printed on Tue Nov 16 00:29:45 2021
 
 # Variables
 
@@ -41,7 +43,7 @@ SHELL = /bin/sh
 # environment
 VSCODE_NLS_CONFIG = {"locale":"en","availableLanguages":{}}
 # environment
-_ = /home/usuario/.vscode-server/bin/b3318bc0524af3d74034b8bb8a64df0ccf35549a/node
+_ = /home/usuario/.vscode-server/bin/3a6960b964327f0e3882ce18fcebd07ed191b316/node
 # makefile (from 'Makefile', line 27)
 CFLAGS = -I -Weffc++ -Wall -g
 # makefile (from 'Makefile', line 1)
@@ -63,9 +65,9 @@ LC_NAME = C.UTF-8
 # environment
 VSCODE_CWD = /home/usuario
 # environment
-SSH_CONNECTION = 10.150.90.117 60060 10.6.129.155 22
+SSH_CONNECTION = 10.20.50.79 44266 10.6.129.155 22
 # environment
-PATH = /home/usuario/.vscode-server/bin/b3318bc0524af3d74034b8bb8a64df0ccf35549a/bin:/home/usuario/.vscode-server/bin/b3318bc0524af3d74034b8bb8a64df0ccf35549a/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/snap/bin
+PATH = /home/usuario/.vscode-server/bin/3a6960b964327f0e3882ce18fcebd07ed191b316/bin:/home/usuario/.vscode-server/bin/3a6960b964327f0e3882ce18fcebd07ed191b316/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/snap/bin
 # environment
 XDG_RUNTIME_DIR = /run/user/1000
 # environment
@@ -73,7 +75,7 @@ VSCODE_LOG_STACK = false
 # environment
 LC_NUMERIC = C.UTF-8
 # environment
-VSCODE_IPC_HOOK_CLI = /run/user/1000/vscode-ipc-82cfa7e4-d439-4414-a2e0-776b26ebfce5.sock
+VSCODE_IPC_HOOK_CLI = /run/user/1000/vscode-ipc-dbd67315-5192-4c2b-bb3b-36b98a13642d.sock
 # default
 .FEATURES := target-specific order-only second-expansion else-if shortest-stem undefine oneshell archives jobserver output-sync check-symlink load
 # environment
@@ -115,7 +117,7 @@ SHLVL = 1
 # makefile (from 'Makefile', line 26)
 CC = g++
 # environment
-XDG_SESSION_ID = 234
+XDG_SESSION_ID = 427
 # environment
 USER = usuario
 # environment
@@ -137,11 +139,11 @@ MAKEFLAGS = pqrR
 # environment
 MFLAGS = -pqrR
 # environment
-SSH_CLIENT = 10.150.90.117 60060 22
+SSH_CLIENT = 10.20.50.79 44266 22
 # automatic
 +D = $(patsubst %/,%,$(dir $+))
 # environment
-BROWSER = /home/usuario/.vscode-server/bin/b3318bc0524af3d74034b8bb8a64df0ccf35549a/bin/helpers/browser.sh
+BROWSER = /home/usuario/.vscode-server/bin/3a6960b964327f0e3882ce18fcebd07ed191b316/bin/helpers/browser.sh
 # environment
 LC_IDENTIFICATION = C.UTF-8
 # default
@@ -163,7 +165,7 @@ SUFFIXES :=
 # default
 .INCLUDE_DIRS = /usr/include /usr/local/include /usr/include
 # environment
-VSCODE_INJECT_NODE_MODULE_LOOKUP_PATH = /home/usuario/.vscode-server/bin/b3318bc0524af3d74034b8bb8a64df0ccf35549a/remote/node_modules
+VSCODE_INJECT_NODE_MODULE_LOOKUP_PATH = /home/usuario/.vscode-server/bin/3a6960b964327f0e3882ce18fcebd07ed191b316/remote/node_modules
 # default
 .RECIPEPREFIX := 
 # environment
@@ -185,9 +187,9 @@ MOTD_SHOWN = pam
 
 # Directories
 
-# . (device 64768, inode 658017): 28 files, no impossibilities.
+# . (device 64768, inode 658017): 22 files, no impossibilities.
 
-# 28 files, no impossibilities in 1 directories.
+# 22 files, no impossibilities in 1 directories.
 
 # Implicit Rules
 
@@ -280,18 +282,16 @@ clean:
 # VPATH Search Paths
 
 # No 'vpath' search paths.
+ 
 
 # No general ('VPATH' variable) search path.
- 
-make: *** No rule to make target 'all'.  Stop.
- 
 
-# strcache buffers: 1 (0) / strings = 36 / storage = 379 B / avg = 10 B
-# current buf: size = 8162 B / used = 379 B / count = 36 / avg = 10 B
+# strcache buffers: 1 (0) / strings = 37 / storage = 410 B / avg = 11 B
+# current buf: size = 8162 B / used = 410 B / count = 37 / avg = 11 B
 
-# strcache performance: lookups = 56 / hit rate = 35%
+# strcache performance: lookups = 50 / hit rate = 26%
 # hash-table stats:
-# Load=36/8192=0%, Rehash=0, Collisions=2/56=4%
-# Finished Make data base on Tue Nov  9 12:08:56 2021
+# Load=37/8192=0%, Rehash=0, Collisions=2/50=4%
+# Finished Make data base on Tue Nov 16 00:29:45 2021
 
  
