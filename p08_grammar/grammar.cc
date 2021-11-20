@@ -119,7 +119,7 @@ Grammar::Grammar(std::ifstream& CFGFile)
   size_t count{0}; ///< cuenta las líneas que se leen.
   std::regex line_only_spaces("^\\s*$");
   std::regex set_symbols_pattern("^\\s*?(([^\\s])\\s)*?\\s*?$");
-  std::regex prods_pattern("^\\s*?([^\\s]) -> (.*?)\\s*?$");
+  std::regex prods_pattern("^\\s*?([^\\s]) -> \\s*(.*?)\\s*?$");
   std::smatch prods_match;
 
   /// a la vez que leemos una línea, la analizamos y incluimos en la clase.
