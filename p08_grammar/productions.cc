@@ -71,6 +71,11 @@ Productions::Productions(const char& non_terminal, const size_t& num,
 Productions::Productions(const Productions& prod) 
     : prod_(prod.prod_) {}
 
+void Productions::SetProd(
+    const std::multimap<char, std::pair<size_t, std::string>>& prod) {
+  prod_ = prod;
+}
+
 /**
  * @fn void Productions::SetProd(const char& non_terminal, const size_t& num, 
  *                               const std::string& prod)
@@ -132,11 +137,29 @@ std::string Productions::GetProd(const char& non_terminal,
                                  const size_t& num) const {
   std::string aux{""};
   for (auto i: prod_) {
-    if (i.first == non_terminal && i.second.first == num) {
+    if ((i.first == non_terminal) && (i.second.first == num)) {
       aux = i.second.second;
     }
   }
   return aux;
+}
+
+/**
+ * @fn size_t Productions::GetUpperNumP1(const char& symbol) const
+ * @brief devuelve la etiqueta más grande más 1, de un símbolo no terminal
+ * asociado a una o varias producciones, si el símbolo no está en el conjunto
+ * de símbolos no terminales, el valor retornado es cero.
+ * 
+ * @param symbol simbolo a evaluar.
+ * @return size_t 
+ */
+size_t Productions::GetUpperNumP1(const char& symbol) const {
+  size_t result{0};
+  for (auto i: prod_) {
+    if ((i.first == symbol) && (i.second.first >= result))
+      result = ++i.second.first;
+  }
+  return result;
 }
 
 /**
@@ -147,6 +170,44 @@ std::string Productions::GetProd(const char& non_terminal,
  */
 size_t Productions::Size(void) const {
   return prod_.size();
+}
+
+/**
+ * @fn bool Productions::IsItAProduction(const char& symbol, 
+ *                                       const size_t& num) const
+ * @brief Función que nos dice si hay una producción asociada a un símbolo no
+ * terminal y un número de referencia en el conjunto de producciones.
+ * 
+ * @param symbol símbolo no terminal.
+ * @param num número que clasifica todas las producciones que tiene un símbolo
+ * no terminal.
+ * @return true hay una producción para el símbolo no terminal dado, y con la
+ * etiqueta num.
+ * @return false no hay una producción para el símbolo no terminal dado, y con 
+ * la etiqueta num.
+ */
+bool Productions::IsItAProduction(const char& symbol, 
+                                  const size_t& num) const {
+  bool result{false};
+  for (auto i: prod_) {
+    if ((i.first == symbol) && (i.second.first == num)) {
+      result = true;
+      break;
+    }
+  }
+  return result;
+}
+
+/**
+ * @fn void Productions::operator=(const Productions& prod)
+ * @brief Sobrecarga del operator "=", iguala los objetos std::multimap de cada
+ * objeto de la clase.
+ * 
+ * @param prod objeto del cual se van a coger sus atribujos internos para 
+ * pasarselos al objeto que está a la izquierda del operador.
+ */
+void Productions::operator=(const Productions& prod) {
+  prod_ = prod.prod_;
 }
 
 /**

@@ -178,7 +178,7 @@ char SetSymbols::operator[](const size_t position) const {
 /// Operador sobrecargado '<<'. Muestra el contenido del alfabeto de forma
 /// clara por la salida estándar.
 std::ostream& operator<<(std::ostream& out, const SetSymbols& set_symbols) {
-  out << "Alfabeto " << set_symbols.name_ << " = ";
+  out << set_symbols.name_ << " = ";
   std::string aux{"{"};
   if (set_symbols.set_symbols_.size() > 0) {
     for (std::set<char>::iterator i{set_symbols.set_symbols_.begin()}; 

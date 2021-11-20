@@ -99,14 +99,15 @@ int main(int argc, char* argv[]) {
     exit(EXIT_FAILURE);
   }
   
-  // Grammar grammar(cfg_file);
+  Grammar grammar(cfg_file);
   cfg_file.close();
-  // if (grammar.Fail()) {
-  //   ErrorCFGFile(kProgramName, kHelp);
-  //   exit(EXIT_FAILURE);
-  // }
+  if (grammar.Fail()) {
+    ErrorCFGFile(kProgramName, kHelp);
+    exit(EXIT_FAILURE);
+  }
 
-  // grammar.EvalProdInFile(cfg_productions, cfg_out_file);
+  std::cout << grammar << '\n';
+  // grammar.EvalProdsInFile(cfg_productions, cfg_out_file);
   cfg_productions.close();
   cfg_out_file.close();
 
