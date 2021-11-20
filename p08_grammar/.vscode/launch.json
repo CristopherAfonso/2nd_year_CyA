@@ -7,7 +7,7 @@
       "request": "launch",
       "program": "${fileDirname}/build/main_grammar",
       "args": ["input.cfg", "input.drv", "output.txt"],
-      "stopAtEntry": true,
+      "stopAtEntry": false,
       "cwd": "${fileDirname}",
       "environment": [],
       "internalConsoleOptions": "openOnSessionStart",

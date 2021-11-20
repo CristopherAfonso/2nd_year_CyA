@@ -113,15 +113,13 @@ Grammar::Grammar(const Grammar& grammar)
  * objeto interno de la gramática.
  */
 Grammar::Grammar(std::ifstream& CFGFile) 
-    : alphabet_(), non_terminals_(), start_(), prod_(), 
-      creation_failed_(false) {
+    : alphabet_("Alfabeto"), non_terminals_("Símbolos No Terminales"), 
+      start_(), prod_(), creation_failed_(false) {
   std::string aux_str{""};
-  size_t count{1}; ///< cuenta las líneas que se leen.
+  size_t count{0}; ///< cuenta las líneas que se leen.
   std::regex line_only_spaces("^\\s*$");
   std::regex set_symbols_pattern("^\\s*?(([^\\s])\\s)*?\\s*?$");
-  std::regex prods_pattern("^\\s*?(([^\\s]) -> (.*?))\\s*?$");
-  std::smatch alphabet_match;
-  std::smatch non_terminals_match;
+  std::regex prods_pattern("^\\s*?([^\\s]) -> (.*?)\\s*?$");
   std::smatch prods_match;
 
   /// a la vez que leemos una línea, la analizamos y incluimos en la clase.
@@ -137,21 +135,21 @@ Grammar::Grammar(std::ifstream& CFGFile)
       if (regex_match(aux_str, prods_match, prods_pattern)) {
         /// si el símbolo no terminal de la línea es incorrecto, se termina el
         /// programa.
-        if (non_terminals_.IsItInSetSymbols(prods_match[2].str())) {
+        if (non_terminals_.IsItInSetSymbols(prods_match[1].str())) {
           /// si la produccion contiene un solo símbolo que no sea del alfabeto
           /// o del conjunto de símbolos no terminales, se termina el programa
-          if (this->IsItAAceptableProduction(prods_match[3].str())) {
+          if (this->IsItAAceptableProduction(prods_match[2].str())) {
             /// si es la primera vez que se añade una producción asociada al
             /// símbolo no terminal de la línea, esta se añade con un número
             /// 1 como referencia, sino, se añade con el valor del número más
             /// grande que tenga asociado el símbolo más 1.
-            if (!prod_.IsItAProduction(prods_match[2].str().front(), 1)) {
-              prod_.SetProd(prods_match[2].str().front(), 1, 
-                            prods_match[3].str());
+            if (!prod_.IsItAProduction(prods_match[1].str().front(), 1)) {
+              prod_.SetProd(prods_match[1].str().front(), 1, 
+                            prods_match[2].str());
             } else {
-              prod_.SetProd(prods_match[2].str().front(), 
-                            prod_.GetUpperNumP1(prods_match[2].str().front()),
-                            prods_match[3].str());
+              prod_.SetProd(prods_match[1].str().front(), 
+                            prod_.GetUpperNumP1(prods_match[1].str().front()),
+                            prods_match[2].str());
             }
           } else {
             creation_failed_ = true;
@@ -167,41 +165,21 @@ Grammar::Grammar(std::ifstream& CFGFile)
       }
     }
 
-    if (count == 1) { ///< cuando leemos los símbolos del alfabeto.
+    if (count <= 2) { ///< cuando leemos los símbolos del alfabeto.
       /// si la línea está bien escrita, la recorremos para coger los simbolos
-      if (regex_match(aux_str, alphabet_match, set_symbols_pattern)) {
-        size_t aux{1};
-        for (auto i: alphabet_match) {
-          if (aux % 2 == 0) alphabet_.Insert(i.str().front());
-          ++aux;
+      if (regex_match(aux_str, set_symbols_pattern)) {
+        for (auto i: aux_str) {
+          if (i != ' ') {
+            if (count == 1) {alphabet_.Insert(i);}
+            if ((count == 2) && (non_terminals_.Size() == 0)) {start_ = i;}
+            if (count == 2) {non_terminals_.Insert(i);}
+          }
         }
-        ;
       } else {
         creation_failed_ = true;
         break;
       }
     }
-
-    if (count == 2) { /// cuando leemos los símbolos no terminales.
-      /// si la línea está bien escrita, la recorremos para coger los simbolos
-      if (regex_match(aux_str, non_terminals_match, set_symbols_pattern)) {
-        size_t aux{1};
-        for (auto i: non_terminals_match) {
-          if (aux % 2 == 0) {
-            if (!alphabet_.IsItInSetSymbols(i.str())) {
-              non_terminals_.Insert(i.str().front());
-            } else {
-              creation_failed_ = true;
-              break;
-            }
-          }
-          ++aux;
-        }
-      } else {
-        creation_failed_ = true;
-        break;
-      }
-    }    
   }
 }
 
@@ -333,6 +311,7 @@ bool Grammar::IsItAProduction(const char& symbol, const size_t& num) const {
 bool Grammar::IsItAAceptableProduction(const std::string& prod) const {
   bool result{true};
   for (auto i: prod) {
+    if (i == ' ') {continue;}
     if (!(alphabet_.IsItInSetSymbols(i) || 
         non_terminals_.IsItInSetSymbols(i))) {
       result = false;
@@ -375,9 +354,8 @@ bool EvalProdsInFile(std::ifstream& cfg_prods_file,
  */
 std::ostream& operator<<(std::ostream& out, const Grammar& grammar) {
   out << "\nEsta gramática se compone de 4 elementos fundamentales: ";
-  out << "\n1º Alphabeto: " << grammar.alphabet_;
-  out << "\n2º Conjunto de Símbolos no terminales: ";
-  out << grammar.non_terminals_;
+  out << "\n1º " << grammar.alphabet_;
+  out << "\n2º Conjunto de " << grammar.non_terminals_;
   out << "\n3º Símbolo de arranque de la Gramática: " << grammar.start_;
   out << "\n4º Conjunto de producciones de la gramática: ";
   out << grammar.prod_;

@@ -106,7 +106,6 @@ int main(int argc, char* argv[]) {
     exit(EXIT_FAILURE);
   }
 
-  std::cout << grammar << '\n';
   // grammar.EvalProdsInFile(cfg_productions, cfg_out_file);
   cfg_productions.close();
   cfg_out_file.close();

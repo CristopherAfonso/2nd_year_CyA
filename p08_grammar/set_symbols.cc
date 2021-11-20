@@ -181,9 +181,9 @@ std::ostream& operator<<(std::ostream& out, const SetSymbols& set_symbols) {
   out << set_symbols.name_ << " = ";
   std::string aux{"{"};
   if (set_symbols.set_symbols_.size() > 0) {
-    for (std::set<char>::iterator i{set_symbols.set_symbols_.begin()}; 
-         i != set_symbols.set_symbols_.end(); ++i) {
-      aux += *i + ", ";
+    for (auto i: set_symbols.set_symbols_) {
+      aux.push_back(i);
+      aux += ", ";
     }
     aux.pop_back(); ///< Quitamos el último espacio.
     aux.pop_back(); ///< Quitamos la última coma.
