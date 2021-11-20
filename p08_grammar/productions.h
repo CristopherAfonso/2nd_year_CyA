@@ -71,7 +71,7 @@ class Productions {
   bool IsItAProduction(const char& symbol, const size_t& num) const;
 
   /// Operadores sobrecargados.
-  void operator=(const Productions& prod);
+  Productions& operator=(const Productions& prod);
 
   /// Operadores de flujo de entrada y salida.
   friend std::ostream& operator<<(std::ostream& out, const Productions& prod);

@@ -270,3 +270,23 @@ void ErrorCFGFile(const std::string& kProgramName, const std::string& kHelp) {
   std::cerr << "\nPruebe '" << kProgramName << " " << kHelp << "' ";
   std::cerr << "para más información.\n";
 }
+
+/**
+ * @fn void ErrorCFGProductions(const std::string& kProgramName, 
+ *                              const std::string& kHelp)
+ * @brief Mensaje de error que se muestra por pantalla si el archivo que 
+ * contiene las órdenes que debe serguir la gramática (input.drv) está mal
+ * escrito.
+ * 
+ * @param kProgramName nombre del programa.
+ * @param kHelp palabra clave para pedir las instrucciones del programa.
+ */
+void ErrorCFGProductions(const std::string& kProgramName, 
+                         const std::string& kHelp) {
+  std::cerr << "Warning! ha habido un error al leer el archivo que contiene";
+  std::cerr << "\nlas órdenes que debe seguir la gramática para generar una";
+  std::cerr << "\ncadena del lenguaje que genera, modifiquelo para que sea";
+  std::cerr << "\nprocesable por este programa y intentelo de nuevo.";
+  std::cerr << "\nPruebe '" << kProgramName << " " << kHelp << "' ";
+  std::cerr << "para más información.\n";
+}

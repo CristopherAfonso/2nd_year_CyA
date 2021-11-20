@@ -68,6 +68,10 @@
 					"fragment" : "-Wpedantic"
 				},
 				{
+					"backtrace" : 2,
+					"fragment" : "-Werror"
+				},
+				{
 					"fragment" : "-std=gnu++2a"
 				}
 			],

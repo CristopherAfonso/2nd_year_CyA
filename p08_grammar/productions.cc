@@ -43,7 +43,8 @@ Productions::Productions(void) : prod_() {}
  * @param prod valor del multimap.
  */
 Productions::Productions(const char& non_terminal, 
-                         std::pair<size_t, std::string> prod) {
+                         std::pair<size_t, std::string> prod) 
+    : prod_() {
   prod_.insert(std::make_pair(non_terminal, prod));
 }
 
@@ -58,7 +59,8 @@ Productions::Productions(const char& non_terminal,
  * @param prod cadena por la que se sustituye a "non_terminal"
  */
 Productions::Productions(const char& non_terminal, const size_t& num, 
-                         const std::string& prod) {
+                         const std::string& prod) 
+    : prod_() {
   prod_.insert(std::make_pair(non_terminal, std::make_pair(num, prod)));
 }
 
@@ -206,8 +208,9 @@ bool Productions::IsItAProduction(const char& symbol,
  * @param prod objeto del cual se van a coger sus atribujos internos para 
  * pasarselos al objeto que está a la izquierda del operador.
  */
-void Productions::operator=(const Productions& prod) {
+Productions& Productions::operator=(const Productions& prod) {
   prod_ = prod.prod_;
+  return *this;
 }
 
 /**

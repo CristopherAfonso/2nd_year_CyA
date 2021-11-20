@@ -106,7 +106,11 @@ int main(int argc, char* argv[]) {
     exit(EXIT_FAILURE);
   }
 
-  // grammar.EvalProdsInFile(cfg_productions, cfg_out_file);
+  if (grammar.EvalProdsInFile(cfg_productions, cfg_out_file)) {
+    ErrorCFGProductions(kProgramName, kHelp);
+    exit(EXIT_FAILURE);
+  };
+
   cfg_productions.close();
   cfg_out_file.close();
 

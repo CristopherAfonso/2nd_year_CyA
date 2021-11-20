@@ -69,7 +69,7 @@ class SetSymbols {
   void Clear(void);
 
   /// Operadores sobrecargados.
-  void operator=(const SetSymbols& set_symbols);
+  SetSymbols& operator=(const SetSymbols& set_symbols);
   bool operator==(const SetSymbols& set_symbols) const;
   char operator[](const size_t position) const;
 

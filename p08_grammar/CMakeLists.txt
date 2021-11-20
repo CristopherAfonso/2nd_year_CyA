@@ -50,6 +50,6 @@ add_executable(main_grammar
 target_compile_features(main_grammar PRIVATE cxx_std_20)
 
 # 9º Paso: Añadir las opciones del compilador a un objeto (nuestro ejecutable)
-target_compile_options(main_grammar PRIVATE -Wall -Wextra -Weffc++ -Wpedantic)
+target_compile_options(main_grammar PRIVATE -Wall -Wextra -Weffc++ -Wpedantic -Werror)
 
 # Fin del archivo

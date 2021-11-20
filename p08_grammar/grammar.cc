@@ -123,7 +123,7 @@ Grammar::Grammar(std::ifstream& CFGFile)
   std::smatch prods_match;
 
   /// a la vez que leemos una línea, la analizamos y incluimos en la clase.
-  while(!CFGFile.eof()) {
+  while (!CFGFile.eof()) {
     getline(CFGFile, aux_str);
 
     if (aux_str.empty() || regex_match(aux_str, line_only_spaces)) continue;
@@ -336,9 +336,80 @@ bool Grammar::IsItAAceptableProduction(const std::string& prod) const {
  * escrito erroneamente.
  * @return false la función ha sido completada exitosamente.
  */
-bool EvalProdsInFile(std::ifstream& cfg_prods_file, 
+bool Grammar::EvalProdsInFile(std::ifstream& cfg_prods_file, 
                      std::ofstream& cfg_out_file) {
   bool result{false};
+  bool non_terminal_in_line_replaced{false};
+  std::string aux_str{""};
+  std::string final_chain{start_};
+  std::regex line_only_spaces("^\\s*$");
+  std::regex prods_pattern("^\\s*?([^\\s]): ([\\d]+)\\s*?$");
+  std::smatch prods_match;
+
+  cfg_out_file << final_chain << '\n';
+
+  while (!cfg_prods_file.eof()) {
+    getline(cfg_prods_file, aux_str);
+    if (aux_str.empty() || regex_match(aux_str, line_only_spaces)) {continue;}
+
+    /// si la línea está mal escrita, se termina el programa.
+    if (regex_match(aux_str, prods_match, prods_pattern)) {
+      /// si el símbolo no terminal que produce, está mal escrito, se termina
+      /// el programa.
+      if (non_terminals_.IsItInSetSymbols(prods_match[1].str())) {
+        /// si la cadena producida por el símbolo no terminal en la línea,
+        /// tiene algún símbolo desconocido para la gramática, es decir,
+        /// si sólo un símbolo no está contenido ni en alphabet_ ni en 
+        /// non_terminals_, entonces se termina el programa.
+        if (prod_.IsItAProduction(prods_match[1].str().front(), 
+            size_t(std::stoi(prods_match[2].str())))) {
+          /// recorremos final_chain para encontrar el primer símbolo no 
+          /// terminal, sustituirlo y iterar de nuevo.
+          for (auto i: final_chain) {
+            /// si encontramos el primer símbolo no terminal, pero no coincide
+            /// con el puesto en la línea del archivo input.drv que estamos
+            /// leyendo en este momento, se termina el programa.
+            if (non_terminals_.IsItInSetSymbols(i) && 
+                i != prods_match[1].str().front()) {
+              result = true;
+              break;
+            }
+            /// si encontramos el primer símbolo no terminal y coincide con el
+            /// puesto en la línea del archivo, entonces este se sustituye por
+            /// su producción y se vuelve a iterar para leer la siguiente
+            /// producción o terminar el programa exitosamente.
+            if (i == prods_match[1].str().front()) {
+              final_chain.replace(final_chain.find_first_of(i), 1, 
+                          prod_.GetProd(prods_match[1].str().front(), 
+                                size_t(std::stoi(prods_match[2].str()))));
+              non_terminal_in_line_replaced = true;
+              cfg_out_file << "=> " << final_chain << '\n';
+              break; ///< salimos del for tras reemplazar el simbolo.
+            }
+          }
+
+          if (non_terminal_in_line_replaced) {
+            /// para que no afecte a la lectura de la siguiente linea, se pone
+            /// a false.
+            non_terminal_in_line_replaced = false;
+            continue; ///< reiteramos para leer la siguiente línea del archivo.
+          } else {
+            result = true;
+            break; ///< si se sale del for, sin pasar por el if, hubo un error.
+          }
+        } else {
+          result = true;
+          break;
+        }
+      } else {
+        result = true;
+        break;
+      }
+    } else {
+      result = true;
+      break;
+    }
+  }
 
   return result;
 }

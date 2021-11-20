@@ -44,4 +44,6 @@ void ErrorCFGDrvOpen(const std::string& kProgramName,
 void ErrorCFGOutFile(const std::string& kProgramName, 
                      const std::string& kHelp);
 void ErrorCFGFile(const std::string& kProgramName, const std::string& kHelp);
+void ErrorCFGProductions(const std::string& kProgramName, 
+                         const std::string& kHelp);
 #endif

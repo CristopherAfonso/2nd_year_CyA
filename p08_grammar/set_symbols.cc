@@ -144,9 +144,10 @@ void SetSymbols::Clear(void) {
 }
 
 /// Operador sobrecargado '='. Iguala los nombres y los alfabetos.
-void SetSymbols::operator=(const SetSymbols& set_symbols) {
+SetSymbols& SetSymbols::operator=(const SetSymbols& set_symbols) {
   set_symbols_ = set_symbols.set_symbols_;
   name_ = set_symbols.name_;
+  return *this;
 }
 
 /// Operador sobrecargado '=='. Comprueba si los alfabetos son iguales.
