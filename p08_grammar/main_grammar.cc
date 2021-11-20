@@ -101,11 +101,12 @@ int main(int argc, char* argv[]) {
   
   Grammar grammar(cfg_file);
   cfg_file.close();
-  if (grammar.Fail()) {
+  if (grammar.Fail()) { ///< si la creación falla, se sale del programa.
     ErrorCFGFile(kProgramName, kHelp);
     exit(EXIT_FAILURE);
   }
 
+  /// si la lectura del archivo input.drv falla, se sale del programa.
   if (grammar.EvalProdsInFile(cfg_productions, cfg_out_file)) {
     ErrorCFGProductions(kProgramName, kHelp);
     exit(EXIT_FAILURE);
