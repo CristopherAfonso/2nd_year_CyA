@@ -25,7 +25,7 @@
  * 16/11/21 - Creacion (primera version) del codigo:
  *            Solo he creado el archivo, le he puesto el comentario de
  *            cabecera y declarado su include.
- * 
+ * 19/11/21 - Funciones de la clase terminadas.
  */
 
 #ifndef _SET_SYMBOLS_

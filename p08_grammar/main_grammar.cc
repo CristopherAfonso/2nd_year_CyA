@@ -33,6 +33,7 @@
  * 16/11/21 - Creacion (primera version) del codigo:
  *            Solo he creado el archivo, le he puesto el comentario de
  *            cabecera y declarado su include.
+ * 20/11/21 - Proyecto terminado.
  */
 
 #include "main_functions.h"

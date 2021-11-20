@@ -23,6 +23,7 @@
  * 16/11/21 - Creacion (primera version) del codigo:
  *            Solo he creado el archivo, le he puesto el comentario de
  *            cabecera y declarado su include
+ * 16/11/21 - Funciones del main terminadas.
  */
 
 #ifndef _MAIN_FUNCTIONS_
