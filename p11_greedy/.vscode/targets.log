@@ -1,4 +1,6 @@
 make all --print-data-base --no-builtin-variables --no-builtin-rules --question
+make: *** No rule to make target 'all'.  Stop.
+ 
 # GNU Make 4.3
 # Built for x86_64-pc-linux-gnu
 # Copyright (C) 1988-2020 Free Software Foundation, Inc.
@@ -6,7 +8,7 @@ make all --print-data-base --no-builtin-variables --no-builtin-rules --question
 # This is free software: you are free to change and redistribute it.
 # There is NO WARRANTY, to the extent permitted by law.
 
-# Make data base, printed on Sun Dec 19 15:24:38 2021
+# Make data base, printed on Mon Dec 20 00:04:43 2021
 
 # Variables
 
@@ -17,7 +19,7 @@ LC_ALL = C
 # environment
 GTK_RC_FILES = /etc/gtk/gtkrc:/home/themaster/.gtkrc:/home/themaster/.config/gtkrc
 # environment
-VSCODE_IPC_HOOK_EXTHOST = /run/user/1000/vscode-ipc-c4365600-7afa-44c6-8b47-5bffabad1fe6.sock
+VSCODE_IPC_HOOK_EXTHOST = /run/user/1000/vscode-ipc-2819eeb8-96e9-4a8e-bd1a-9054c7effca4.sock
 # environment
 LC_NAME = es_ES.UTF-8
 # environment
@@ -51,7 +53,7 @@ VSCODE_LOG_STACK = false
 # environment
 VSCODE_CODE_CACHE_PATH = /home/themaster/.config/VSCodium/CachedData/899d46d82c4c95423fb7e10e68eba52050e30ba3
 # environment
-XDG_SESSION_PATH = /org/freedesktop/DisplayManager/Session0
+XDG_SESSION_PATH = /org/freedesktop/DisplayManager/Session1
 # environment
 LANG = C
 # environment
@@ -73,7 +75,7 @@ APPLICATION_INSIGHTS_NO_DIAGNOSTIC_CHANNEL = true
 # environment
 MFLAGS = -pqrR
 # environment
-SSH_AUTH_SOCK = /tmp/ssh-CBZBFNdfgcmZ/agent.1322
+SSH_AUTH_SOCK = /tmp/ssh-cHPbT92UGAmL/agent.24847
 # default
 .SHELLFLAGS := -c
 # automatic
@@ -83,7 +85,7 @@ XCURSOR_THEME = breeze_cursors
 # environment
 VSCODE_CRASH_REPORTER_START_OPTIONS = {"companyName":"Microsoft","productName":"VSCodium","submitURL":"","uploadToServer":false}
 # environment
-XDG_SESSION_DESKTOP = plasma
+XDG_SESSION_DESKTOP = lightdm-xsession
 # makefile (from 'Makefile', line 1)
 MAKEFILE_LIST := Makefile
 # automatic
@@ -91,13 +93,13 @@ MAKEFILE_LIST := Makefile
 # environment
 VSCODE_VERBOSE_LOGGING = true
 # environment
-VSCODE_PID = 1753
+VSCODE_PID = 28120
 # environment
 XDG_SESSION_TYPE = x11
 # automatic
 ?D = $(patsubst %/,%,$(dir $?))
 # environment
-SESSION_MANAGER = local/Fenix:@/tmp/.ICE-unix/1464,unix/Fenix:/tmp/.ICE-unix/1464
+SESSION_MANAGER = local/Fenix:@/tmp/.ICE-unix/24992,unix/Fenix:/tmp/.ICE-unix/24992
 # automatic
 *F = $(notdir $*)
 # environment
@@ -153,7 +155,7 @@ LS_COLORS =
 # environment
 XDG_SEAT_PATH = /org/freedesktop/DisplayManager/Seat0
 # environment
-DESKTOP_SESSION = plasma
+DESKTOP_SESSION = lightdm-xsession
 # environment
 ORIGINAL_XDG_CURRENT_DESKTOP = KDE
 # 'override' directive
@@ -177,7 +179,7 @@ KDE_SESSION_UID = 1000
 # environment
 LC_MEASUREMENT = es_ES.UTF-8
 # environment
-SSH_AGENT_PID = 1369
+SSH_AGENT_PID = 24896
 # environment
 _ = /usr/share/codium/codium
 # environment
@@ -199,7 +201,7 @@ ELECTRON_RUN_AS_NODE = 1
 # environment
 VSCODE_IPC_HOOK = /run/user/1000/vscode-31b4877d-1.63.2-main.sock
 # environment
-XDG_SESSION_ID = 2
+XDG_SESSION_ID = 45
 # environment
 XCURSOR_SIZE = 24
 # default
@@ -219,7 +221,7 @@ KDE_SESSION_VERSION = 5
 # environment
 KDE_FULL_SESSION = true
 # environment
-GDMSESSION = plasma
+GDMSESSION = lightdm-xsession
 # environment
 LC_IDENTIFICATION = es_ES.UTF-8
 # variable set hash-table stats:
@@ -244,7 +246,7 @@ LC_IDENTIFICATION = es_ES.UTF-8
 # Not a target:
 Makefile:
 #  Implicit rule search has been done.
-#  Last modified 2021-12-19 12:12:58.547807752
+#  Last modified 2021-12-19 17:24:30.803952295
 #  File has been updated.
 #  Successfully updated.
 
@@ -275,8 +277,6 @@ all:
 # strcache performance: lookups = 13 / hit rate = 30%
 # hash-table stats:
 # Load=9/8192=0%, Rehash=0, Collisions=0/13=0%
-# Finished Make data base on Sun Dec 19 15:24:38 2021
+# Finished Make data base on Mon Dec 20 00:04:43 2021
 
- 
-make: *** No rule to make target 'all'.  Stop.
  
