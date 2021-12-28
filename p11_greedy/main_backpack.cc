@@ -34,6 +34,6 @@
 
 int main(int argc, char* argv[]) {
   Usage(argc, argv);
-
+  Backpack(argv);
   return 0;
 }

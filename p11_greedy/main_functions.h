@@ -41,3 +41,5 @@ void ErrorConfigFileExtension(const std::string& kProgramName,
                               const std::string& kHelp);
 void ErrorOpenConfigFile(const std::string& kProgramName, 
                          const std::string& kHelp);
+void ErrorNoNumber(const std::string& kProgramName, const std::string& kHelp);
+void Backpack(char* argv[]);
