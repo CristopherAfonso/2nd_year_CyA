@@ -1,5 +1,5 @@
 make all --print-data-base --no-builtin-variables --no-builtin-rules --question
-make: *** No rule to make target 'all'.  Stop.
+Makefile:32: *** missing separator.  Stop.
  
 # GNU Make 4.3
 # Built for x86_64-pc-linux-gnu
@@ -8,30 +8,36 @@ make: *** No rule to make target 'all'.  Stop.
 # This is free software: you are free to change and redistribute it.
 # There is NO WARRANTY, to the extent permitted by law.
 
-# Make data base, printed on Mon Dec 20 00:04:43 2021
+# Make data base, printed on Tue Dec 28 00:07:44 2021
 
 # Variables
 
+# makefile (from 'Makefile', line 29)
+OBJ = main_backpack.o main_functions.o
 # environment
 GDK_BACKEND = x11
 # environment
 LC_ALL = C
 # environment
+NO_AT_BRIDGE = 1
+# environment
 GTK_RC_FILES = /etc/gtk/gtkrc:/home/themaster/.gtkrc:/home/themaster/.config/gtkrc
 # environment
-VSCODE_IPC_HOOK_EXTHOST = /run/user/1000/vscode-ipc-2819eeb8-96e9-4a8e-bd1a-9054c7effca4.sock
+VSCODE_IPC_HOOK_EXTHOST = /run/user/1000/vscode-ipc-710c8c38-9204-490d-8674-bdf695ac8073.sock
 # environment
 LC_NAME = es_ES.UTF-8
 # environment
 LC_NUMERIC = es_ES.UTF-8
 # environment
-VSCODE_CWD = /home/themaster
+VSCODE_CWD = /home/themaster/Documentos/2nd_year_CyA/p11_greedy
 # environment
 LC_ADDRESS = es_ES.UTF-8
 # default
 MAKE_COMMAND := make
 # environment
 QT_ACCESSIBILITY = 1
+# environment
+VSCODE_GIT_ASKPASS_EXTRA_ARGS = 
 # automatic
 @D = $(patsubst %/,%,$(dir $@))
 # environment
@@ -44,6 +50,8 @@ PWD = /home/themaster/Documentos/2nd_year_CyA/p11_greedy
 %D = $(patsubst %/,%,$(dir $%))
 # environment
 XDG_DATA_DIRS = /usr/local/share:/usr/share:/var/lib/snapd/desktop
+# environment
+OLDPWD = /home/themaster/Documentos/2nd_year_CyA
 # automatic
 ^D = $(patsubst %/,%,$(dir $^))
 # environment
@@ -53,7 +61,7 @@ VSCODE_LOG_STACK = false
 # environment
 VSCODE_CODE_CACHE_PATH = /home/themaster/.config/VSCodium/CachedData/899d46d82c4c95423fb7e10e68eba52050e30ba3
 # environment
-XDG_SESSION_PATH = /org/freedesktop/DisplayManager/Session1
+XDG_SESSION_PATH = /org/freedesktop/DisplayManager/Session0
 # environment
 LANG = C
 # environment
@@ -75,17 +83,19 @@ APPLICATION_INSIGHTS_NO_DIAGNOSTIC_CHANNEL = true
 # environment
 MFLAGS = -pqrR
 # environment
-SSH_AUTH_SOCK = /tmp/ssh-cHPbT92UGAmL/agent.24847
+SSH_AUTH_SOCK = /tmp/ssh-w0Xpvv3F7NG5/agent.1388
 # default
 .SHELLFLAGS := -c
 # automatic
 +D = $(patsubst %/,%,$(dir $+))
 # environment
+GIT_ASKPASS = /usr/share/codium/resources/app/extensions/git/dist/askpass.sh
+# environment
 XCURSOR_THEME = breeze_cursors
 # environment
 VSCODE_CRASH_REPORTER_START_OPTIONS = {"companyName":"Microsoft","productName":"VSCodium","submitURL":"","uploadToServer":false}
 # environment
-XDG_SESSION_DESKTOP = lightdm-xsession
+XDG_SESSION_DESKTOP = plasma
 # makefile (from 'Makefile', line 1)
 MAKEFILE_LIST := Makefile
 # automatic
@@ -93,13 +103,13 @@ MAKEFILE_LIST := Makefile
 # environment
 VSCODE_VERBOSE_LOGGING = true
 # environment
-VSCODE_PID = 28120
+VSCODE_PID = 1810
 # environment
 XDG_SESSION_TYPE = x11
 # automatic
 ?D = $(patsubst %/,%,$(dir $?))
 # environment
-SESSION_MANAGER = local/Fenix:@/tmp/.ICE-unix/24992,unix/Fenix:/tmp/.ICE-unix/24992
+SESSION_MANAGER = local/Fenix:@/tmp/.ICE-unix/1529,unix/Fenix:/tmp/.ICE-unix/1529
 # automatic
 *F = $(notdir $*)
 # environment
@@ -119,17 +129,21 @@ SHELL = /bin/sh
 # default
 MAKECMDGOALS := all
 # environment
-SHLVL = 0
+SHLVL = 1
 # environment
 MAKELEVEL := 0
 # default
 MAKE = $(MAKE_COMMAND)
 # environment
-PATH = /home/themaster/.local/bin:/snap/bin:/usr/sandbox/:/usr/local/bin:/usr/bin:/bin:/usr/local/games:/usr/games:/usr/share/games:/usr/local/sbin:/usr/sbin:/sbin:/snap/bin:/usr/local/sbin:/usr/sbin:/sbin:/usr/local/bin:/usr/bin:/bin:/usr/local/games:/usr/games:/snap/bin:/home/themaster/.dotnet/tools
+PATH = /home/themaster/.local/bin:/snap/bin:/usr/sandbox/:/usr/local/bin:/usr/bin:/bin:/usr/local/games:/usr/games:/usr/share/games:/usr/local/sbin:/usr/sbin:/sbin:/home/themaster/.local/bin:/snap/bin:/usr/sandbox/:/usr/local/bin:/usr/bin:/bin:/usr/local/games:/usr/games:/usr/share/games:/usr/local/sbin:/usr/sbin:/sbin:/snap/bin:/usr/local/sbin:/usr/sbin:/sbin:/usr/local/bin:/usr/bin:/bin:/usr/local/games:/usr/games:/snap/bin:/home/themaster/.dotnet/tools
 # default
 MAKEFILES := 
 # environment
+VSCODE_GIT_IPC_HANDLE = /run/user/1000/vscode-git-bb2e352b35.sock
+# environment
 LANGUAGE = 
+# environment
+VSCODE_GIT_ASKPASS_NODE = /usr/share/codium/codium
 # environment
 LC_MONETARY = es_ES.UTF-8
 # automatic
@@ -137,7 +151,11 @@ LC_MONETARY = es_ES.UTF-8
 # environment
 LC_TIME = es_ES.UTF-8
 # environment
+VSCODE_GIT_ASKPASS_MAIN = /usr/share/codium/resources/app/extensions/git/dist/askpass-main.js
+# environment
 VSCODE_LOG_NATIVE = false
+# environment
+TERM_PROGRAM = vscode
 # environment
 LC_TELEPHONE = es_ES.UTF-8
 # automatic
@@ -149,16 +167,16 @@ XDG_SEAT = seat0
 # environment
 XDG_CURRENT_DESKTOP = KDE
 # environment
-LS_COLORS = 
+LS_COLORS = rs=0:di=01;34:ln=01;36:mh=00:pi=40;33:so=01;35:do=01;35:bd=40;33;01:cd=40;33;01:or=40;31;01:mi=00:su=37;41:sg=30;43:ca=30;41:tw=30;42:ow=34;42:st=37;44:ex=01;32:*.tar=01;31:*.tgz=01;31:*.arc=01;31:*.arj=01;31:*.taz=01;31:*.lha=01;31:*.lz4=01;31:*.lzh=01;31:*.lzma=01;31:*.tlz=01;31:*.txz=01;31:*.tzo=01;31:*.t7z=01;31:*.zip=01;31:*.z=01;31:*.dz=01;31:*.gz=01;31:*.lrz=01;31:*.lz=01;31:*.lzo=01;31:*.xz=01;31:*.zst=01;31:*.tzst=01;31:*.bz2=01;31:*.bz=01;31:*.tbz=01;31:*.tbz2=01;31:*.tz=01;31:*.deb=01;31:*.rpm=01;31:*.jar=01;31:*.war=01;31:*.ear=01;31:*.sar=01;31:*.rar=01;31:*.alz=01;31:*.ace=01;31:*.zoo=01;31:*.cpio=01;31:*.7z=01;31:*.rz=01;31:*.cab=01;31:*.wim=01;31:*.swm=01;31:*.dwm=01;31:*.esd=01;31:*.jpg=01;35:*.jpeg=01;35:*.mjpg=01;35:*.mjpeg=01;35:*.gif=01;35:*.bmp=01;35:*.pbm=01;35:*.pgm=01;35:*.ppm=01;35:*.tga=01;35:*.xbm=01;35:*.xpm=01;35:*.tif=01;35:*.tiff=01;35:*.png=01;35:*.svg=01;35:*.svgz=01;35:*.mng=01;35:*.pcx=01;35:*.mov=01;35:*.mpg=01;35:*.mpeg=01;35:*.m2v=01;35:*.mkv=01;35:*.webm=01;35:*.webp=01;35:*.ogm=01;35:*.mp4=01;35:*.m4v=01;35:*.mp4v=01;35:*.vob=01;35:*.qt=01;35:*.nuv=01;35:*.wmv=01;35:*.asf=01;35:*.rm=01;35:*.rmvb=01;35:*.flc=01;35:*.avi=01;35:*.fli=01;35:*.flv=01;35:*.gl=01;35:*.dl=01;35:*.xcf=01;35:*.xwd=01;35:*.yuv=01;35:*.cgm=01;35:*.emf=01;35:*.ogv=01;35:*.ogx=01;35:*.aac=00;36:*.au=00;36:*.flac=00;36:*.m4a=00;36:*.mid=00;36:*.midi=00;36:*.mka=00;36:*.mp3=00;36:*.mpc=00;36:*.ogg=00;36:*.ra=00;36:*.wav=00;36:*.oga=00;36:*.opus=00;36:*.spx=00;36:*.xspf=00;36:
 # automatic
 +F = $(notdir $+)
 # environment
 XDG_SEAT_PATH = /org/freedesktop/DisplayManager/Seat0
 # environment
-DESKTOP_SESSION = lightdm-xsession
+DESKTOP_SESSION = plasma
 # environment
 ORIGINAL_XDG_CURRENT_DESKTOP = KDE
-# 'override' directive
+# environment
 GNUMAKEFLAGS := 
 # environment
 LOGNAME = themaster
@@ -179,15 +197,19 @@ KDE_SESSION_UID = 1000
 # environment
 LC_MEASUREMENT = es_ES.UTF-8
 # environment
-SSH_AGENT_PID = 24896
+SSH_AGENT_PID = 1435
 # environment
-_ = /usr/share/codium/codium
+_ = /usr/bin/codium
 # environment
 LC_PAPER = es_ES.UTF-8
 # environment
 XDG_RUNTIME_DIR = /run/user/1000
+# makefile (from 'Makefile', line 27)
+CFLAGS = -I -g -std=c++20 -Wall -Weffc++ -Wextra -Wpedantic -Werror
 # environment
 GPG_AGENT_INFO = /run/user/1000/gnupg/S.gpg-agent:0:1
+# environment
+COLORTERM = truecolor
 # environment
 XDG_SESSION_CLASS = user
 # environment
@@ -201,31 +223,44 @@ ELECTRON_RUN_AS_NODE = 1
 # environment
 VSCODE_IPC_HOOK = /run/user/1000/vscode-31b4877d-1.63.2-main.sock
 # environment
-XDG_SESSION_ID = 45
+TERM = xterm-256color
+# environment
+XDG_SESSION_ID = 2
 # environment
 XCURSOR_SIZE = 24
 # default
 .RECIPEPREFIX := 
 # automatic
 <F = $(notdir $<)
+# makefile (from 'Makefile', line 28)
+DEPS = main_functions.h
 # default
 SUFFIXES := 
 # environment
 QT_AUTO_SCREEN_SCALE_FACTOR = 0
+# environment
+VSCODE_CLI = 1
+# environment
+ELECTRON_NO_ATTACH_CONSOLE = 1
 # environment
 XDG_GREETER_DATA_DIR = /var/lib/lightdm/data/themaster
 # environment
 KDE_SESSION_VERSION = 5
 # default
 .FEATURES := target-specific order-only second-expansion else-if shortest-stem undefine oneshell nocomment grouped-target extra-prereqs archives jobserver output-sync check-symlink load
+# makefile (from 'Makefile', line 26)
+CC = g++
 # environment
 KDE_FULL_SESSION = true
 # environment
-GDMSESSION = lightdm-xsession
+TERM_PROGRAM_VERSION = 1.63.2
+# environment
+GDMSESSION = plasma
 # environment
 LC_IDENTIFICATION = es_ES.UTF-8
 # variable set hash-table stats:
-# Load=106/1024=10%, Rehash=0, Collisions=4/135=3%
+ 
+# Load=123/1024=12%, Rehash=0, Collisions=5/141=4%
 
 # Pattern-specific Variable Values
 
@@ -233,22 +268,22 @@ LC_IDENTIFICATION = es_ES.UTF-8
 
 # Directories
 
-# . (device 40, inode 85811): 4 files, no impossibilities.
+# . (device 40, inode 85811): 7 files, no impossibilities.
 
-# 4 files, no impossibilities in 1 directories.
+# 7 files, no impossibilities in 1 directories.
 
 # Implicit Rules
 
-# No implicit rules.
+%.o: %.cc main_functions.h
 
+# 1 implicit rules, 0 (0.0%) terminal.
 # Files
 
 # Not a target:
 Makefile:
-#  Implicit rule search has been done.
-#  Last modified 2021-12-19 17:24:30.803952295
-#  File has been updated.
-#  Successfully updated.
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
 
 # Not a target:
 .DEFAULT:
@@ -259,24 +294,24 @@ Makefile:
 # Not a target:
 all:
 #  Command line target.
-#  Implicit rule search has been done.
-#  File does not exist.
+#  Implicit rule search has not been done.
+#  Modification time never checked.
 #  File has not been updated.
 
 # files hash-table stats:
-# Load=4/1024=0%, Rehash=0, Collisions=0/14=0%
+# Load=4/1024=0%, Rehash=0, Collisions=0/5=0%
 # VPATH Search Paths
 
 # No 'vpath' search paths.
 
 # No general ('VPATH' variable) search path.
 
-# strcache buffers: 1 (0) / strings = 9 / storage = 77 B / avg = 8 B
-# current buf: size = 8162 B / used = 77 B / count = 9 / avg = 8 B
+# strcache buffers: 1 (0) / strings = 14 / storage = 138 B / avg = 9 B
+# current buf: size = 8162 B / used = 138 B / count = 14 / avg = 9 B
 
-# strcache performance: lookups = 13 / hit rate = 30%
+# strcache performance: lookups = 19 / hit rate = 26%
 # hash-table stats:
-# Load=9/8192=0%, Rehash=0, Collisions=0/13=0%
-# Finished Make data base on Mon Dec 20 00:04:43 2021
+# Load=14/8192=0%, Rehash=0, Collisions=0/19=0%
+# Finished Make data base on Tue Dec 28 00:07:44 2021
 
  
