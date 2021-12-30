@@ -33,7 +33,8 @@
 #include "main_functions.h"
 
 int main(int argc, char* argv[]) {
-  Usage(argc, argv);
-  Backpack(argv);
+  bool acotado{true};
+  Usage(argc, argv, acotado);
+  Backpack(argv, acotado);
   return 0;
 }

@@ -24,15 +24,15 @@
 #
 
 CC = g++
-CFLAGS = -I -g -std=c++20 -Wall -Weffc++ -Wextra -Wpedantic -Werror
-DEPS = main_functions.h
-OBJ = main_backpack.o main_functions.o
+CFLAGS = -I -g -std=c++17 -Wall -Weffc++ -Wextra -Wpedantic -Werror
+DEPS = main_functions.h 
+OBJ = main_backpack.o main_functions.o 
 
 %.o: %.cc $(DEPS)
-    $(CC) $(CFLAGS) -c -o $@ $<
+	$(CC) $(CFLAGS) -c -o $@ $<
 
 backpack: $(OBJ)
-    $(CC) $(CFLAGS) -o $@ $^
+	$(CC) $(CFLAGS) -o $@ $^
 
-clean: 
-    rm -rf *.o
+clean:
+	rm -rf *.o

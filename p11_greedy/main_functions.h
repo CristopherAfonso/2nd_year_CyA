@@ -31,15 +31,25 @@
 #include <list>
 #include <string>
 #include <fstream>
+#include <regex>
 
-void Usage(int argc, char* argv[]);
+void Usage(int argc, char* argv[], bool& acotado);
 void MainMessage(const std::string& kProgramName, const std::string& kHelp);
-void HelpMessage(const std::string& kProgramName, const std::string& kHelp);
+void HelpMessage(const std::string& kProgramName);
 void ErrorSoMuchParameters(const std::string& kProgramName, 
                            const std::string& kHelp);
+void ErrorWrongParameters(const std::string& kProgramName, 
+                          const std::string& kHelp);
 void ErrorConfigFileExtension(const std::string& kProgramName, 
                               const std::string& kHelp);
 void ErrorOpenConfigFile(const std::string& kProgramName, 
                          const std::string& kHelp);
 void ErrorNoNumber(const std::string& kProgramName, const std::string& kHelp);
-void Backpack(char* argv[]);
+void ErrorConfigFileBody(const std::string& kProgramName, 
+                         const std::string& kHelp);
+void ErrorLineNotFound(const std::string& kProgramName, 
+                       const std::string& kHelp);
+void ErrorLackOfObj(const std::string& kProgramName, const std::string& kHelp);
+void Backpack(char* argv[], const bool& acotado);
+void Solve(const double& kWeightLimit, const std::vector<double>& kWeightObjs, 
+           const std::vector<double>& kValueObjs, const bool& acotado);
