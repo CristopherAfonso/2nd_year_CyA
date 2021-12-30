@@ -53,18 +53,3 @@ void ErrorLackOfObj(const std::string& kProgramName, const std::string& kHelp);
 void Solve(const double& kWeightLimit, const std::vector<double>& kWeightObjs, 
            const std::vector<double>& kValueObjs, const bool acotado);
 void Backpack(char* argv[], const bool& acotado);
-
-// función mochila(P, p[1..n], v[1..n]): vector[1..n] {
-//   para i <- 1 hasta n hacer x[i] <- 0
-//   peso <- 0
-//   mientras peso < P hacer {
-//     i <- seleccionar el mejor objeto restante
-//     si peso + p[i] <= P entonces {
-//       x[i] <- 1
-//       peso <- peso + p[i]
-//     } en otro caso {
-//       x[i] <- (P - peso) / p[i]
-//       peso <- P
-//     }
-//   devolver x
-// }
