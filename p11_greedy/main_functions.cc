@@ -345,6 +345,106 @@ void ErrorLackOfObj(const std::string& kProgramName, const std::string& kHelp) {
 }
 
 /**
+ * @fn void Solve(const double& kWeightLimit, const std::vector<double>& kWeightObjs, 
+ *                const std::vector<double>& kValueObjs, const bool& acotado)
+ * @brief Funcion que ejecuta el algoritmo voraz (greedy) para resolver el
+ * problema de la mochila y imprime por pantalla su resultado.
+ * 
+ * @param kWeightLimit limite de peso de la mochila.
+ * @param kWeightObjs vector que en cada posicion tiene el peso de un objeto.
+ * @param kValueObjs vector que en cada posicion tiene el valor de un objeto.
+ * @param acotado booleano que nos dice si se quiere resolver acotando o no.
+ */
+void Solve(const double& kWeightLimit, const std::vector<double>& kWeightObjs, 
+           const std::vector<double>& kValueObjs, const bool acotado) {
+  using std::cout;
+  double benefic{0.00};
+  double weight{0.00};
+  std::vector<std::pair<int, double>> solution;
+  std::vector<double> objs_used(kWeightObjs.size(), 0);
+  std::vector<int> utility_obj;
+
+  std::vector<bool> obj_choosen(kWeightObjs.size(), false);
+  double aux_double{0.00};
+  for (int i{0}; i < int(kWeightObjs.size()); ++i) {
+    int aux_position{-1};
+    aux_double = 0.00;
+    for (int j{0}; j < int(kWeightObjs.size()); ++j) {
+      if (obj_choosen[j]) continue;
+
+      if ((kValueObjs[j] / kWeightObjs[j]) > aux_double) {
+        aux_double = kValueObjs[j] / kWeightObjs[j];
+        aux_position = j;
+      }
+    }
+
+    obj_choosen[aux_position] = true;
+    utility_obj.emplace_back(aux_position);
+  }
+  
+  while (weight < kWeightLimit) {
+    int actual_obj{-1};
+    if (acotado) {
+      for (int i{0}; i < int(kWeightObjs.size()); ++i) {
+        if (obj_choosen[i]) {
+          obj_choosen[i] = false;
+          actual_obj = utility_obj[i];
+          break;
+        }
+      }
+
+      if ((weight + kWeightObjs[actual_obj]) <= kWeightLimit) {
+        objs_used[actual_obj] = 1.00;
+        weight += kWeightObjs[actual_obj];
+        solution.emplace_back(std::make_pair(actual_obj + 1, 1.00));
+      } else {
+        objs_used[actual_obj] = (kWeightLimit - weight) / kWeightObjs[actual_obj];
+        weight = kWeightLimit;
+        solution.emplace_back(std::make_pair(actual_obj + 1, objs_used[actual_obj]));
+      }
+
+      benefic += objs_used[actual_obj] * kValueObjs[actual_obj];
+    } else {
+      if (solution.empty()) { ///< Si es verdad, solution esta vacio.
+        actual_obj = utility_obj.front();
+        solution.emplace_back(std::make_pair(actual_obj + 1, 0.00));
+      } else {
+        for (int i{0}; i < int(utility_obj.size()); ++i) {
+          if (kWeightObjs[utility_obj[i]] + weight <= kWeightLimit) {
+            actual_obj = utility_obj[i];
+            break;
+          }
+        }
+      }
+
+      objs_used[actual_obj] = 1.00;
+      benefic += objs_used[actual_obj] * kValueObjs[actual_obj];
+      weight += kWeightObjs[actual_obj];
+      for (int i{0}; i < int(solution.size()); ++i) {
+        if (actual_obj + 1 == solution[i].first) {
+          ++solution[i].second;
+          break;
+        }
+
+        if (i == (int(solution.size()) - 1)) 
+          solution.emplace_back(std::make_pair(actual_obj + 1, 1.00));
+      }
+      
+    }
+  }
+
+  if (!acotado) solution.back().second += -1;
+
+  cout << "Beneficio: " << benefic << '\n';
+  cout << "Peso: " << weight << '\n';
+  cout << "Solucion: ";
+  for (auto i: solution) {
+    cout << i.first << ":" << i.second << ' ';
+  }
+  cout << '\n';
+}
+
+/**
  * @fn void Backpack(char* argv[])
  * @brief funcion que se encarga de ejecutar el nucleo del programa ofreciendo
  * una solucion al problema de la mochila por pantalla leyendo un archivo de
@@ -419,36 +519,4 @@ void Backpack(char* argv[], const bool& acotado) {
   }
 
   Solve(weight_limit, weight_objets, value_objets, acotado);
-}
-
-// función mochila(P, p[1..n], v[1..n]): vector[1..n] {
-//   para i <- 1 hasta n hacer x[i] <- 0
-//   peso <- 0
-//   mientras peso < P hacer {
-//     i <- seleccionar el mejor objeto restante
-//     si peso + p[i] <= P entonces {
-//       x[i] <- 1
-//       peso <- peso + p[i]
-//     } en otro caso {
-//       x[i] <- (P - peso) / p[i]
-//       peso <- P
-//     }
-//   devolver x
-// }
-
-/**
- * @fn void Solve(const double& kWeightLimit, const std::vector<double>& kWeightObjs, 
- *                const std::vector<double>& kValueObjs, const bool& acotado)
- * @brief Funcion que ejecuta el algoritmo voraz (greedy) para resolver el
- * problema de la mochila y imprime por pantalla su resultado.
- * 
- * @param kWeightLimit limite de peso de la mochila.
- * @param kWeightObjs vector que en cada posicion tiene el peso de un objeto.
- * @param kValueObjs vector que en cada posicion tiene el valor de un objeto.
- * @param acotado booleano que nos dice si se quiere resolver acotando o no.
- */
-void Solve(const double& kWeightLimit, const std::vector<double>& kWeightObjs, 
-           const std::vector<double>& kValueObjs, const bool& acotado) {
-  using std::cout;
-  
 }
