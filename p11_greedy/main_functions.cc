@@ -360,6 +360,7 @@ void Solve(const double& kWeightLimit, const std::vector<double>& kWeightObjs,
   using std::cout;
   double benefic{0.00};
   double weight{0.00};
+  double count_solution{0.00};
   std::vector<std::pair<int, double>> solution;
   std::vector<double> objs_used(kWeightObjs.size(), 0);
   std::vector<int> utility_obj;
@@ -437,10 +438,22 @@ void Solve(const double& kWeightLimit, const std::vector<double>& kWeightObjs,
 
   cout << "Beneficio: " << benefic << '\n';
   cout << "Peso: " << weight << '\n';
-  cout << "Solucion: ";
+  aux_double = 0.00;
+  for (auto i: solution) {
+    aux_double += i.second;
+  }
+
+  if ((aux_double - double(int(aux_double))) < 0.5) {
+    aux_double = double(int(aux_double));
+  } else {
+    aux_double = double(int(aux_double)) + 1.00;
+  }
+
+  cout << "Solucion " << aux_double << " objetos: ";
   for (auto i: solution) {
     cout << i.first << ":" << i.second << ' ';
   }
+
   cout << '\n';
 }
 
